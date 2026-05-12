@@ -17,7 +17,7 @@ export interface HoshimoriData {
   growthPace: string;
 }
 
-const ZUKAN_DIR = '/Users/adachinaoto/Documents/2nd-Brain/03_知識ベース/九星構造学(KSS)/07_ビジネス関連/教育分野/星守り図鑑';
+const ZUKAN_DIR = path.join(process.cwd(), 'src/data/zukan');
 
 function extractSection(content: string, sectionName: string): string {
   const regex = new RegExp(`###\\s*${sectionName}[^\\n]*\\n([\\s\\S]*?)(?=###|$)`, 'i');
