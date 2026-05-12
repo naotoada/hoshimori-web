@@ -23,6 +23,19 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   const renderMd = (text: string) => ({ __html: marked(text) as string });
   const imageUrl = getCharacterImageUrl(data.id);
 
+  const bgMeta: Record<string, string> = {
+    '水の星': styles.bgWater,
+    '大地の星': styles.bgEarth,
+    '雷の星': styles.bgThunder,
+    '風の星': styles.bgWind,
+    '帝の星': styles.bgEmperor,
+    '天の星': styles.bgHeaven,
+    '果実の星': styles.bgFruit,
+    '山の星': styles.bgMountain,
+    '火の星': styles.bgFire,
+  };
+  const bgClass = bgMeta[data.honmeiName] || '';
+
   return (
     <main className="container">
       <div className={styles.header}>
@@ -31,7 +44,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       </div>
 
       <div className={styles.card}>
-        <div className={styles.imageWrapper}>
+        <div className={`${styles.imageWrapper} ${bgClass}`}>
           <img src={imageUrl} alt={data.name} className={styles.characterImage} />
         </div>
         <div className={styles.typeBadgeContainer}>
