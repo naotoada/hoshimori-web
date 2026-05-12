@@ -1,0 +1,83 @@
+.container {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  margin: 30px auto;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--primary-yellow);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dateInput {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.button {
+  background-color: var(--accent-yellow);
+  color: var(--text-main);
+  font-weight: bold;
+  padding: 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background-color: var(--accent-yellow-hover);
+}
+
+.resultCard {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px dashed #ccc;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.resultId {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary-blue);
+  margin: 10px 0;
+}
+
+.resultHonmei {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.lineButton {
+  display: inline-block;
+  background-color: #06C755; /* LINE Green */
+  color: white;
+  font-weight: bold;
+  padding: 14px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,129 @@
+.header {
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+}
+
+.typeBadge {
+  background-color: var(--accent-yellow);
+  color: var(--text-main);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.metaInfo {
+  background-color: var(--bg-primary);
+  padding: 16px;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.metaInfo p {
+  margin-bottom: 8px;
+}
+.metaInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  border-bottom: 2px solid var(--bg-primary);
+  padding-bottom: 8px;
+}
+
+.content {
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.8;
+}
+
+.content ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.content li {
+  margin-bottom: 6px;
+}
+
+.important {
+  background-color: rgba(255, 179, 186, 0.1);
+  padding: 16px;
+  border-radius: var(--border-radius-sm);
+  border-left: 4px solid var(--primary-red);
+}
+
+.ctaArea {
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+  border-radius: var(--border-radius-lg);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 40px;
+}
+
+.ctaArea p {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: #06C755;
+  color: white;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+}

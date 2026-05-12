@@ -1,0 +1,196 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.starIcon {
+  font-size: 24px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.profileBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  font-size: 18px;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text-main);
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.heroIllustration {
+  height: 200px;
+  margin-top: 20px;
+  background: radial-gradient(circle at center, rgba(244,196,48,0.2) 0%, transparent 70%);
+  border-radius: var(--border-radius-lg);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+.featureCard {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border-top: 24px solid var(--primary-blue);
+  position: relative;
+}
+
+.featureCard p {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.featureIcon {
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-main);
+}
+
+.blueCard { border-top-color: var(--primary-blue); }
+.greenCard { border-top-color: var(--primary-green); }
+.redCard { border-top-color: var(--primary-red); }
+
+.zukanTeaser {
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 30px;
+}
+
+.zukanTeaser h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.zukanTeaser p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.zukanButton {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: var(--text-main);
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.theory {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 30px;
+  border-left: 4px solid var(--accent-yellow);
+}
+
+.theory h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.theory p {
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.serviceCta {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--primary-green));
+  border-radius: var(--border-radius-lg);
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 40px;
+}
+
+.serviceCta h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.serviceCta p {
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.lineButton {
+  display: inline-block;
+  background-color: #06C755;
+  color: white;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.bottomNav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.bottomNav a {
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -1,0 +1,53 @@
+:root {
+  --bg-primary: #FCF9F2; /* Warm Ivory */
+  --bg-secondary: #ffffff;
+  --accent-yellow: #F4C430; /* Soft Yellow */
+  --accent-yellow-hover: #E3B320;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --primary-blue: #A2D2FF; /* Soft Pastel Blue */
+  --primary-green: #B9E3C6; /* Soft Pastel Green */
+  --primary-red: #FFB3BA; /* Soft Pastel Red */
+  
+  --border-radius-lg: 20px;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+  
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 480px; /* Mobile first */
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05); /* So it looks good on desktop too */
+}
