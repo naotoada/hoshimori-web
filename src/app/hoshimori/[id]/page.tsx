@@ -7,7 +7,7 @@ import styles from './page.module.css';
 export async function generateStaticParams() {
   const characters = getAllHoshimori();
   return characters.map((c) => ({
-    id: c.id,
+    id: encodeURIComponent(c.id),
   }));
 }
 
