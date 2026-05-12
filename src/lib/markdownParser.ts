@@ -72,7 +72,7 @@ export function getAllHoshimori(): HoshimoriData[] {
 
       const typeName = extractLineProperty(section, 'タイプ名');
       const structure = extractLineProperty(section, '構造');
-      const fiveElements = extractLineProperty(section, '五行関係');
+      const fiveElements = extractLineProperty(section, '心の化学反応');
 
       results.push({
         id,

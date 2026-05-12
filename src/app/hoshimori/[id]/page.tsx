@@ -43,7 +43,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
             <span className={styles.metaValue}>{data.structure}</span>
           </div>
           <div className={styles.metaRow}>
-            <span className={styles.metaLabel}>五行関係</span>
+            <span className={styles.metaLabel}>心の化学反応</span>
             <span className={styles.metaValue}>{data.fiveElements}</span>
           </div>
         </div>
