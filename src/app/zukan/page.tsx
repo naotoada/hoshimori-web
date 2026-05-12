@@ -21,16 +21,16 @@ export default function ZukanIndex() {
     '天の星', '沢の星', '山の星', '火の星'
   ];
 
-  const honmeiMeta: Record<string, { display: string, theme: string, bgTheme: string }> = {
-    '水の星': { display: '💧 水の星', theme: styles.themeWater, bgTheme: styles.bgWater },
-    '大地の星': { display: '🌍 大地の星', theme: styles.themeEarth, bgTheme: styles.bgEarth },
-    '雷の星': { display: '⚡️ 雷の星', theme: styles.themeThunder, bgTheme: styles.bgThunder },
-    '風の星': { display: '🍃 風の星', theme: styles.themeWind, bgTheme: styles.bgWind },
-    '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor, bgTheme: styles.bgEmperor },
-    '天の星': { display: '🌌 天の星', theme: styles.themeHeaven, bgTheme: styles.bgHeaven },
-    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh, bgTheme: styles.bgMarsh },
-    '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain, bgTheme: styles.bgMountain },
-    '火の星': { display: '🔥 火の星', theme: styles.themeFire, bgTheme: styles.bgFire },
+  const honmeiMeta: Record<string, { display: string, theme: string, bgTheme: string, borderTheme: string }> = {
+    '水の星': { display: '💧 水の星', theme: styles.themeWater, bgTheme: styles.bgWater, borderTheme: styles.borderWater },
+    '大地の星': { display: '🌍 大地の星', theme: styles.themeEarth, bgTheme: styles.bgEarth, borderTheme: styles.borderEarth },
+    '雷の星': { display: '⚡️ 雷の星', theme: styles.themeThunder, bgTheme: styles.bgThunder, borderTheme: styles.borderThunder },
+    '風の星': { display: '🍃 風の星', theme: styles.themeWind, bgTheme: styles.bgWind, borderTheme: styles.borderWind },
+    '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor, bgTheme: styles.bgEmperor, borderTheme: styles.borderEmperor },
+    '天の星': { display: '🌌 天の星', theme: styles.themeHeaven, bgTheme: styles.bgHeaven, borderTheme: styles.borderHeaven },
+    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh, bgTheme: styles.bgMarsh, borderTheme: styles.borderMarsh },
+    '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain, bgTheme: styles.bgMountain, borderTheme: styles.borderMountain },
+    '火の星': { display: '🔥 火の星', theme: styles.themeFire, bgTheme: styles.bgFire, borderTheme: styles.borderFire },
   };
 
   return (
@@ -54,7 +54,7 @@ export default function ZukanIndex() {
               <div className={styles.grid}>
                 {chars.map(char => (
                   <Link href={`/hoshimori/${char.id}`} key={char.id} className={styles.charCard}>
-                    <div className={styles.charIcon}>
+                    <div className={`${styles.charIcon} ${meta?.borderTheme || ''}`}>
                       <img src={getCharacterImageUrl(char.id)} alt={char.name} />
                     </div>
                     <div className={styles.charInfo}>

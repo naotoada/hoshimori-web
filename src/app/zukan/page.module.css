@@ -50,7 +50,7 @@
 
 .bgWater { background-color: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); }
 .bgEarth { background-color: rgba(120, 53, 15, 0.05); border: 1px solid rgba(120, 53, 15, 0.2); }
-.bgThunder { background-color: rgba(13, 148, 136, 0.05); border: 1px solid rgba(13, 148, 136, 0.2); }
+.bgThunder { background-color: rgba(2, 132, 199, 0.05); border: 1px solid rgba(2, 132, 199, 0.2); }
 .bgWind { background-color: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); }
 .bgEmperor { background-color: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); }
 .bgHeaven { background-color: rgba(100, 116, 139, 0.05); border: 1px solid rgba(100, 116, 139, 0.2); }
@@ -73,13 +73,23 @@
 
 .themeWater { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 .themeEarth { background: linear-gradient(135deg, #92400e, #78350f); }
-.themeThunder { background: linear-gradient(135deg, #14b8a6, #0f766e); }
+.themeThunder { background: linear-gradient(135deg, #0284c7, #0369a1); }
 .themeWind { background: linear-gradient(135deg, #10b981, #047857); }
 .themeEmperor { background: linear-gradient(135deg, #f59e0b, #b45309); }
 .themeHeaven { background: linear-gradient(135deg, #64748b, #334155); }
 .themeMarsh { background: linear-gradient(135deg, #f87171, #dc2626); }
 .themeMountain { background: linear-gradient(135deg, #84cc16, #4d7c0f); }
 .themeFire { background: linear-gradient(135deg, #c084fc, #9333ea); }
+
+.borderWater { border-color: #3b82f6 !important; }
+.borderEarth { border-color: #92400e !important; }
+.borderThunder { border-color: #0284c7 !important; }
+.borderWind { border-color: #10b981 !important; }
+.borderEmperor { border-color: #f59e0b !important; }
+.borderHeaven { border-color: #64748b !important; }
+.borderMarsh { border-color: #f87171 !important; }
+.borderMountain { border-color: #84cc16 !important; }
+.borderFire { border-color: #c084fc !important; }
 
 .grid {
   display: grid;
