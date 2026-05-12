@@ -50,7 +50,7 @@ export function getAllHoshimori(): HoshimoriData[] {
       // First line contains name and ID
       const lines = section.split('\n');
       const headerLine = lines[0].trim();
-      const nameMatch = headerLine.match(/^(.*?)\s*\((.*?)\)/);
+      const nameMatch = headerLine.match(/^(.*?)\s*[（(](.*?)[）)]/);
       if (!nameMatch) continue;
 
       const name = nameMatch[1].trim();

@@ -34,11 +34,18 @@ export default function DiagnosisForm() {
 
       {result && (
         <div className={styles.resultCard}>
-          <p>あなたのお子様の星守りタイプは…</p>
+          <p className={styles.resultIntro}>あなたのお子様の星守りタイプは…</p>
+          <div className={styles.resultImageWrapper}>
+             <img src="/hero.png" alt="Hoshimori" className={styles.resultImage} />
+          </div>
           <div className={styles.resultId}>{result.hoshimoriId}</div>
           <p className={styles.resultHonmei}>({result.honmeiName})</p>
+          <a href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
+            詳細な「取扱説明書」を見る
+          </a>
+          <br/>
           <a href="#line" className={styles.lineButton}>
-            続きを公式LINEで見る
+            専門家に直接相談する
           </a>
         </div>
       )}
