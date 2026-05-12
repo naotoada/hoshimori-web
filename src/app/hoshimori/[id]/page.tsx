@@ -33,6 +33,8 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
           <img src={imageUrl} alt={data.name} className={styles.characterImage} />
+        </div>
+        <div className={styles.typeBadgeContainer}>
           <div className={styles.typeBadge}>{data.typeName}</div>
         </div>
         
