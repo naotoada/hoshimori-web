@@ -28,7 +28,6 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       <div className={styles.header}>
         <a href="/zukan" className={styles.backButton}>← 一覧へ戻る</a>
         <h1 className={styles.title}>{data.name}</h1>
-        <p className={styles.subtitle}>{data.honmeiName}</p>
       </div>
 
       <div className={styles.card}>
