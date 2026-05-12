@@ -21,6 +21,18 @@ export default function ZukanIndex() {
     '天の星', '沢の星', '山の星', '火の星'
   ];
 
+  const honmeiMeta: Record<string, { display: string, theme: string }> = {
+    '水の星': { display: '💧 水の星', theme: styles.themeWater },
+    '大地の星': { display: '🌍 大地の星', theme: styles.themeEarth },
+    '雷の星': { display: '⚡️ 雷の星', theme: styles.themeThunder },
+    '風の星': { display: '🍃 風の星', theme: styles.themeWind },
+    '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor },
+    '天の星': { display: '🌌 天の星', theme: styles.themeHeaven },
+    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh },
+    '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain },
+    '火の星': { display: '🔥 火の星', theme: styles.themeFire },
+  };
+
   return (
     <main className="container">
       <div className={styles.header}>
@@ -34,9 +46,11 @@ export default function ZukanIndex() {
           const chars = grouped[honmeiName];
           if (!chars || chars.length === 0) return null;
           
+          const meta = honmeiMeta[honmeiName];
+          
           return (
             <section key={honmeiName} className={styles.honmeiSection}>
-              <h2 className={styles.honmeiTitle}>{honmeiName}（{chars.length}体）</h2>
+              <h2 className={`${styles.honmeiTitle} ${meta?.theme || ''}`}>{meta?.display || honmeiName}</h2>
               <div className={styles.grid}>
                 {chars.map(char => (
                   <Link href={`/hoshimori/${char.id}`} key={char.id} className={styles.charCard}>
