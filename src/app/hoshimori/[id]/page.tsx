@@ -24,52 +24,66 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   return (
     <main className="container">
       <div className={styles.header}>
-        <a href="/" className={styles.backButton}>← 戻る</a>
+        <a href="/zukan" className={styles.backButton}>← 一覧へ戻る</a>
         <h1 className={styles.title}>{data.name}</h1>
         <p className={styles.subtitle}>{data.honmeiName} / {data.id}</p>
       </div>
 
       <div className={styles.card}>
-        <div className={styles.typeBadge}>{data.typeName}</div>
+        <div className={styles.imageWrapper}>
+          <img src="/hero.png" alt="Hoshimori" className={styles.characterImage} />
+          <div className={styles.typeBadge}>{data.typeName}</div>
+        </div>
         
         <div className={styles.metaInfo}>
-          <p><strong>構造:</strong> {data.structure}</p>
-          <p><strong>五行関係:</strong> {data.fiveElements}</p>
+          <div className={styles.metaRow}>
+            <span className={styles.metaLabel}>構造</span>
+            <span className={styles.metaValue}>{data.structure}</span>
+          </div>
+          <div className={styles.metaRow}>
+            <span className={styles.metaLabel}>五行関係</span>
+            <span className={styles.metaValue}>{data.fiveElements}</span>
+          </div>
         </div>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>✨ 強み</h3>
-          <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.strengths)} />
-        </section>
+        <div className={styles.contentGrid}>
+          <section className={`${styles.section} ${styles.strengthSection}`}>
+            <h3 className={styles.sectionTitle}>✨ 才能の原石（強み）</h3>
+            <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.strengths)} />
+          </section>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>💦 弱み</h3>
-          <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.weaknesses)} />
-        </section>
+          <section className={`${styles.section} ${styles.weaknessSection}`}>
+            <h3 className={styles.sectionTitle}>💦 隠れたSOS（弱み）</h3>
+            <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.weaknesses)} />
+          </section>
+        </div>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>🏞 得意な環境</h3>
+        <section className={`${styles.section} ${styles.envSection}`}>
+          <h3 className={styles.sectionTitle}>🏞 才能が伸びる「得意な環境」</h3>
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.goodEnvs)} />
         </section>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>🚧 苦手な環境</h3>
+        <section className={`${styles.section} ${styles.envSection}`}>
+          <h3 className={styles.sectionTitle}>🚧 才能が枯れる「苦手な環境」</h3>
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.badEnvs)} />
         </section>
 
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.importantSection}`}>
           <h3 className={styles.sectionTitle}>🤝 関わり方（保護者・教育者向け）</h3>
-          <div className={`${styles.content} ${styles.important}`} dangerouslySetInnerHTML={renderMd(data.howToInteract)} />
+          <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.howToInteract)} />
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>🌱 成長ペース</h3>
+          <h3 className={styles.sectionTitle}>🌱 成長の軌跡</h3>
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.growthPace)} />
         </section>
       </div>
       
       <div className={styles.ctaArea}>
-        <p>この子の才能を爆発させる具体的な設計図（物理レポート）と<br/>専用グッズを手に入れませんか？</p>
+        <p className={styles.ctaText}>
+          この記事は「星守り」のほんの一部です。<br/>
+          お子様専用の『取扱説明書（構造設計図）』とグッズで、<br/>才能を爆発させる環境づくりを始めませんか？
+        </p>
         <a href="#line" className={styles.ctaButton}>公式LINEから申し込む</a>
       </div>
     </main>

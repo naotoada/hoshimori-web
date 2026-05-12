@@ -18,15 +18,25 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className={styles.hero}>
-        <p className={styles.subtitle}>Hoshimori で、お子様の<br/>「本当の個性」と「未来」を守り、育む。</p>
-        <h2 className={styles.title}>親子で笑顔になれる、<br/>やさしいAI診断と<br/>専門家サポート。</h2>
+        <div className={styles.heroImageWrapper}>
+          <Image 
+            src="/hero.png" 
+            alt="Hoshimori Star Guardians" 
+            width={600} 
+            height={338} 
+            className={styles.heroImage}
+            priority
+          />
+        </div>
+        <div className={styles.heroTextContainer}>
+          <p className={styles.subtitle}>魚に木登りをさせない教育。</p>
+          <h2 className={styles.title}>
+            お子様の「生まれ持った才能」を<br/>
+            星守りAIが解析します。
+          </h2>
+        </div>
         
         <DiagnosisForm />
-
-        <div className={styles.heroIllustration}>
-          {/* Placeholder for illustration */}
-          <div className={styles.starPath}></div>
-        </div>
       </section>
 
       {/* Features Section */}
@@ -49,9 +59,22 @@ export default function Home() {
 
       {/* Zukan Teaser */}
       <section className={styles.zukanTeaser}>
-        <h3>📚 全90体の星守り図鑑</h3>
-        <p>1〜9の星から、お子様の才能と環境の相性を紐解きます。</p>
-        <a href="/zukan" className={styles.zukanButton}>星守り図鑑を見る</a>
+        <div className={styles.zukanTeaserContent}>
+          <div className={styles.zukanTeaserText}>
+            <h3>📚 全90体の星守り図鑑</h3>
+            <p>1〜9の星から、お子様の才能と環境の相性を紐解きます。</p>
+            <a href="/zukan" className={styles.zukanButton}>図鑑をひらく</a>
+          </div>
+          <div className={styles.zukanTeaserImage}>
+            <Image 
+              src="/hero.png" 
+              alt="Hoshimori" 
+              width={120} 
+              height={120} 
+              style={{ objectFit: 'cover', borderRadius: '50%' }}
+            />
+          </div>
+        </div>
       </section>
 
       {/* Theory Section */}

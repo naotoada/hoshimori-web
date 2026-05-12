@@ -1,20 +1,26 @@
 :root {
-  --bg-primary: #FCF9F2; /* Warm Ivory */
-  --bg-secondary: #ffffff;
-  --accent-yellow: #F4C430; /* Soft Yellow */
-  --accent-yellow-hover: #E3B320;
-  --text-main: #333333;
-  --text-muted: #666666;
-  --primary-blue: #A2D2FF; /* Soft Pastel Blue */
-  --primary-green: #B9E3C6; /* Soft Pastel Green */
-  --primary-red: #FFB3BA; /* Soft Pastel Red */
+  --bg-primary: #F0F8FF; /* Alice Blue / Light Sky Blue base */
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #E1F0FA; /* Slightly darker blue for contrast */
   
-  --border-radius-lg: 20px;
-  --border-radius-md: 12px;
+  --accent-yellow: #FFD166; /* Vibrant, warm, premium yellow */
+  --accent-yellow-hover: #FFC033;
+  --accent-yellow-light: #FFE8A1;
+
+  --text-main: #2D3748; /* Professional dark gray/blue */
+  --text-muted: #718096;
+  
+  --primary-blue: #4299E1; 
+  --primary-green: #48BB78; 
+  --primary-red: #F56565; 
+  
+  --border-radius-lg: 24px;
+  --border-radius-md: 16px;
   --border-radius-sm: 8px;
   
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+  --shadow-md: 0 10px 25px rgba(66, 153, 225, 0.1);
+  --shadow-lg: 0 20px 40px rgba(66, 153, 225, 0.15);
 }
 
 * {
@@ -26,8 +32,11 @@
 body {
   font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at 100% 0%, rgba(255, 209, 102, 0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 0% 100%, rgba(66, 153, 225, 0.1) 0%, transparent 40%);
+  background-attachment: fixed;
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 a {
@@ -43,11 +52,22 @@ button {
 }
 
 .container {
-  max-width: 480px; /* Mobile first */
+  max-width: 600px; /* Slightly wider for modern phones and tablets */
   margin: 0 auto;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05); /* So it looks good on desktop too */
+  box-shadow: var(--shadow-lg);
+}
+
+/* PC Optimization: when screen is wider than 600px, add padding to body and round the container */
+@media (min-width: 640px) {
+  body {
+    padding: 40px 20px;
+  }
+  .container {
+    border-radius: var(--border-radius-lg);
+    min-height: calc(100vh - 80px);
+  }
 }
