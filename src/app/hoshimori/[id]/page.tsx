@@ -66,12 +66,8 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
         
         <div className={styles.metaInfo}>
           <div className={styles.metaRow}>
-            <span className={styles.metaLabel}>基本構造</span>
-            <span className={styles.metaValue}>{honmeiEmoji} {data.honmeiName} × {data.vesselName}</span>
-          </div>
-          <div className={styles.metaRow}>
             <span className={styles.metaLabel}>魂の構造</span>
-            <span className={styles.metaValue}>{data.structure}</span>
+            <span className={styles.metaValue}>{honmeiEmoji} {data.honmeiName} × {data.vesselName}</span>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>心の特質</span>
