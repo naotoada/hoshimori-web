@@ -72,8 +72,8 @@ export function getAllHoshimori(): HoshimoriData[] {
       const id = nameMatch[2].trim();
 
       const typeName = extractLineProperty(section, 'タイプ名');
-      const structure = extractLineProperty(section, '構造');
-      const fiveElements = extractLineProperty(section, '五行関係');
+      const structure = extractLineProperty(section, '魂の構造');
+      const fiveElements = extractLineProperty(section, '心の特質');
 
       const vesselMap: Record<string, string> = {
         '甲': '🌳 大樹の器',
