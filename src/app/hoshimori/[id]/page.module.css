@@ -63,10 +63,10 @@
   left: -20px;
   right: -20px;
   bottom: -20px;
-  background-image: linear-gradient(rgba(10, 15, 40, 0.6), rgba(15, 20, 50, 0.85)), url('/hero_space.png');
+  background-image: url('/hero_space.png');
   background-size: cover;
   background-position: center;
-  filter: blur(8px);
+  filter: blur(3px);
   z-index: 0;
 }
 
