@@ -7,14 +7,13 @@ import styles from './page.module.css';
 export async function generateStaticParams() {
   const characters = getAllHoshimori();
   return characters.map((c) => ({
-    id: encodeURIComponent(c.id),
+    id: c.id,
   }));
 }
 
 export default async function HoshimoriDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const decodedId = decodeURIComponent(id);
-  const data = getHoshimoriById(decodedId);
+  const data = getHoshimoriById(id);
 
   if (!data) {
     notFound();

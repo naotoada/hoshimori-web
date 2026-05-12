@@ -9,14 +9,19 @@
   left: 20px;
   top: 36px;
   font-size: 14px;
-  color: var(--text-muted);
-  text-decoration: none;
   font-weight: bold;
-  transition: color 0.2s;
+  color: #FFF;
+  background-color: var(--accent-yellow);
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
 }
 
 .backButton:hover {
-  color: var(--primary-blue);
+  background-color: #FFA01A;
+  transform: translateY(-2px);
 }
 
 .title {

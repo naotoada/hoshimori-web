@@ -96,5 +96,6 @@ export function getAllHoshimori(): HoshimoriData[] {
 
 export function getHoshimoriById(id: string): HoshimoriData | undefined {
   const all = getAllHoshimori();
-  return all.find(h => h.id === id);
+  const decodedId = decodeURIComponent(id);
+  return all.find(h => h.id === id || h.id === decodedId || encodeURIComponent(h.id) === id);
 }
