@@ -57,10 +57,25 @@ export default function DiagnosisForm() {
       {result && (() => {
         const charName = CHARACTER_MAP[result.hoshimoriId]?.name || result.hoshimoriId;
         const imageUrl = getCharacterImageUrl(result.hoshimoriId);
+        
+        const borderMap: Record<string, string> = {
+          '水の星': styles.borderWater,
+          '大地の星': styles.borderEarth,
+          '雷の星': styles.borderThunder,
+          '風の星': styles.borderWind,
+          '帝の星': styles.borderEmperor,
+          '天の星': styles.borderHeaven,
+          '果実の星': styles.borderMarsh,
+          '沢の星': styles.borderMarsh, // fallback
+          '山の星': styles.borderMountain,
+          '火の星': styles.borderFire,
+        };
+        const borderColorClass = borderMap[result.honmeiName] || '';
+
         return (
           <div className={styles.resultCard}>
             <p className={styles.resultIntro}>あなたのお子様の星守りは…</p>
-            <div className={styles.resultImageWrapper}>
+            <div className={`${styles.resultImageWrapper} ${borderColorClass}`}>
                <img src={imageUrl} alt={charName} className={styles.resultImage} />
             </div>
             <div className={styles.resultId}>{charName}</div>

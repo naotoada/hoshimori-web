@@ -95,10 +95,20 @@
   margin: 0 auto 16px auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--accent-yellow);
+  border: 4px solid var(--accent-yellow); /* Default fallback */
   box-shadow: var(--shadow-sm);
   background-color: var(--bg-primary);
 }
+
+.borderWater { border-color: #3b82f6 !important; }
+.borderEarth { border-color: #92400e !important; }
+.borderThunder { border-color: #0284c7 !important; }
+.borderWind { border-color: #10b981 !important; }
+.borderEmperor { border-color: #f59e0b !important; }
+.borderHeaven { border-color: #64748b !important; }
+.borderMarsh { border-color: #f87171 !important; }
+.borderMountain { border-color: #84cc16 !important; }
+.borderFire { border-color: #c084fc !important; }
 
 .resultImage {
   width: 100%;
