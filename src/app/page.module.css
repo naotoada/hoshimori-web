@@ -13,12 +13,12 @@
 
 /* Header */
 .header {
-  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(rgba(10, 15, 40, 0.85), rgba(20, 25, 60, 0.95)), url('/hero_space.png') center top/cover no-repeat;
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid #F0ECE1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px 0;
 }
 
@@ -43,16 +43,17 @@
   font-size: 1.4rem;
   color: #FFB347;
   letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .logoSub {
   font-size: 0.8rem;
-  color: #A0A0A0;
+  color: #E0E0FF;
   font-weight: bold;
 }
 
 .navLink {
-  background-color: #4A90E2;
+  background-color: #FFB347;
   color: #FFF;
   font-weight: bold;
   padding: 8px 20px;
@@ -60,11 +61,11 @@
   text-decoration: none;
   font-size: 0.95rem;
   transition: transform 0.2s, background-color 0.2s;
-  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 4px 10px rgba(255, 179, 71, 0.3);
 }
 
 .navLink:hover {
-  background-color: #357ABD;
+  background-color: #FFA01A;
   transform: translateY(-2px);
 }
 
