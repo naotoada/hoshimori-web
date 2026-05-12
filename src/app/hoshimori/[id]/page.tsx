@@ -56,7 +56,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           </section>
 
           <section className={`${styles.section} ${styles.weaknessSection}`}>
-            <h3 className={styles.sectionTitle}>💦 隠れたSOS（弱み）</h3>
+            <h3 className={styles.sectionTitle}>🚨 隠れたSOS（弱み）</h3>
             <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.weaknesses)} />
           </section>
         </div>
