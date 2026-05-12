@@ -7,28 +7,48 @@ import Link from 'next/link';
 import styles from './DiagnosisForm.module.css';
 
 export default function DiagnosisForm() {
-  const [dateStr, setDateStr] = useState('');
+  const currentYear = new Date().getFullYear();
+  const [year, setYear] = useState<number>(currentYear);
+  const [month, setMonth] = useState<number>(1);
+  const [day, setDay] = useState<number>(1);
   const [result, setResult] = useState<{hoshimoriId: string, honmeiName: string} | null>(null);
 
   const handleDiagnose = () => {
-    if (!dateStr) return;
-    const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return;
-
-    const res = calculateHoshimori(date.getFullYear(), date.getMonth() + 1, date.getDate());
+    // Basic validation
+    if (!year || !month || !day) return;
+    
+    // JS Date handles overflow (e.g. Feb 30 -> Mar 2), but our logic expects raw numbers.
+    // However, we should be aware that the user could select an invalid day.
+    const res = calculateHoshimori(year, month, day);
     setResult(res);
   };
+
+  // Generate options
+  const years = Array.from({ length: 100 }, (_, i) => currentYear - i); // 100 years back
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>うちの子の星守りは？</h3>
       <div className={styles.inputGroup}>
-        <input 
-          type="date" 
-          value={dateStr}
-          onChange={(e) => setDateStr(e.target.value)}
-          className={styles.dateInput}
-        />
+        <div className={styles.dateSelectors}>
+          <div className={styles.selectWrapper}>
+            <select value={year} onChange={(e) => setYear(Number(e.target.value))} className={styles.selectInput}>
+              {years.map(y => <option key={y} value={y}>{y}年</option>)}
+            </select>
+          </div>
+          <div className={styles.selectWrapper}>
+            <select value={month} onChange={(e) => setMonth(Number(e.target.value))} className={styles.selectInput}>
+              {months.map(m => <option key={m} value={m}>{m}月</option>)}
+            </select>
+          </div>
+          <div className={styles.selectWrapper}>
+            <select value={day} onChange={(e) => setDay(Number(e.target.value))} className={styles.selectInput}>
+              {days.map(d => <option key={d} value={d}>{d}日</option>)}
+            </select>
+          </div>
+        </div>
         <button onClick={handleDiagnose} className={styles.button}>
           診断する
         </button>
