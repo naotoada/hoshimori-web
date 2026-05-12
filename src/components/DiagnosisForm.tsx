@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { calculateHoshimori } from '@/lib/kssLogic';
 import { getCharacterImageUrl, CHARACTER_MAP } from '@/lib/characterMap';
+import Link from 'next/link';
 import styles from './DiagnosisForm.module.css';
 
 export default function DiagnosisForm() {
@@ -44,9 +45,9 @@ export default function DiagnosisForm() {
             </div>
             <div className={styles.resultId}>{charName}</div>
             <p className={styles.resultHonmei}>({result.honmeiName})</p>
-            <a href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
+            <Link href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
               詳細な「取扱説明書」を見る
-            </a>
+            </Link>
             <br/>
             <a href="#line" className={styles.lineButton}>
               専門家に直接相談する

@@ -15,10 +15,10 @@ export default function ZukanIndex() {
     return acc;
   }, {} as Record<string, typeof allHoshimori>);
 
-  // 一白水星〜九紫火星の順番を保証するため
+  // 一白水星〜九紫火星の順番を保証するため（星守り用語へ更新）
   const honmeiOrder = [
-    '一白水星', '二黒土星', '三碧木星', '四緑木星', '五黄土星', 
-    '六白金星', '七赤金星', '八白土星', '九紫火星'
+    '水の星', '大地の星', '雷の星', '風の星', '帝の星', 
+    '天の星', '沢の星', '山の星', '火の星'
   ];
 
   return (
