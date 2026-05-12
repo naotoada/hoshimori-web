@@ -43,7 +43,20 @@
 
 .honmeiSection {
   margin-bottom: 40px;
+  padding: 24px;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--bg-secondary); /* Default fallback */
 }
+
+.bgWater { background-color: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); }
+.bgEarth { background-color: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); }
+.bgThunder { background-color: rgba(234, 179, 8, 0.05); border: 1px solid rgba(234, 179, 8, 0.2); }
+.bgWind { background-color: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); }
+.bgEmperor { background-color: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); }
+.bgHeaven { background-color: rgba(100, 116, 139, 0.05); border: 1px solid rgba(100, 116, 139, 0.2); }
+.bgMarsh { background-color: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2); }
+.bgMountain { background-color: rgba(132, 204, 22, 0.05); border: 1px solid rgba(132, 204, 22, 0.2); }
+.bgFire { background-color: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); }
 
 .honmeiTitle {
   font-size: 20px;

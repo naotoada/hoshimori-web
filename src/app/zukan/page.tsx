@@ -21,16 +21,16 @@ export default function ZukanIndex() {
     '天の星', '沢の星', '山の星', '火の星'
   ];
 
-  const honmeiMeta: Record<string, { display: string, theme: string }> = {
-    '水の星': { display: '💧 水の星', theme: styles.themeWater },
-    '大地の星': { display: '🌍 大地の星', theme: styles.themeEarth },
-    '雷の星': { display: '⚡️ 雷の星', theme: styles.themeThunder },
-    '風の星': { display: '🍃 風の星', theme: styles.themeWind },
-    '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor },
-    '天の星': { display: '🌌 天の星', theme: styles.themeHeaven },
-    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh },
-    '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain },
-    '火の星': { display: '🔥 火の星', theme: styles.themeFire },
+  const honmeiMeta: Record<string, { display: string, theme: string, bgTheme: string }> = {
+    '水の星': { display: '💧 水の星', theme: styles.themeWater, bgTheme: styles.bgWater },
+    '大地の星': { display: '🌍 大地の星', theme: styles.themeEarth, bgTheme: styles.bgEarth },
+    '雷の星': { display: '⚡️ 雷の星', theme: styles.themeThunder, bgTheme: styles.bgThunder },
+    '風の星': { display: '🍃 風の星', theme: styles.themeWind, bgTheme: styles.bgWind },
+    '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor, bgTheme: styles.bgEmperor },
+    '天の星': { display: '🌌 天の星', theme: styles.themeHeaven, bgTheme: styles.bgHeaven },
+    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh, bgTheme: styles.bgMarsh },
+    '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain, bgTheme: styles.bgMountain },
+    '火の星': { display: '🔥 火の星', theme: styles.themeFire, bgTheme: styles.bgFire },
   };
 
   return (
@@ -49,7 +49,7 @@ export default function ZukanIndex() {
           const meta = honmeiMeta[honmeiName];
           
           return (
-            <section key={honmeiName} className={styles.honmeiSection}>
+            <section key={honmeiName} className={`${styles.honmeiSection} ${meta?.bgTheme || ''}`}>
               <h2 className={`${styles.honmeiTitle} ${meta?.theme || ''}`}>{meta?.display || honmeiName}</h2>
               <div className={styles.grid}>
                 {chars.map(char => (
