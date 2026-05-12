@@ -66,7 +66,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.goodEnvs)} />
         </section>
 
-        <section className={`${styles.section} ${styles.envSection}`}>
+        <section className={`${styles.section} ${styles.badEnvSection}`}>
           <h3 className={styles.sectionTitle}>🚧 才能が枯れる「苦手な環境」</h3>
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.badEnvs)} />
         </section>

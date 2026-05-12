@@ -152,7 +152,7 @@
   .section {
     padding: 0;
   }
-  .envSection, .importantSection, .section:last-child {
+  .envSection, .badEnvSection, .importantSection, .section:last-child {
     padding: 0 30px;
   }
 }
@@ -194,6 +194,11 @@
 .envSection .sectionTitle {
   color: var(--primary-green);
   border-bottom-color: var(--primary-green);
+}
+
+.badEnvSection .sectionTitle {
+  color: #ea580c;
+  border-bottom-color: #ea580c;
 }
 
 .importantSection {
