@@ -18,7 +18,7 @@ export default function ZukanIndex() {
   // 一白水星〜九紫火星の順番を保証するため（星守り用語へ更新）
   const honmeiOrder = [
     '水の星', '大地の星', '雷の星', '風の星', '帝の星', 
-    '天の星', '沢の星', '山の星', '火の星'
+    '天の星', '果実の星', '山の星', '火の星'
   ];
 
   const honmeiMeta: Record<string, { display: string, theme: string, bgTheme: string, borderTheme: string }> = {
@@ -28,7 +28,7 @@ export default function ZukanIndex() {
     '風の星': { display: '🍃 風の星', theme: styles.themeWind, bgTheme: styles.bgWind, borderTheme: styles.borderWind },
     '帝の星': { display: '👑 帝の星', theme: styles.themeEmperor, bgTheme: styles.bgEmperor, borderTheme: styles.borderEmperor },
     '天の星': { display: '🌌 天の星', theme: styles.themeHeaven, bgTheme: styles.bgHeaven, borderTheme: styles.borderHeaven },
-    '沢の星': { display: '🌊 沢の星', theme: styles.themeMarsh, bgTheme: styles.bgMarsh, borderTheme: styles.borderMarsh },
+    '果実の星': { display: '🍎 果実の星', theme: styles.themeMarsh, bgTheme: styles.bgMarsh, borderTheme: styles.borderMarsh },
     '山の星': { display: '🏔️ 山の星', theme: styles.themeMountain, bgTheme: styles.bgMountain, borderTheme: styles.borderMountain },
     '火の星': { display: '🔥 火の星', theme: styles.themeFire, bgTheme: styles.bgFire, borderTheme: styles.borderFire },
   };
