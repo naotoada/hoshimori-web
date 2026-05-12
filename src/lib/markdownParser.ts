@@ -41,7 +41,21 @@ export function getAllHoshimori(): HoshimoriData[] {
     
     // Extract Honmei Name from the file name or title
     const honmeiNameMatch = file.match(/^\d{2}_(.*)\.md$/);
-    const honmeiName = honmeiNameMatch ? honmeiNameMatch[1] : '';
+    let honmeiName = honmeiNameMatch ? honmeiNameMatch[1] : '';
+    
+    // Map traditional Kyusei terms to Hoshimori terms
+    const termMap: Record<string, string> = {
+      '一白水星': '水の星',
+      '二黒土星': '大地の星',
+      '三碧木星': '雷の星',
+      '四緑木星': '風の星',
+      '五黄土星': '帝の星',
+      '六白金星': '天の星',
+      '七赤金星': '沢の星',
+      '八白土星': '山の星',
+      '九紫火星': '火の星'
+    };
+    honmeiName = termMap[honmeiName] || honmeiName;
 
     // Split by "## " (ignoring the first one if it's the title "# ")
     const sections = content.split(/^## /m).slice(1);

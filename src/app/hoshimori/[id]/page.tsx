@@ -28,7 +28,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       <div className={styles.header}>
         <a href="/zukan" className={styles.backButton}>← 一覧へ戻る</a>
         <h1 className={styles.title}>{data.name}</h1>
-        <p className={styles.subtitle}>{data.honmeiName} / {data.id}</p>
+        <p className={styles.subtitle}>{data.honmeiName}</p>
       </div>
 
       <div className={styles.card}>
@@ -84,9 +84,9 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       <div className={styles.ctaArea}>
         <p className={styles.ctaText}>
           この記事は「星守り」のほんの一部です。<br/>
-          お子様専用の『取扱説明書（構造設計図）』とグッズで、<br/>才能を爆発させる環境づくりを始めませんか？
+          お子様専用の100ページを超える『星守りカルテ（完全版）』で、<br/>才能を育む環境づくりを始めませんか？
         </p>
-        <a href="#line" className={styles.ctaButton}>公式LINEから申し込む</a>
+        <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
       </div>
     </main>
   );
