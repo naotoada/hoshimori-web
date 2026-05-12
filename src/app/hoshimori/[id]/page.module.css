@@ -88,7 +88,7 @@
 .metaRow {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 12px 16px;
   background-color: var(--bg-primary);
   border-radius: var(--border-radius-sm);
@@ -104,6 +104,9 @@
   font-weight: bold;
   color: var(--text-main);
   font-size: 15px;
+  text-align: right;
+  flex: 1;
+  margin-left: 16px;
 }
 
 @media (min-width: 640px) {
