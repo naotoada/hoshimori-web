@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 
 export default async function HoshimoriDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const data = getHoshimoriById(id);
+  const decodedId = decodeURIComponent(id);
+  const data = getHoshimoriById(decodedId);
 
   if (!data) {
     notFound();
