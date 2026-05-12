@@ -41,7 +41,7 @@ export default function ZukanIndex() {
                 {chars.map(char => (
                   <Link href={`/hoshimori/${char.id}`} key={char.id} className={styles.charCard}>
                     <div className={styles.charIcon}>
-                      <img src={getCharacterImageUrl(char.id)} alt={char.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={getCharacterImageUrl(char.id)} alt={char.name} />
                     </div>
                     <div className={styles.charInfo}>
                       <div className={styles.charName}>{char.name}</div>

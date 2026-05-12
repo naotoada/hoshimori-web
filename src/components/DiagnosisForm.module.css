@@ -59,19 +59,21 @@
 }
 
 .resultImageWrapper {
-  width: 100px;
-  height: 100px;
+  width: 180px;
+  height: 180px;
   margin: 0 auto 16px auto;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--accent-yellow);
   box-shadow: var(--shadow-sm);
+  background-color: var(--bg-primary);
 }
 
 .resultImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 10px;
 }
 
 .resultId {

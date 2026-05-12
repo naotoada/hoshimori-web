@@ -45,15 +45,16 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
 }
 
 .charCard {
   background-color: var(--bg-secondary);
-  border-radius: var(--border-radius-sm);
-  padding: 12px;
+  border-radius: var(--border-radius-md);
+  padding: 20px 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
   box-shadow: var(--shadow-sm);
@@ -63,7 +64,7 @@
 }
 
 .charCard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
@@ -71,16 +72,26 @@
   font-size: 24px;
   background-color: var(--bg-primary);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border: 3px solid var(--accent-yellow);
+}
+
+.charIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
 }
 
 .charName {
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
 }
 
 .charId {
