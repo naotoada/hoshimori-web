@@ -36,6 +36,19 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   };
   const bgClass = bgMeta[data.honmeiName] || '';
 
+  const emojiMeta: Record<string, string> = {
+    '水の星': '💧',
+    '大地の星': '🌍',
+    '雷の星': '⚡️',
+    '風の星': '🍃',
+    '帝の星': '👑',
+    '天の星': '🌌',
+    '果実の星': '🍎',
+    '山の星': '🏔️',
+    '火の星': '🔥',
+  };
+  const honmeiEmoji = emojiMeta[data.honmeiName] || '';
+
   return (
     <main className="container">
       <div className={styles.header}>
@@ -52,6 +65,10 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
         </div>
         
         <div className={styles.metaInfo}>
+          <div className={styles.metaRow}>
+            <span className={styles.metaLabel}>基本構造</span>
+            <span className={styles.metaValue}>{honmeiEmoji} {data.honmeiName} × {data.vesselName}</span>
+          </div>
           <div className={styles.metaRow}>
             <span className={styles.metaLabel}>魂の構造</span>
             <span className={styles.metaValue}>{data.structure}</span>

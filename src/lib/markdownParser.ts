@@ -5,7 +5,8 @@ import { marked } from 'marked';
 export interface HoshimoriData {
   id: string;          // e.g. "1_甲"
   name: string;        // e.g. "アイス"
-  honmeiName: string;  // e.g. "一白水星"
+  honmeiName: string;  // e.g. "水の星"
+  vesselName: string;  // e.g. "🌳 大樹の器"
   typeName: string;    // e.g. "🌳清流を育む大樹タイプ"
   structure: string;
   fiveElements: string;
@@ -51,7 +52,7 @@ export function getAllHoshimori(): HoshimoriData[] {
       '四緑木星': '風の星',
       '五黄土星': '帝の星',
       '六白金星': '天の星',
-      '七赤金星': '沢の星',
+      '七赤金星': '果実の星',
       '八白土星': '山の星',
       '九紫火星': '火の星'
     };
@@ -71,13 +72,29 @@ export function getAllHoshimori(): HoshimoriData[] {
       const id = nameMatch[2].trim();
 
       const typeName = extractLineProperty(section, 'タイプ名');
-      const structure = extractLineProperty(section, '魂の構造');
-      const fiveElements = extractLineProperty(section, '心の特質');
+      const structure = extractLineProperty(section, '構造');
+      const fiveElements = extractLineProperty(section, '五行関係');
+
+      const vesselMap: Record<string, string> = {
+        '甲': '🌳 大樹の器',
+        '乙': '🌸 草花の器',
+        '丙': '☀️ 太陽の器',
+        '丁': '🕯️ 灯火の器',
+        '戊': '🏔️ 大山の器',
+        '己': '🌾 花畑の器',
+        '庚': '⚔️ 鉄剣の器',
+        '辛': '💎 宝石の器',
+        '壬': '🌊 大海の器',
+        '癸': '🌧️ 雨露の器'
+      };
+      const stem = id.split('_')[1];
+      const vesselName = vesselMap[stem] || stem;
 
       results.push({
         id,
         name,
         honmeiName,
+        vesselName,
         typeName,
         structure,
         fiveElements,
