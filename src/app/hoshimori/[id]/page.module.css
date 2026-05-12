@@ -52,7 +52,7 @@
   position: relative;
   width: 100%;
   height: 400px;
-  background-image: url('/images/hero-bg.jpg');
+  background-image: url('/hero_space.png');
   background-size: cover;
   background-position: center;
   margin-bottom: 30px;
