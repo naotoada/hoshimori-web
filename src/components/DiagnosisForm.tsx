@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { calculateHoshimori } from '@/lib/kssLogic';
+import { getCharacterImageUrl, CHARACTER_MAP } from '@/lib/characterMap';
 import styles from './DiagnosisForm.module.css';
 
 export default function DiagnosisForm() {
@@ -32,23 +33,27 @@ export default function DiagnosisForm() {
         </button>
       </div>
 
-      {result && (
-        <div className={styles.resultCard}>
-          <p className={styles.resultIntro}>あなたのお子様の星守りタイプは…</p>
-          <div className={styles.resultImageWrapper}>
-             <img src="/hero.png" alt="Hoshimori" className={styles.resultImage} />
+      {result && (() => {
+        const charName = CHARACTER_MAP[result.hoshimoriId]?.name || result.hoshimoriId;
+        const imageUrl = getCharacterImageUrl(result.hoshimoriId);
+        return (
+          <div className={styles.resultCard}>
+            <p className={styles.resultIntro}>あなたのお子様の星守りは…</p>
+            <div className={styles.resultImageWrapper}>
+               <img src={imageUrl} alt={charName} className={styles.resultImage} />
+            </div>
+            <div className={styles.resultId}>{charName}</div>
+            <p className={styles.resultHonmei}>({result.honmeiName})</p>
+            <a href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
+              詳細な「取扱説明書」を見る
+            </a>
+            <br/>
+            <a href="#line" className={styles.lineButton}>
+              専門家に直接相談する
+            </a>
           </div>
-          <div className={styles.resultId}>{result.hoshimoriId}</div>
-          <p className={styles.resultHonmei}>({result.honmeiName})</p>
-          <a href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
-            詳細な「取扱説明書」を見る
-          </a>
-          <br/>
-          <a href="#line" className={styles.lineButton}>
-            専門家に直接相談する
-          </a>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

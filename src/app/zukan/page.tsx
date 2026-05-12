@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllHoshimori } from '@/lib/markdownParser';
+import { getCharacterImageUrl } from '@/lib/characterMap';
 import styles from './page.module.css';
 
 export default function ZukanIndex() {
@@ -39,10 +40,11 @@ export default function ZukanIndex() {
               <div className={styles.grid}>
                 {chars.map(char => (
                   <Link href={`/hoshimori/${char.id}`} key={char.id} className={styles.charCard}>
-                    <div className={styles.charIcon}>⭐</div>
+                    <div className={styles.charIcon}>
+                      <img src={getCharacterImageUrl(char.id)} alt={char.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
                     <div className={styles.charInfo}>
                       <div className={styles.charName}>{char.name}</div>
-                      <div className={styles.charId}>{char.id}</div>
                     </div>
                   </Link>
                 ))}

@@ -1,4 +1,5 @@
 import { getAllHoshimori, getHoshimoriById } from '@/lib/markdownParser';
+import { getCharacterImageUrl } from '@/lib/characterMap';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
 import styles from './page.module.css';
@@ -20,6 +21,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
 
   // Parse markdown lists into HTML safely
   const renderMd = (text: string) => ({ __html: marked(text) as string });
+  const imageUrl = getCharacterImageUrl(data.id);
 
   return (
     <main className="container">
@@ -31,7 +33,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
 
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
-          <img src="/hero.png" alt="Hoshimori" className={styles.characterImage} />
+          <img src={imageUrl} alt={data.name} className={styles.characterImage} />
           <div className={styles.typeBadge}>{data.typeName}</div>
         </div>
         
