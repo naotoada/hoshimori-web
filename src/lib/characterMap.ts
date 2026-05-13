@@ -87,7 +87,7 @@ export const CHARACTER_MAP: Record<string, { name: string, file: string }> = {
   '9_丁': { name: 'ニコール', file: '9_tei' },
   '9_戊': { name: 'バルモア', file: '9_bo' },
   '9_己': { name: 'シーザー', file: '9_ki' },
-  '9_庚': { name: 'ウィリー', file: '9_kou2' },
+  '9_庚': { name: 'ピッカ', file: '9_kou2' },
   '9_辛': { name: 'ステラ', file: '9_shin' },
   '9_壬': { name: 'アデュー', file: '9_jin' },
   '9_癸': { name: 'ミンク', file: '9_ki2' },
