@@ -245,3 +245,33 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 209, 102, 0.6);
 }
+
+.ctaPriceTag {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #FFE4B5;
+  margin-bottom: 20px;
+}
+
+.ctaPriceTag span {
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.ctaSub {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: normal;
+}
+
+.spOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .spOnly {
+    display: inline;
+  }
+}
+

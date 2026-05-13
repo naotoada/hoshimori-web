@@ -96,20 +96,137 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Premium Service Section */}
+      {/* Report Service Section (Entry: ¥4,980) */}
+      <section className={styles.reportSection} id="report">
+        <div className={styles.container}>
+          <div className={styles.reportBox}>
+            <span className={styles.reportBadge}>📝 星守りレポート</span>
+            <h2>この子だけの「取扱説明書」</h2>
+            <p className={styles.reportLead}>
+              生年月日から導き出される90タイプの星守り構造を深掘りし、<br className={styles.spOnly}/>
+              保護者が<strong>明日から実践できる</strong>関わり方をまとめたパーソナルレポートです。
+            </p>
+
+            <div className={styles.reportFeatures}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🌟</span>
+                <div>
+                  <h4>星守りの物語</h4>
+                  <p>心の芯・世渡りの芽・走り出す方向——4つの視点からお子様の内面を物語として描きます</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💎</span>
+                <div>
+                  <h4>才能の原石</h4>
+                  <p>生まれ持った3つの才能、エネルギータイプ、成長のリズムを構造的に解説</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🚨</span>
+                <div>
+                  <h4>隠れたSOS</h4>
+                  <p>「困った行動」の裏にある構造的な理由と、3段階のSOSサイン早期発見ガイド</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>📖</span>
+                <div>
+                  <h4>取扱説明書</h4>
+                  <p>褒め方・叱り方・やる気スイッチ・禁句集・日常トラブルの「親のセリフ集」</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>📅</span>
+                <div>
+                  <h4>今年のナビゲーション</h4>
+                  <p>お子様の今年の成長カレンダー（好調月・注意月）と年間テーマ</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💌</span>
+                <div>
+                  <h4>星守りからの手紙</h4>
+                  <p>「この子の困ったは才能の裏返し」——保護者の心に届く安心のメッセージ</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.reportMeta}>
+              <span>📄 全6章・10,000〜15,000字</span>
+              <span>📱 公式LINEからドキュメントで納品</span>
+              <span>🎂 対象: 0〜17歳</span>
+              <span>📝 必要な情報: お子様の生年月日のみ</span>
+            </div>
+
+            <div className={styles.reportPrice}>¥4,980 <span>(税込)</span></div>
+
+            <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
+              公式LINEから申し込む
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Service Section (CHILD_FULL: ¥33,000) */}
       <section className={styles.premiumSection}>
         <div className={styles.container}>
           <div className={styles.premiumBox}>
             <span className={styles.premiumBadge}>Premium</span>
             <h2>星守りカルテ（完全版）</h2>
             <p className={styles.premiumLead}>
-              無料診断ではお伝えしきれない「親子の相性」や「NGワード」、<br/>
-              そして才能が爆発する環境づくりを100ページ超のカルテにまとめました。
+              星守りレポートでは伝えきれない「親子の構造的な相性」「お名前の力」「お部屋の環境診断」まで——<br/>
+              お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。
             </p>
             <div className={styles.premiumPrice}>¥33,000 <span>(税込 / 物理バインダー納品)</span></div>
             <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
               公式LINEから詳細を見る
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className={styles.faqSection} id="faq">
+        <div className={styles.container}>
+          <h2 className={styles.faqTitle}>❓ よくあるご質問</h2>
+          <div className={styles.faqList}>
+            <details className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>無料診断と星守りレポートは何が違いますか？</summary>
+              <p className={styles.faqAnswer}>
+                無料診断では、お子様の「星守りタイプ」と基本的な特徴（約500字）をお伝えしています。
+                星守りレポートでは、90タイプごとに完全カスタマイズされた<strong>全6章・10,000字超</strong>の詳細な分析をお届けします。
+                褒め方・叱り方の処方箋、やる気スイッチの場所、日常トラブルの「親のセリフ集」、今年の成長カレンダーなど、
+                明日から実践できる具体的な内容が含まれています。
+              </p>
+            </details>
+
+            <details className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>どのように届きますか？</summary>
+              <p className={styles.faqAnswer}>
+                公式LINEを通じて、<strong>ドキュメントリンク</strong>でお届けします。
+                スマートフォンでもパソコンでもすぐにお読みいただけます。
+                お申し込みからお届けまで、通常3〜5営業日ほどお時間をいただいております。
+              </p>
+            </details>
+
+            <details className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>星守りレポートと星守りカルテ（完全版）の違いは？</summary>
+              <p className={styles.faqAnswer}>
+                星守りレポートは<strong>お子様の星守りタイプそのものの深掘り</strong>（才能・SOS・関わり方・今年の運勢）に特化した1冊です。
+                星守りカルテ（完全版）は、それに加えて<strong>親子の構造的な相性診断</strong>、<strong>お名前に刻まれた力の分析</strong>、
+                <strong>お部屋の環境診断と補正マニュアル</strong>まで、お子様を取り巻く環境すべてを網羅した100ページ超の物理製本レポートです。
+              </p>
+            </details>
+
+            <details className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>何歳から何歳まで対象ですか？</summary>
+              <p className={styles.faqAnswer}>
+                <strong>0歳〜17歳</strong>のお子様が対象です。
+                年齢区分（乳幼児期・未就学児・小学校低学年・高学年・中学生・高校生）に合わせて、
+                レポートのトーンや具体例を自動で調整してお届けします。
+              </p>
+            </details>
           </div>
         </div>
       </section>
