@@ -114,7 +114,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
-        <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
+        <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
         <p className={styles.ctaSub}>
           環境診断・親子相性まで含む『星守りカルテ（完全版）¥33,000』もございます
         </p>

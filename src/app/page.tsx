@@ -161,7 +161,7 @@ export default function Home() {
 
             <div className={styles.reportPrice}>¥4,980 <span>(税込)</span></div>
 
-            <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
+            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
               公式LINEから申し込む
             </a>
           </div>
@@ -179,7 +179,7 @@ export default function Home() {
               お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。
             </p>
             <div className={styles.premiumPrice}>¥33,000 <span>(税込 / 物理バインダー納品)</span></div>
-            <a href="https://lin.ee/ekkOkmP" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
+            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
               公式LINEから詳細を見る
             </a>
           </div>
