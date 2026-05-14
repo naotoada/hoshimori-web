@@ -141,11 +141,11 @@
 }
 
 .zukanCard {
-  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
+  background: linear-gradient(135deg, #FFB347, #D97706);
   border-radius: 30px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 40px rgba(106, 13, 173, 0.2);
+  box-shadow: 0 20px 40px rgba(217, 119, 6, 0.2);
 }
 
 .zukanContent {
@@ -195,20 +195,20 @@
 }
 
 .reportBox {
-  background: linear-gradient(135deg, #FFFDF9 0%, #FFF8EE 100%);
-  border: 2px solid #FFE4B5;
+  background: linear-gradient(135deg, #2d1b4e 0%, #4a2080 100%);
+  border: none;
   border-radius: 30px;
   padding: 60px 40px;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  box-shadow: 0 15px 40px rgba(217, 119, 6, 0.08);
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.15);
 }
 
 .reportBadge {
   display: inline-block;
-  background: linear-gradient(135deg, #FFB347 0%, #D97706 100%);
+  background: rgba(255, 255, 255, 0.15);
   color: #FFF;
   font-weight: bold;
   padding: 10px 28px;
@@ -216,25 +216,25 @@
   font-size: 1rem;
   letter-spacing: 0.05em;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .reportBox h2 {
   font-size: 2.2rem;
-  color: #5D4037;
+  color: #FFF;
   margin-bottom: 16px;
 }
 
 .reportLead {
   font-size: 1.05rem;
-  color: #6D4C41;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 40px;
   line-height: 1.8;
 }
 
 .reportLead strong {
-  color: #D97706;
-  background: linear-gradient(transparent 70%, #FFE4B5 70%);
+  color: #FFB800;
+  background: none;
 }
 
 .reportFeatures {
@@ -249,9 +249,9 @@
   display: flex;
   gap: 14px;
   padding: 18px 16px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  border: 1px solid rgba(255, 228, 181, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -270,13 +270,13 @@
 .featureItem h4 {
   font-size: 0.95rem;
   font-weight: 800;
-  color: #5D4037;
+  color: #FFF;
   margin-bottom: 4px;
 }
 
 .featureItem p {
   font-size: 0.85rem;
-  color: #8D6E63;
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
 }
 
@@ -290,23 +290,23 @@
 
 .reportMeta span {
   font-size: 0.85rem;
-  color: #8D6E63;
-  background: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 228, 181, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .reportPrice {
   font-size: 2.8rem;
   font-weight: 900;
-  color: #D97706;
+  color: #FFB800;
   margin-bottom: 30px;
 }
 
 .reportPrice span {
   font-size: 1rem;
-  color: #8D6E63;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: normal;
 }
 
@@ -317,8 +317,8 @@
 }
 
 .premiumBox {
-  background: #FFF;
-  border: 2px solid #E0E0E0;
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 100%);
+  border: none;
   border-radius: 30px;
   padding: 60px 40px;
   text-align: center;
@@ -332,7 +332,7 @@
   top: -16px;
   left: 50%;
   transform: translateX(-50%);
-  background: #D97706;
+  background: #9B30FF;
   color: #FFF;
   font-weight: bold;
   padding: 8px 24px;
@@ -343,32 +343,32 @@
 
 .premiumBox h2 {
   font-size: 2.2rem;
-  color: #5D4037;
+  color: #FFF;
   margin-bottom: 20px;
 }
 
 .premiumLead {
   font-size: 1.05rem;
-  color: #6D4C41;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 30px;
   line-height: 1.8;
 }
 
 .premiumLead strong {
-  color: #D97706;
-  background: linear-gradient(transparent 70%, #FFE4B5 70%);
+  color: #FFB800;
+  background: none;
 }
 
 .premiumPrice {
   font-size: 2.5rem;
   font-weight: 900;
-  color: #1A1A1A;
+  color: #FFB800;
   margin-bottom: 30px;
 }
 
 .premiumPrice span {
   font-size: 1rem;
-  color: #888;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: normal;
 }
 
