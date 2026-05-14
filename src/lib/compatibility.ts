@@ -207,6 +207,16 @@ function farthestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTra
 
 // ---------- Dynamic summary & advice ----------
 
+/** 各次元の「違うと具体的にどうなるか＋どうすればいいか」 */
+const GAP_ADVICE: Record<keyof CharacterTraits, string> = {
+  social: '片方が「もっと一緒にいたい」、もう片方が「ひとりの時間がほしい」と感じやすいよ。「今日はひとりの日」「今日はいっしょの日」とルールを決めると楽になるよ。',
+  stability: '片方は「いつも通り」がいいのに、もう片方は「たまには違うことしたい」と感じがち。お互いの"安心ゾーン"を知っておくと、ケンカが減るよ。',
+  sensitive: '片方が傷ついてるのに、もう片方は気づかないことがあるかも。「今ちょっとつらい」と言葉にする練習をすると、ぐっと楽になるよ。',
+  action: 'テンポがちがうから「早くして！」「ちょっと待って！」とイライラしやすいかも。急がないときは相手のペースに合わせてみてね。',
+  aesthetic: '「こだわりたいこと」の量が違うから、片方が「なんでそこまで気にするの？」と感じるかも。お互いの"ゆずれないポイント"を1つだけ共有してみて。',
+  independent: '「自分でやりたい」と「一緒にやりたい」がぶつかりやすいよ。大事なことだけ一緒に決めて、あとはお互いの自由にするとうまくいくよ。',
+};
+
 function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number): string {
   const gap = farthestDim(a, b);
   const gapLabel = DIM_LABELS[gap];
@@ -217,12 +227,12 @@ function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, n
     return `ふたりは「${closeLabel}」がとっても似ていて、自然体でいっしょにいられる関係。お互いのペースを大切にしてね。`;
   }
   if (score >= 70) {
-    return `「${closeLabel}」が近いから分かり合えるし、「${gapLabel}」が違うからお互いに学べる。すてきなバランスのふたりだよ。`;
+    return `「${closeLabel}」が近いから分かり合える、すてきなバランスのふたり。「${gapLabel}」はちょっと違うけど、${GAP_ADVICE[gap]}`;
   }
   if (score >= 62) {
-    return `「${gapLabel}」が一番ちがうところ。でもこの違いは「ダメなところ」じゃなくて、「自分にはない力を持ってる証拠」。お互いの星守りを知ると、ぐっと仲良くなれるよ。`;
+    return `「${gapLabel}」が一番ちがうところ。${GAP_ADVICE[gap]}`;
   }
-  return `ちがいが大きい分、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみてね。きっと意外な共通点が見つかるはず。`;
+  return `ちがいが大きいぶん、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみて。「${gapLabel}」については——${GAP_ADVICE[gap]}`;
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
