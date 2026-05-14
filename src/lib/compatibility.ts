@@ -72,7 +72,7 @@ function complementScore(a: CharacterTraits, b: CharacterTraits): number {
       score += 0.3;
     }
   }
-  return Math.round((score / (count * 1.3)) * 100);
+  return Math.min(100, Math.round((score / (count * 1.3)) * 100) + 8);
 }
 
 /** 環境一致スコア: 安定性と社交性の方向が近いほど日常生活が楽 */
