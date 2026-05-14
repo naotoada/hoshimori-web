@@ -98,7 +98,8 @@ function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string,
     }
   }
   if (similar.length >= 3) {
-    strengths.push('似ているところがたくさん！言葉にしなくても気持ちが伝わりやすい関係です');
+    const labels = similar.slice(0, 3).map(s => `「${DIM_LABELS[s.dim]}」`).join('・');
+    strengths.push(`${labels}が似ていて、言葉にしなくても気持ちが伝わりやすい関係です`);
   }
 
   // 具体的な共鳴
