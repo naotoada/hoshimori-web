@@ -1,5 +1,5 @@
 import { getAllHoshimori, getHoshimoriById } from '@/lib/markdownParser';
-import { getCharacterImageUrl } from '@/lib/characterMap';
+import { getCharacterImageUrl, getSuzuriDesignUrl, SUZURI_SHOP_URL } from '@/lib/characterMap';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
 import styles from './page.module.css';
@@ -22,6 +22,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   // Parse markdown lists into HTML safely
   const renderMd = (text: string) => ({ __html: marked(text) as string });
   const imageUrl = getCharacterImageUrl(data.id);
+  const suzuriUrl = getSuzuriDesignUrl(data.id);
 
   const bgMeta: Record<string, string> = {
     '水の星': styles.bgWater,
@@ -107,6 +108,16 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           <div className={styles.content} dangerouslySetInnerHTML={renderMd(data.growthPace)} />
         </section>
       </div>
+
+      {suzuriUrl && (
+        <div className={styles.goodsArea}>
+          <h3 className={styles.goodsTitle}>🛒 {data.name}のグッズ</h3>
+          <p className={styles.goodsText}>アクリルキーホルダー・缶バッジ・マグカップなど、{data.name}の公式グッズを販売中です。</p>
+          <a href={suzuriUrl} target="_blank" rel="noopener noreferrer" className={styles.goodsButton}>
+            グッズを見る →
+          </a>
+        </div>
+      )}
       
       <div className={styles.ctaArea}>
         <p className={styles.ctaText}>

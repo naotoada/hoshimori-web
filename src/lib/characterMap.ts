@@ -1,9 +1,10 @@
 export const CHARACTER_BASE_URL = 'https://kss-lp.vercel.app/characters/';
+export const SUZURI_SHOP_URL = 'https://suzuri.jp/hoshimori-official';
 
-export const CHARACTER_MAP: Record<string, { name: string, file: string }> = {
+export const CHARACTER_MAP: Record<string, { name: string, file: string, suzuriDesignId?: string }> = {
   '1_甲': { name: 'アイス', file: '1_kou' },
   '1_乙': { name: 'タンブラー', file: '1_otsu' },
-  '1_丙': { name: 'ピクス', file: '1_hei' },
+  '1_丙': { name: 'ピクス', file: '1_hei', suzuriDesignId: '19965598' },
   '1_丁': { name: 'カーク', file: '1_tei' },
   '1_戊': { name: 'ゴードン', file: '1_bo' },
   '1_己': { name: 'ポレフ', file: '1_ki' },
@@ -12,7 +13,7 @@ export const CHARACTER_MAP: Record<string, { name: string, file: string }> = {
   '1_壬': { name: 'アデュー', file: '1_jin' },
   '1_癸': { name: 'ウォルター', file: '1_ki2' },
   '2_甲': { name: 'ホーリー', file: '2_kou' },
-  '2_乙': { name: 'エマ', file: '2_otsu' },
+  '2_乙': { name: 'エマ', file: '2_otsu', suzuriDesignId: '19965670' },
   '2_丙': { name: 'プーミー', file: '2_hei' },
   '2_丁': { name: 'コトン', file: '2_tei' },
   '2_戊': { name: 'タンタン', file: '2_bo' },
@@ -99,4 +100,12 @@ export function getCharacterImageUrl(id: string): string {
     return `${CHARACTER_BASE_URL}${char.file}.png`;
   }
   return '/hero.png'; // Fallback
+}
+
+export function getSuzuriDesignUrl(id: string): string | null {
+  const char = CHARACTER_MAP[id];
+  if (char?.suzuriDesignId) {
+    return `${SUZURI_SHOP_URL}/designs/${char.suzuriDesignId}`;
+  }
+  return null;
 }

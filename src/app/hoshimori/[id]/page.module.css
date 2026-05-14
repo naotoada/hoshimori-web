@@ -210,6 +210,47 @@
   }
 }
 
+.goodsArea {
+  margin-top: 40px;
+  padding: 32px 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
+  border-radius: var(--border-radius-lg);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.goodsTitle {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.goodsText {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.goodsButton {
+  display: inline-block;
+  background-color: #FFB800;
+  color: #1a1a2e;
+  font-weight: 900;
+  font-size: 16px;
+  padding: 14px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(255, 184, 0, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.goodsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 184, 0, 0.6);
+}
+
 .ctaArea {
   margin-top: 50px;
   padding: 40px 30px;

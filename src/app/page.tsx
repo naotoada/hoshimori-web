@@ -16,6 +16,7 @@ export default function Home() {
             </div>
             <nav className={styles.headerNav}>
               <Link href="/zukan" className={styles.navLink}>図鑑をみる</Link>
+              <a href="https://suzuri.jp/hoshimori-official" target="_blank" rel="noopener noreferrer" className={styles.navLink}>グッズ</a>
             </nav>
           </div>
         </div>
