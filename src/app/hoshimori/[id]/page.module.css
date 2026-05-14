@@ -211,6 +211,7 @@
 }
 
 .goodsArea {
+  width: calc(100% - 40px);
   max-width: 700px;
   margin: 40px auto 0;
   padding: 32px 30px;
@@ -253,6 +254,7 @@
 }
 
 .ctaArea {
+  width: calc(100% - 40px);
   max-width: 700px;
   margin: 50px auto 60px;
   padding: 40px 30px;
