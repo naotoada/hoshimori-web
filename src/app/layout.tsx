@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "星守り図鑑 | 九星構造学(KSS)",
+  title: "⭐️星守り公式サイト",
   description: "全90体の星守りデータから、あなたの構造と強みを導き出します。",
 };
 
