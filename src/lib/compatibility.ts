@@ -184,19 +184,22 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
 
 // ---------- Trait descriptor helpers ----------
 
-/** キャラの最も際立つ特性を日本語で返す */
-function describeTopTrait(t: CharacterTraits, name: string): string {
-  const ranked = DIMS.map(d => ({ dim: d, val: t[d] })).sort((x, y) => y.val - x.val);
+/** キャラの最も際立つ特性（平均5.5から最も遠いもの）を日本語で返す */
+function getTopTraitText(t: CharacterTraits): string {
+  // 5.5（中庸）から一番遠い次元を「際立つ特性」とする
+  const ranked = DIMS.map(d => ({ dim: d, diff: Math.abs(t[d] - 5.5), val: t[d] }))
+    .sort((x, y) => y.diff - x.diff);
   const top = ranked[0];
+
   const MAP: Record<keyof CharacterTraits, { high: string; low: string }> = {
     social: { high: 'みんなと一緒が大好き', low: 'ひとりの時間が大切' },
     stability: { high: 'いつものペースが安心', low: '新しいことにワクワクする' },
     sensitive: { high: 'こころがとっても繊細', low: 'たいていのことは気にしない' },
     action: { high: '思い立ったらすぐ動く', low: 'じっくり考えてから動く' },
     aesthetic: { high: 'こだわりが強い', low: 'なんでもOKの柔軟派' },
-    independent: { high: '自分の道を信じるタイプ', low: 'まわりと合わせるのが上手' },
+    independent: { high: '自分の道を信じる', low: 'まわりと合わせるのが上手な' },
   };
-  return `${name}は「${MAP[top.dim].high}」タイプ`;
+  return top.val > 5.5 ? MAP[top.dim].high : MAP[top.dim].low;
 }
 
 /** ふたりの間で最も近い次元 */
@@ -268,26 +271,31 @@ function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, n
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
-  const descA = describeTopTrait(a, nameA);
-  const descB = describeTopTrait(b, nameB);
+  const traitA = getTopTraitText(a);
+  const traitB = getTopTraitText(b);
+  
+  const intro = traitA === traitB
+    ? `${nameA}も${nameB}も、両方とも「${traitA}」タイプ。`
+    : `${nameA}は「${traitA}」タイプ、${nameB}は「${traitB}」タイプ。`;
+
   const close = closestDim(a, b);
   const closeLabel = DIM_LABELS[close];
   const far = farthestDim(a, b);
   const farLabel = DIM_LABELS[far];
 
   if (score >= 78) {
-    return `${descA}、${descB}。「${closeLabel}」がとっても近いから、いっしょにいるだけで安心できる関係です。`;
+    return `${intro}「${closeLabel}」がとっても近いから、いっしょにいるだけで安心できる関係です。`;
   }
   if (score >= 70) {
     if (resonance > complement) {
-      return `${descA}、${descB}。「${closeLabel}」が似ているなかよしタイプ。好きなことやペースが近いぶん、分かり合えるよろこびがあります。`;
+      return `${intro}「${closeLabel}」が似ているなかよしタイプ。好きなことやペースが近いぶん、分かり合えるよろこびがあります。`;
     }
-    return `${descA}、${descB}。「${farLabel}」はちがうけど、そのぶんお互いの苦手をカバーし合えるいいコンビです。`;
+    return `${intro}「${farLabel}」はちがうけど、そのぶんお互いの苦手をカバーし合えるいいコンビです。`;
   }
   if (score >= 62) {
-    return `${descA}、${descB}。「${closeLabel}」は近いけど「${farLabel}」にはちょっと差がある組み合わせ。その違いが「ぶつかり」にも「成長のチャンス」にもなります。`;
+    return `${intro}「${closeLabel}」は近いけど「${farLabel}」にはちょっと差がある組み合わせ。その違いが「ぶつかり」にも「成長のチャンス」にもなります。`;
   }
-  return `${descA}、${descB}。タイプはかなり違うけど、「${closeLabel}」には共通点あり。ちがいを知って受け入れると、だれよりも深い絆になれる可能性を秘めています。`;
+  return `${intro}タイプはかなり違うけど、「${closeLabel}」には共通点あり。ちがいを知って受け入れると、だれよりも深い絆になれる可能性を秘めています。`;
 }
 
 // ---------- Main ----------
