@@ -102,12 +102,8 @@ export default function DiagnosisForm() {
             <div className={styles.resultId}>{charName}</div>
             <p className={styles.resultHonmei}>({result.honmeiName})</p>
             <Link href={`/hoshimori/${result.hoshimoriId}`} className={styles.detailButton}>
-              詳細な「取扱説明書」を見る
+              くわしく見る
             </Link>
-            <br/>
-            <a href="#line" className={styles.lineButton}>
-              専門家に直接相談する
-            </a>
           </div>
         );
       })()}
