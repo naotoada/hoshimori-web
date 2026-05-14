@@ -35,6 +35,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Compatibility CTA → New Page */}
+      <section className={styles.compatSection} id="compatibility">
+        <div className={styles.container}>
+          <div className={styles.compatBox}>
+            <span className={styles.compatBadge}>⭐ 無料でなかよし度がわかる</span>
+            <h2>ふたりのなかよし診断</h2>
+            <p className={styles.compatLead}>
+              生年月日をふたり分入力するだけで、なかよし度がその場でわかるよ！<br/>
+              親子・きょうだい・お友だち——どんな関係でもOK。
+            </p>
+            <Link href="/compatibility" className={styles.zukanBtn}>
+              無料でなかよし度を調べる
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Concept Section */}
       <section className={styles.conceptSection}>
         <div className={styles.container}>
@@ -209,22 +226,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Compatibility CTA → New Page */}
-      <section className={styles.compatSection} id="compatibility">
-        <div className={styles.container}>
-          <div className={styles.compatBox}>
-            <span className={styles.compatBadge}>💑 無料で相性がわかる</span>
-            <h2>ふたりの構造相性診断</h2>
-            <p className={styles.compatLead}>
-              生年月日を2人分入力するだけで、構造の相性がその場で分かります。<br/>
-              夫婦・親子・友人——すべての関係に使えます。
-            </p>
-            <Link href="/compatibility" className={styles.zukanBtn}>
-              無料で相性を調べる
-            </Link>
-          </div>
-        </div>
-      </section>
 
 
       {/* Premium Service Section (CHILD_FULL: ¥33,000) */}
