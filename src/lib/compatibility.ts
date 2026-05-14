@@ -279,9 +279,9 @@ export function calculateCompatibility(idA: string, idB: string): CompatResult {
   const comp = complementScore(traitsA, traitsB);
   const life = lifestyleScore(traitsA, traitsB);
 
-  // 総合スコア: 共鳴40% + 補完35% + 生活一致25%
-  const raw = res * 0.40 + comp * 0.35 + life * 0.25;
-  // 30-95 の範囲に正規化
+  // 総合スコア: 共鳴40% + 補完35% + 生活一致25% + ベースブースト10
+  const raw = res * 0.40 + comp * 0.35 + life * 0.25 + 10;
+  // 30-95 の範囲にクランプ
   const score = Math.round(Math.max(30, Math.min(95, raw)));
 
   let level: CompatLevel;
