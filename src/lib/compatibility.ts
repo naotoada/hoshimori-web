@@ -104,16 +104,16 @@ function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string,
 
   // 具体的な共鳴
   if (Math.abs(a.sensitive - b.sensitive) <= 2 && a.sensitive >= 7) {
-    strengths.push('ふたりとも心が繊細。お互いの「言葉にならない気持ち」をそっと分かってあげられます');
+    strengths.push(`ふたりとも心が繊細。${nameA}も${nameB}も、お互いの「言葉にならない気持ち」をそっと分かってあげられます`);
   }
   if (Math.abs(a.aesthetic - b.aesthetic) <= 2 && a.aesthetic >= 7) {
-    strengths.push('「いいな」と思うもの、「すてきだな」と感じるものが似ていて、好きなものを共有しやすい');
+    strengths.push(`「いいな」と思うもの、「すてきだな」と感じるセンサーが似ていて、好きなものを一緒に楽しめます`);
   }
   if (Math.abs(a.stability - b.stability) <= 2) {
-    strengths.push('生活リズムや変化への向き合い方が似ているため、日常が自然と噛み合う');
+    strengths.push(`「いつものペース」への感覚が似ているため、無理せず自然と日常が噛み合います`);
   }
   if (Math.abs(a.social - b.social) <= 2) {
-    strengths.push('人付き合いのペースが近いため、一緒にいて疲れにくい');
+    strengths.push(`「みんなと遊ぶ」「ひとりで休む」のバランスが似ているので、一緒にいても疲れにくい関係です`);
   }
 
   // 助け合えるところ（違いがあるからこそ）
