@@ -1,7 +1,7 @@
 /**
- * 星守り精密相性診断ロジック
- * 90体すべての構造属性（6次元ベクトル）を基に、
- * 補完・共鳴・環境一致の3軸で相性を算出する。
+ * 星守り なかよし診断ロジック
+ * 90体すべての星守りの性格・強み・弱みをもとに
+ * 「似てるところ」「助け合えるところ」「暮らしの相性」の3つで診断する。
  */
 
 import { TRAITS_TABLE, type CharacterTraits } from './traits';
@@ -25,14 +25,14 @@ export interface CompatResult {
   advice: string;
 }
 
-// ---------- Dimension labels ----------
+// ---------- 性格タイプのラベル ----------
 const DIM_LABELS: Record<keyof CharacterTraits, string> = {
-  social: '社交性',
-  stability: '安定性',
-  sensitive: '感受性',
-  action: '行動力',
-  aesthetic: '美意識',
-  independent: '独立性',
+  social: 'ひとづきあい',
+  stability: 'マイペース度',
+  sensitive: 'こころの繊細さ',
+  action: 'やってみよう力',
+  aesthetic: 'こだわり度',
+  independent: 'ひとりでやりたい度',
 };
 
 const DIMS: (keyof CharacterTraits)[] = ['social', 'stability', 'sensitive', 'action', 'aesthetic', 'independent'];
@@ -90,7 +90,7 @@ function lifestyleScore(a: CharacterTraits, b: CharacterTraits): number {
 function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string): string[] {
   const strengths: string[] = [];
 
-  // 共鳴ポイント（近い次元）
+  // 似ているところ
   const similar: { dim: keyof CharacterTraits; val: number }[] = [];
   for (const d of DIMS) {
     if (Math.abs(a[d] - b[d]) <= 2) {
@@ -98,15 +98,15 @@ function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string,
     }
   }
   if (similar.length >= 3) {
-    strengths.push('多くの次元で似ているため、言葉にしなくても分かり合える感覚がある');
+    strengths.push('似ているところがたくさん！言葉にしなくても気持ちが伝わりやすい関係です');
   }
 
   // 具体的な共鳴
   if (Math.abs(a.sensitive - b.sensitive) <= 2 && a.sensitive >= 7) {
-    strengths.push('ふたりとも感受性が豊か。お互いの「言葉にならない気持ち」を自然に汲み取れる');
+    strengths.push('ふたりとも心が繊細。お互いの「言葉にならない気持ち」をそっと分かってあげられます');
   }
   if (Math.abs(a.aesthetic - b.aesthetic) <= 2 && a.aesthetic >= 7) {
-    strengths.push('美意識の方向が近い。「いい」と思うもの、「美しい」と感じるものが重なりやすい');
+    strengths.push('「いいな」と思うもの、「すてきだな」と感じるものが似ていて、好きなものを共有しやすい');
   }
   if (Math.abs(a.stability - b.stability) <= 2) {
     strengths.push('生活リズムや変化への向き合い方が似ているため、日常が自然と噛み合う');
@@ -115,21 +115,21 @@ function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string,
     strengths.push('人付き合いのペースが近いため、一緒にいて疲れにくい');
   }
 
-  // 補完ポイント（離れている次元）
+  // 助け合えるところ（違いがあるからこそ）
   if (a.action >= 7 && b.action <= 4) {
-    strengths.push(`${nameA}の行動力が${nameB}の熟考を実行に移す推進力になる`);
+    strengths.push(`${nameA}の「まずやってみよう！」が、じっくり考える${nameB}の背中をそっと押してくれます`);
   } else if (b.action >= 7 && a.action <= 4) {
-    strengths.push(`${nameB}の行動力が${nameA}の熟考を実行に移す推進力になる`);
+    strengths.push(`${nameB}の「まずやってみよう！」が、じっくり考える${nameA}の背中をそっと押してくれます`);
   }
   if (a.independent >= 7 && b.independent <= 4) {
-    strengths.push(`${nameA}の自立心と${nameB}の協調性が、チームとしてバランスの良い関係を作る`);
+    strengths.push(`${nameA}のしっかりした芯と、${nameB}のみんなを大切にする気持ちが、いいバランスを作ります`);
   } else if (b.independent >= 7 && a.independent <= 4) {
-    strengths.push(`${nameB}の自立心と${nameA}の協調性が、チームとしてバランスの良い関係を作る`);
+    strengths.push(`${nameB}のしっかりした芯と、${nameA}のみんなを大切にする気持ちが、いいバランスを作ります`);
   }
   if (a.social >= 7 && b.social <= 4) {
-    strengths.push(`${nameA}が外の世界との橋渡し役になり、${nameB}が内側の世界を守る——理想的な役割分担`);
+    strengths.push(`${nameA}がお友だちとの橋渡し役、${nameB}がおうちの安心を守る——すてきな役割分担です`);
   } else if (b.social >= 7 && a.social <= 4) {
-    strengths.push(`${nameB}が外の世界との橋渡し役になり、${nameA}が内側の世界を守る——理想的な役割分担`);
+    strengths.push(`${nameB}がお友だちとの橋渡し役、${nameA}がおうちの安心を守る——すてきな役割分担です`);
   }
 
   return strengths.length > 0 ? strengths.slice(0, 4) : ['お互いに干渉しすぎない、自然な距離感を保てる関係'];
@@ -175,32 +175,32 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
 
 function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number): string {
   if (score >= 85) {
-    return `ふたりは構造的に非常に高い相性を持っています。自然体で一緒にいることを大切に。「分かり合えている」という感覚を信じてください。`;
+    return `ふたりはとっても気が合う関係。いっしょにいて自然体でいられることを大切にしてね。「わかってくれてる」って感覚を信じて大丈夫。`;
   }
   if (score >= 70) {
-    return `基本的に良い相性です。小さなすれ違いが起きた時は「構造が違うだけで、どちらが悪いわけでもない」と思い出してみてください。`;
+    return `基本的にとても良い相性です。ちょっとしたすれ違いが起きたときは「タイプが違うだけで、どっちが悪いわけでもないんだ」と思い出してみて。`;
   }
   if (score >= 55) {
     const biggestGap = DIMS.reduce((max, d) => Math.abs(a[d] - b[d]) > Math.abs(a[max] - b[max]) ? d : max, DIMS[0]);
-    return `「${DIM_LABELS[biggestGap]}」の違いが最も大きいポイントです。この差は「弱点」ではなく「お互いにない視点を持っている証拠」。違いを武器に変えるには、相手の構造を知ることが第一歩です。`;
+    return `「${DIM_LABELS[biggestGap]}」が一番ちがうところ。でもこの違いは「ダメなところ」じゃなく、「自分にはない力を持ってる証拠」。お互いの星守りを知ると、ぐっと仲良くなれるよ。`;
   }
-  return `構造の差が大きい分、理解し合えた時の絆は何よりも強くなります。「伝わらないのは構造が違うから」——この一言を心に置くだけで、驚くほど楽になります。`;
+  return `タイプの違いが大きいぶん、わかり合えたときの絆はだれよりも強くなります。「伝わらないのはタイプが違うだけ」——この一言を覚えておくだけで、びっくりするほどラクになるよ。`;
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
   if (score >= 85) {
-    return `${nameA}と${nameB}は、構造的に非常に深い共鳴を持つ組み合わせです。言葉にしなくても通じ合える部分が多く、一緒にいて自然体でいられる関係。`;
+    return `${nameA}と${nameB}は、とっても気持ちが通じ合う組み合わせ。言葉にしなくてもわかり合えることが多く、いっしょにいて安心できる関係です。`;
   }
   if (score >= 70) {
     if (resonance > complement) {
-      return `${nameA}と${nameB}は、似た構造を持つ「共鳴型」の関係です。価値観やペースが近く、分かり合える喜びがある一方、似すぎて新しい視点が生まれにくいことも。`;
+      return `${nameA}と${nameB}は、似たもの同士の「なかよしタイプ」。好きなことやペースが近くて分かり合える反面、似すぎてマンネリになることもあるかも。`;
     }
-    return `${nameA}と${nameB}は、お互いの弱みを補い合う「補完型」の良い関係です。一緒にいると、一人では見えなかった世界が広がります。`;
+    return `${nameA}と${nameB}は、お互いの苦手を助け合える「いいコンビ」。いっしょにいると、ひとりでは気づけなかった世界が広がります。`;
   }
   if (score >= 55) {
-    return `${nameA}と${nameB}は、構造に一定の違いがある組み合わせです。その違いは「摩擦」にも「成長のエンジン」にもなりえます——鍵は、お互いの構造を知ること。`;
+    return `${nameA}と${nameB}は、性格にちょっと違いがある組み合わせ。その違いは「ぶつかり」にも「成長のチャンス」にもなります——カギは、お互いのことを知ること。`;
   }
-  return `${nameA}と${nameB}は、構造的な差が大きい「挑戦的な関係」です。ただし、これは「悪い関係」ではありません。構造の違いを理解すれば、最も深い絆を結べるポテンシャルを持っています。`;
+  return `${nameA}と${nameB}は、タイプがかなり違う「チャレンジな関係」。でもこれは「合わない」ということではありません。違いを知って受け入れれば、だれよりも深い絆を結べる可能性を秘めています。`;
 }
 
 // ---------- Main ----------
@@ -225,10 +225,10 @@ export function calculateCompatibility(idA: string, idB: string): CompatResult {
     return {
       score: 75, level: 'good', idA, idB, nameA, nameB,
       resonance: 100, complement: 30,
-      summary: `同じ${nameA}同士。完全に分かり合える反面、同じ弱点を共有するため「鏡」のような関係になります。`,
-      strengths: ['言わなくても通じる感覚がある', '価値観の根っこが同じ', '一緒にいて疲れにくい'],
-      frictions: ['同じ弱点を持つため、ピンチ時に両方が沈む可能性', 'お互いの短所が目につきやすい（鏡効果）'],
-      advice: '第三の視点を持つ人を意識的に巻き込むと、ふたりの関係に新しい風が入ります。',
+      summary: `同じ${nameA}同士！気持ちがぴったり通じ合う反面、同じニガテを持っているから「鏡」みたいな関係になるよ。`,
+      strengths: ['言わなくても気持ちが通じやすい', '好きなものや大切にしたいことが似ている', 'いっしょにいてラク'],
+      frictions: ['同じニガテがあるから、ピンチのとき両方いっしょに沈んじゃうかも', 'お互いのニガテな部分が目につきやすい（鏡みたい）'],
+      advice: 'ふたりとは違うタイプのお友だちを巻き込むと、関係に新しい風が入ってもっと楽しくなるよ。',
     };
   }
 

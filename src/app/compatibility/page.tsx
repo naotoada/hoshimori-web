@@ -80,11 +80,11 @@ function PersonForm({
 
 function ResultView({ result }: { result: CompatResult }) {
   const cfg: Record<string, { color: string; label: string; emoji: string }> = {
-    soulmate:  { color: '#a855f7', label: '魂の共鳴', emoji: '💜' },
-    excellent: { color: '#10b981', label: '最高の相性', emoji: '💫' },
-    good:      { color: '#3b82f6', label: '良い相性', emoji: '✨' },
-    neutral:   { color: '#f59e0b', label: '成長し合える関係', emoji: '🌙' },
-    growth:    { color: '#ef4444', label: '挑戦的な関係', emoji: '🔥' },
+    soulmate:  { color: '#a855f7', label: 'うんめいの相性', emoji: '💜' },
+    excellent: { color: '#10b981', label: 'さいこうの相性', emoji: '💫' },
+    good:      { color: '#3b82f6', label: 'いい相性', emoji: '✨' },
+    neutral:   { color: '#f59e0b', label: 'いっしょに成長できる', emoji: '🌙' },
+    growth:    { color: '#ef4444', label: 'チャレンジな関係', emoji: '🔥' },
   };
   const c = cfg[result.level];
 
@@ -100,12 +100,12 @@ function ResultView({ result }: { result: CompatResult }) {
       <div className={styles.subScores}>
         <div className={styles.subScore}>
           <span className={styles.subIcon}>🤝</span>
-          <span className={styles.subLabel}>共鳴度</span>
+          <span className={styles.subLabel}>にてる度</span>
           <span className={styles.subValue}>{result.resonance}</span>
         </div>
         <div className={styles.subScore}>
           <span className={styles.subIcon}>🧩</span>
-          <span className={styles.subLabel}>補完度</span>
+          <span className={styles.subLabel}>たすけあい度</span>
           <span className={styles.subValue}>{result.complement}</span>
         </div>
       </div>
@@ -114,11 +114,11 @@ function ResultView({ result }: { result: CompatResult }) {
 
       <div className={styles.resultGrid}>
         <div className={styles.resultBox}>
-          <h3>✨ ふたりの強み</h3>
+          <h3>✨ ふたりのいいところ</h3>
           <ul>{result.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
         </div>
         <div className={styles.resultBox}>
-          <h3>⚡ 摩擦ポイント</h3>
+          <h3>⚡ すれちがいポイント</h3>
           <ul>{result.frictions.map((f, i) => <li key={i}>{f}</li>)}</ul>
         </div>
       </div>
@@ -130,8 +130,8 @@ function ResultView({ result }: { result: CompatResult }) {
 
       <div className={styles.ctaSection}>
         <p className={styles.ctaText}>
-          もっと詳しく知りたい方へ——<br/>
-          構造摩擦の具体的な解消法や、日々の声かけのコツをまとめたレポートもあります。
+          もっとくわしく知りたい方へ——<br/>
+          すれ違いの乗りこえ方や、毎日の声かけのコツをまとめたレポートもあります。
         </p>
         <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
           公式LINEで詳細レポートを依頼
@@ -162,10 +162,10 @@ export default function CompatibilityPage() {
       </header>
 
       <section className={styles.hero}>
-        <h1>ふたりの構造相性診断</h1>
+        <h1>ふたりのなかよし診断</h1>
         <p>
-          90体すべての星守りの性格・強み・弱みを分析。<br/>
-          ふたりの「構造の相性」をその場で精密診断します。
+          90体すべての星守りの性格・強み・弱みをもとに<br/>
+          ふたりの「なかよし度」をその場で診断するよ！
         </p>
       </section>
 
