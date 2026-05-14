@@ -11,63 +11,7 @@
   padding: 0 20px;
 }
 
-/* Header */
-.header {
-  background: linear-gradient(rgba(10, 15, 40, 0.85), rgba(20, 25, 60, 0.95)), url('/hero_space.png') center top/cover no-repeat;
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 0;
-}
-
-.headerInner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logoIcon {
-  font-size: 1.5rem;
-}
-
-.logoMain {
-  font-weight: 900;
-  font-size: 1.4rem;
-  color: #FFB347;
-  letter-spacing: 0.05em;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.logoSub {
-  font-size: 0.8rem;
-  color: #E0E0FF;
-  font-weight: bold;
-}
-
-.navLink {
-  background-color: #FFB347;
-  color: #FFF;
-  font-weight: bold;
-  padding: 8px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: transform 0.2s, background-color 0.2s;
-  box-shadow: 0 4px 10px rgba(255, 179, 71, 0.3);
-}
-
-.navLink:hover {
-  background-color: #FFA01A;
-  transform: translateY(-2px);
-}
+/* Header styles moved to Header.module.css */
 
 /* Hero Section */
 .hero {
@@ -519,6 +463,92 @@
 
 .faqAnswer strong {
   color: #D97706;
+}
+
+/* Goods Section */
+.goodsSection {
+  padding: 80px 0;
+  background-color: #FFFDF9;
+}
+
+.goodsBox {
+  background: linear-gradient(135deg, #6A0DAD 0%, #9B30FF 100%);
+  border-radius: 30px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
+}
+
+.goodsBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  font-weight: bold;
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.goodsBox h2 {
+  font-size: 2.2rem;
+  color: #FFF;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.goodsLead {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+
+.goodsItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.goodsItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.goodsItemIcon {
+  font-size: 1.3rem;
+}
+
+.goodsBtn {
+  display: inline-block;
+  background-color: #FFB800;
+  color: #1a1a2e;
+  font-weight: 900;
+  padding: 18px 40px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.goodsBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 184, 0, 0.5);
 }
 
 /* Footer */

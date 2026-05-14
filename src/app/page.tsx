@@ -1,26 +1,12 @@
 import styles from './page.module.css';
 import DiagnosisForm from '@/components/DiagnosisForm';
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.container}>
-          <div className={styles.headerInner}>
-            <div className={styles.logo}>
-              <span className={styles.logoIcon}>⭐</span>
-              <span className={styles.logoMain}>星守り</span>
-              <span className={styles.logoSub}>- HOSHIMORI -</span>
-            </div>
-            <nav className={styles.headerNav}>
-              <Link href="/zukan" className={styles.navLink}>図鑑をみる</Link>
-              <a href="https://suzuri.jp/hoshimori-official" target="_blank" rel="noopener noreferrer" className={styles.navLink}>グッズ</a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -228,6 +214,42 @@ export default function Home() {
                 レポートのトーンや具体例を自動で調整してお届けします。
               </p>
             </details>
+          </div>
+        </div>
+      </section>
+
+      {/* Goods Section */}
+      <section className={styles.goodsSection} id="goods">
+        <div className={styles.container}>
+          <div className={styles.goodsBox}>
+            <span className={styles.goodsBadge}>🛒 公式グッズ</span>
+            <h2>星守りを、いつもそばに。</h2>
+            <p className={styles.goodsLead}>
+              通園バッグのお守りに、勉強机の見守り役に。<br/>
+              お子様の星守りをアクリルキーホルダーやマグカップなど、<br className={styles.spOnly}/>
+              日常のアイテムとしてお届けします。
+            </p>
+            <div className={styles.goodsItems}>
+              <div className={styles.goodsItem}>
+                <span className={styles.goodsItemIcon}>🔑</span>
+                <span>アクリルキーホルダー</span>
+              </div>
+              <div className={styles.goodsItem}>
+                <span className={styles.goodsItemIcon}>🏅</span>
+                <span>缶バッジ</span>
+              </div>
+              <div className={styles.goodsItem}>
+                <span className={styles.goodsItemIcon}>☕</span>
+                <span>マグカップ</span>
+              </div>
+              <div className={styles.goodsItem}>
+                <span className={styles.goodsItemIcon}>📱</span>
+                <span>スマホケース</span>
+              </div>
+            </div>
+            <a href="https://suzuri.jp/hoshimori-official" target="_blank" rel="noopener noreferrer" className={styles.goodsBtn}>
+              公式ショップを見る
+            </a>
           </div>
         </div>
       </section>
