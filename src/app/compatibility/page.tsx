@@ -183,7 +183,7 @@ export default function CompatibilityPage() {
                 <span className={styles.vsName}>{personA.charName}</span>
               </div>
               <button onClick={handleCompare} className={styles.compareBtn}>
-                相性を診断する 💑
+                なかよし度を診断する ⭐
               </button>
               <div className={styles.vsCard}>
                 <img src={personB.imageUrl} alt={personB.charName} className={styles.vsImg} />
