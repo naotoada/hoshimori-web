@@ -176,34 +176,74 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
   return frictions.length > 0 ? frictions.slice(0, 3) : ['大きな摩擦ポイントは見当たりません。穏やかに関係を続けられるでしょう'];
 }
 
+// ---------- Trait descriptor helpers ----------
+
+/** キャラの最も際立つ特性を日本語で返す */
+function describeTopTrait(t: CharacterTraits, name: string): string {
+  const ranked = DIMS.map(d => ({ dim: d, val: t[d] })).sort((x, y) => y.val - x.val);
+  const top = ranked[0];
+  const MAP: Record<keyof CharacterTraits, { high: string; low: string }> = {
+    social:      { high: 'みんなと一緒が大好き', low: 'ひとりの時間が大切' },
+    stability:   { high: 'いつものペースが安心', low: '新しいことにワクワクする' },
+    sensitive:   { high: 'こころがとっても繊細', low: 'たいていのことは気にしない' },
+    action:      { high: '思い立ったらすぐ動く', low: 'じっくり考えてから動く' },
+    aesthetic:   { high: 'こだわりが強い', low: 'なんでもOKの柔軟派' },
+    independent: { high: '自分の道を信じるタイプ', low: 'まわりと合わせるのが上手' },
+  };
+  return `${name}は「${MAP[top.dim].high}」タイプ`;
+}
+
+/** ふたりの間で最も近い次元 */
+function closestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTraits {
+  return DIMS.reduce((min, d) => Math.abs(a[d] - b[d]) < Math.abs(a[min] - b[min]) ? d : min, DIMS[0]);
+}
+
+/** ふたりの間で最も遠い次元 */
+function farthestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTraits {
+  return DIMS.reduce((max, d) => Math.abs(a[d] - b[d]) > Math.abs(a[max] - b[max]) ? d : max, DIMS[0]);
+}
+
+// ---------- Dynamic summary & advice ----------
+
 function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number): string {
+  const gap = farthestDim(a, b);
+  const gapLabel = DIM_LABELS[gap];
+  const close = closestDim(a, b);
+  const closeLabel = DIM_LABELS[close];
+
   if (score >= 85) {
-    return `ふたりはとっても気が合う関係。いっしょにいて自然体でいられることを大切にしてね。「わかってくれてる」って感覚を信じて大丈夫。`;
+    return `ふたりは「${closeLabel}」がとっても似ていて、自然体でいっしょにいられる関係。お互いのペースを大切にしてね。`;
   }
   if (score >= 70) {
-    return `基本的にとても良い相性です。ちょっとしたすれ違いが起きたときは「タイプが違うだけで、どっちが悪いわけでもないんだ」と思い出してみて。`;
+    return `「${closeLabel}」が近いから分かり合えるし、「${gapLabel}」が違うからお互いに学べる。すてきなバランスのふたりだよ。`;
   }
   if (score >= 55) {
-    const biggestGap = DIMS.reduce((max, d) => Math.abs(a[d] - b[d]) > Math.abs(a[max] - b[max]) ? d : max, DIMS[0]);
-    return `「${DIM_LABELS[biggestGap]}」が一番ちがうところ。でもこの違いは「ダメなところ」じゃなく、「自分にはない力を持ってる証拠」。お互いの星守りを知ると、ぐっと仲良くなれるよ。`;
+    return `「${gapLabel}」が一番ちがうところ。でもこの違いは「ダメなところ」じゃなくて、「自分にはない力を持ってる証拠」。お互いの星守りを知ると、ぐっと仲良くなれるよ。`;
   }
-  return `タイプの違いが大きいぶん、わかり合えたときの絆はだれよりも強くなります。「伝わらないのはタイプが違うだけ」——この一言を覚えておくだけで、びっくりするほどラクになるよ。`;
+  return `ちがいが大きい分、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみてね。きっと意外な共通点が見つかるはず。`;
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
+  const descA = describeTopTrait(a, nameA);
+  const descB = describeTopTrait(b, nameB);
+  const close = closestDim(a, b);
+  const closeLabel = DIM_LABELS[close];
+  const far = farthestDim(a, b);
+  const farLabel = DIM_LABELS[far];
+
   if (score >= 85) {
-    return `${nameA}と${nameB}は、とっても気持ちが通じ合う組み合わせ。言葉にしなくてもわかり合えることが多く、いっしょにいて安心できる関係です。`;
+    return `${descA}、${descB}。「${closeLabel}」がとっても近いから、いっしょにいるだけで安心できる関係です。`;
   }
   if (score >= 70) {
     if (resonance > complement) {
-      return `${nameA}と${nameB}は、似たもの同士の「なかよしタイプ」。好きなことやペースが近くて分かり合える反面、似すぎてマンネリになることもあるかも。`;
+      return `${descA}、${descB}。「${closeLabel}」が似ているなかよしタイプ。好きなことやペースが近いぶん、分かり合えるよろこびがあります。`;
     }
-    return `${nameA}と${nameB}は、お互いの苦手を助け合える「いいコンビ」。いっしょにいると、ひとりでは気づけなかった世界が広がります。`;
+    return `${descA}、${descB}。「${farLabel}」はちがうけど、そのぶんお互いの苦手をカバーし合えるいいコンビです。`;
   }
   if (score >= 55) {
-    return `${nameA}と${nameB}は、性格にちょっと違いがある組み合わせ。その違いは「ぶつかり」にも「成長のチャンス」にもなります——カギは、お互いのことを知ること。`;
+    return `${descA}、${descB}。「${closeLabel}」は近いけど「${farLabel}」にはちょっと差がある組み合わせ。その違いが「ぶつかり」にも「成長のチャンス」にもなります。`;
   }
-  return `${nameA}と${nameB}は、タイプがかなり違う「チャレンジな関係」。でもこれは「合わない」ということではありません。違いを知って受け入れれば、だれよりも深い絆を結べる可能性を秘めています。`;
+  return `${descA}、${descB}。タイプはかなり違うけど、「${closeLabel}」には共通点あり。ちがいを知って受け入れると、だれよりも深い絆になれる可能性を秘めています。`;
 }
 
 // ---------- Main ----------
