@@ -26,7 +26,7 @@ export interface CompatResult {
 }
 
 // ---------- 性格タイプのラベル ----------
-const DIM_LABELS: Record<keyof CharacterTraits, string> = {
+export const DIM_LABELS: Record<keyof CharacterTraits, string> = {
   social: '人との距離感',
   stability: 'マイペース度',
   sensitive: 'こころの繊細さ',
@@ -185,7 +185,7 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
 // ---------- Trait descriptor helpers ----------
 
 /** キャラの最も際立つ特性（平均5.5から最も遠いもの）を日本語で返す */
-function getTopTraitText(t: CharacterTraits): string {
+export function getTopTraitText(t: CharacterTraits): string {
   // 5.5（中庸）から一番遠い次元を「際立つ特性」とする
   const ranked = DIMS.map(d => ({ dim: d, diff: Math.abs(t[d] - 5.5), val: t[d] }))
     .sort((x, y) => y.diff - x.diff);
@@ -208,7 +208,7 @@ function closestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTrai
 }
 
 /** ふたりの間で最も遠い次元 */
-function farthestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTraits {
+export function farthestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTraits {
   return DIMS.reduce((max, d) => Math.abs(a[d] - b[d]) > Math.abs(a[max] - b[max]) ? d : max, DIMS[0]);
 }
 

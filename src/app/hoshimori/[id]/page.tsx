@@ -1,7 +1,10 @@
 import { getAllHoshimori, getHoshimoriById } from '@/lib/markdownParser';
 import { getCharacterImageUrl, getSuzuriDesignUrl, SUZURI_SHOP_URL } from '@/lib/characterMap';
+import { TRAITS_TABLE } from '@/lib/traits';
+import { getTopTraitText } from '@/lib/compatibility';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
+import ShareButtons from '@/components/ShareButtons';
 import styles from './page.module.css';
 
 export async function generateStaticParams() {
@@ -49,6 +52,12 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
     '火の星': '🔥',
   };
   const honmeiEmoji = emojiMeta[data.honmeiName] || '';
+
+  const traits = TRAITS_TABLE[data.id];
+  const shareText = traits 
+    ? `私は星守り「${data.name}」タイプでした！\n\n✨ 際立つ特性：\n・${getTopTraitText(traits)}タイプ\n\nあなたの星守りは？`
+    : `私は星守り「${data.name}」タイプでした！\n\nあなたの星守りは？`;
+  const shareUrl = `https://hoshimori-web.vercel.app/hoshimori/${data.id}`;
 
   return (
     <main className="container">
@@ -120,6 +129,8 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       )}
       
       <div className={styles.ctaArea}>
+        <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
+        
         <p className={styles.ctaText}>
           こちらの内容は「星守り」のほんの一部です。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。

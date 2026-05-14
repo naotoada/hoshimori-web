@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { calculateHoshimori } from '@/lib/kssLogic';
 import { getCharacterImageUrl, CHARACTER_MAP } from '@/lib/characterMap';
-import { calculateCompatibility, STAR_NAMES, type CompatResult } from '@/lib/compatibility';
+import { calculateCompatibility, STAR_NAMES, type CompatResult, DIM_LABELS, farthestDim } from '@/lib/compatibility';
+import { TRAITS_TABLE } from '@/lib/traits';
 import Link from 'next/link';
+import ShareButtons from '@/components/ShareButtons';
 import styles from './page.module.css';
 
 interface PersonResult {
@@ -88,6 +90,16 @@ function ResultView({ result }: { result: CompatResult }) {
   };
   const c = cfg[result.level];
 
+  const traitsA = TRAITS_TABLE[result.idA];
+  const traitsB = TRAITS_TABLE[result.idB];
+  
+  let shareText = `【なかよし度：${result.score}点】\n${result.nameA}と${result.nameB}の相性を診断したよ！\n\nあなたとの相性も診断してみてね！`;
+  if (traitsA && traitsB) {
+    const gap = farthestDim(traitsA, traitsB);
+    shareText = `【なかよし度：${result.score}点】\n${result.nameA}と${result.nameB}の相性を診断したよ！\n\nふたりの一番のちがいは「${DIM_LABELS[gap]}」みたい。\n\nあなたとの相性も診断してみてね！`;
+  }
+  const shareUrl = 'https://hoshimori-web.vercel.app/compatibility';
+
   return (
     <div className={styles.resultSection}>
       <div className={styles.scoreHeader}>
@@ -142,6 +154,8 @@ function ResultView({ result }: { result: CompatResult }) {
           <span className={styles.charCardLink}>くわしく見る →</span>
         </Link>
       </div>
+
+      <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守りなかよし診断']} />
 
       <div className={styles.ctaSection}>
         <p className={styles.ctaText}>
