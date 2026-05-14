@@ -27,12 +27,12 @@ export interface CompatResult {
 
 // ---------- 性格タイプのラベル ----------
 const DIM_LABELS: Record<keyof CharacterTraits, string> = {
-  social: 'ともだちとの距離感',
-  stability: 'すきなペース',
-  sensitive: 'こころのアンテナ',
-  action: 'うごきだす早さ',
+  social: '人との距離感',
+  stability: 'マイペース度',
+  sensitive: 'こころの繊細さ',
+  action: 'やってみよう力',
   aesthetic: 'こだわりの強さ',
-  independent: 'ひとりの時間のだいじさ',
+  independent: 'ひとりでやりたい度',
 };
 
 const DIMS: (keyof CharacterTraits)[] = ['social', 'stability', 'sensitive', 'action', 'aesthetic', 'independent'];
