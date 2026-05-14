@@ -6,8 +6,11 @@ import { getCharacterImageUrl, CHARACTER_MAP } from '@/lib/characterMap';
 import Link from 'next/link';
 import styles from './DiagnosisForm.module.css';
 
+type DiagnosisTarget = 'self' | 'child';
+
 export default function DiagnosisForm() {
   const currentYear = new Date().getFullYear();
+  const [target, setTarget] = useState<DiagnosisTarget>('self');
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(1);
   const [day, setDay] = useState<number>(1);
@@ -30,7 +33,23 @@ export default function DiagnosisForm() {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>うちの子の星守りは？</h3>
+      <div className={styles.tabGroup}>
+        <button
+          className={`${styles.tab} ${target === 'self' ? styles.tabActive : ''}`}
+          onClick={() => { setTarget('self'); setResult(null); }}
+        >
+          🌟 自分を調べる
+        </button>
+        <button
+          className={`${styles.tab} ${target === 'child' ? styles.tabActive : ''}`}
+          onClick={() => { setTarget('child'); setResult(null); }}
+        >
+          👶 お子様を調べる
+        </button>
+      </div>
+      <h3 className={styles.title}>
+        {target === 'self' ? 'あなたの星守りは？' : 'お子様の星守りは？'}
+      </h3>
       <div className={styles.inputGroup}>
         <div className={styles.dateSelectors}>
           <div className={styles.selectWrapper}>
@@ -74,7 +93,9 @@ export default function DiagnosisForm() {
 
         return (
           <div className={styles.resultCard}>
-            <p className={styles.resultIntro}>あなたのお子様の星守りは…</p>
+            <p className={styles.resultIntro}>
+              {target === 'self' ? 'あなたの星守りは…' : 'お子様の星守りは…'}
+            </p>
             <div className={`${styles.resultImageWrapper} ${borderColorClass}`}>
                <img src={imageUrl} alt={charName} className={styles.resultImage} />
             </div>

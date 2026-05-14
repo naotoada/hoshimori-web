@@ -11,13 +11,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>生年月日でわかる、お子様の心のカタチ</span>
+          <span className={styles.heroBadge}>生年月日でわかる、あなたの心のカタチ</span>
           <h1 className={styles.heroTitle}>
-            君の心には、<br className={styles.spOnly}/>どの星が宿っている？
+            あなたの心には、<br className={styles.spOnly}/>どの星が宿っている？
           </h1>
           <p className={styles.heroText}>
-            星守り（ほしもり）は、<br className={styles.spOnly}/>子どもたちの心に寄り添う不思議な存在。<br/>
-            一人ひとり違う「星」を知ることで、<br className={styles.spOnly}/>子育てはもっと楽しく、やさしくなります。
+            星守り（ほしもり）は、<br className={styles.spOnly}/>一人ひとりの心に寄り添う不思議な存在。<br/>
+            自分の「星」を知ることで、<br className={styles.spOnly}/>人間関係も子育ても、もっと楽になります。
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ export default function Home() {
           <div className={styles.diagnosisBox}>
             <h2 className={styles.diagnosisTitle}>星守りを見つけよう 🔍</h2>
             <p className={styles.diagnosisLead}>
-              生年月日を入力して、お子様の心に宿る「星守り」を調べてみましょう。
+              生年月日を入力するだけ。あなたやお子様の心に宿る「星守り」が30秒で分かります。
             </p>
             <DiagnosisForm />
           </div>
@@ -48,17 +48,40 @@ export default function Home() {
             <div className={styles.conceptText}>
               <h2>「努力不足」ではなく、<br/>「環境との不一致」でした。</h2>
               <p>
-                「何度言っても片付けない」「すぐ癇癪を起こす」…<br/>
-                子育てで悩んだとき、つい自分の育て方を責めてしまいませんか？
+                「何度言っても伝わらない」「なぜか上手くいかない」…<br/>
+                子育てでも、職場でも、パートナーとの関係でも——そんな経験はありませんか？
               </p>
               <p>
-                でも、すべての子どもは全く異なる「心の構造（星守り）」を持って生まれてきます。<br/>
+                すべての人は、全く異なる「心の構造（星守り）」を持って生まれてきます。<br/>
                 活発に動きたい『火の星』に「じっとしなさい」と言い続けるのは、魚に木登りをさせるようなもの。
               </p>
               <p>
-                星守りを通じて、お子様の本当の才能が伸びる「環境」を見つけてあげませんか。<br/>
-                私たちは、<strong>壊れる前に子どもを守る</strong>ための地図をお渡しします。
+                星守りを通じて、自分やお子様の才能が伸びる「環境」を見つけてみませんか。<br/>
+                私たちは、<strong>心の構造を見える化する</strong>ための地図をお渡しします。
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* For Adults Section */}
+      <section className={styles.forAdultsSection}>
+        <div className={styles.container}>
+          <div className={styles.forAdultsGrid}>
+            <div className={styles.forAdultsCard}>
+              <span className={styles.forAdultsIcon}>💼</span>
+              <h3>職場の人間関係</h3>
+              <p>上司・部下・同僚との「構造の違い」を知ると、コミュニケーションが変わります</p>
+            </div>
+            <div className={styles.forAdultsCard}>
+              <span className={styles.forAdultsIcon}>💑</span>
+              <h3>パートナーとの相性</h3>
+              <p>「なんで伝わらないの？」の正体は、構造の摩擦かもしれません</p>
+            </div>
+            <div className={styles.forAdultsCard}>
+              <span className={styles.forAdultsIcon}>👶</span>
+              <h3>子育ての処方箋</h3>
+              <p>親と子の構造を比較すると、すれ違いの理由と最適な声かけが見えてきます</p>
             </div>
           </div>
         </div>
@@ -73,7 +96,7 @@ export default function Home() {
               <p>
                 水、木、火、土、金。<br/>
                 自然界のエレメントから生まれた、90種類の星守りたち。<br/>
-                お子様やご家族の星を探してみてください。
+                ご自身やご家族の星を探してみてください。
               </p>
               <Link href="/zukan" className={styles.zukanBtn}>
                 図鑑をひらく
@@ -142,7 +165,7 @@ export default function Home() {
             <div className={styles.reportMeta}>
               <span>📄 全6章・10,000〜15,000字</span>
               <span>📱 公式LINEからドキュメントで納品</span>
-              <span>🎂 対象: 0〜17歳</span>
+              <span>🎂 対象: お子様（0〜17歳）</span>
               <span>📝 必要な情報: お子様の生年月日のみ</span>
             </div>
 
@@ -150,6 +173,82 @@ export default function Home() {
 
             <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
               公式LINEから申し込む
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Adult Self Report Section */}
+      <section className={styles.selfReportSection} id="self-report">
+        <div className={styles.container}>
+          <div className={styles.selfReportBox}>
+            <span className={styles.selfReportBadge}>🌟 大人のための星守り</span>
+            <h2>自分自身の<br/>「取扱説明書」</h2>
+            <p className={styles.selfReportLead}>
+              あなた自身の構造タイプを深掘りし、<br className={styles.spOnly}/>
+              <strong>強みの活かし方</strong>・<strong>エネルギーの回復法</strong>・<strong>人間関係の処方箋</strong>をまとめた<br className={styles.spOnly}/>
+              パーソナルレポートです。
+            </p>
+            <div className={styles.selfReportFeatures}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🔍</span>
+                <div>
+                  <h4>構造タイプ解析</h4>
+                  <p>星・器・型の3層構造から、あなたの思考・感情・行動パターンを立体的に分析</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💎</span>
+                <div>
+                  <h4>才能の棚卸し</h4>
+                  <p>あなたが最も輝く環境・活動・役割を構造的に特定</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🤝</span>
+                <div>
+                  <h4>人間関係マップ</h4>
+                  <p>パートナー・上司・部下との構造摩擦ポイントと対処法</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>📅</span>
+                <div>
+                  <h4>今年のナビゲーション</h4>
+                  <p>好調月・注意月の年間カレンダーと転機のタイミング</p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.selfReportMeta}>
+              <span>📄 全5章・8,000〜12,000字</span>
+              <span>📱 公式LINEからドキュメントで納品</span>
+              <span>🎯 対象: 18歳以上</span>
+            </div>
+            <div className={styles.selfReportPrice}>¥3,980 <span>(税込)</span></div>
+            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
+              公式LINEから申し込む
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Compatibility Section */}
+      <section className={styles.compatSection} id="compatibility">
+        <div className={styles.container}>
+          <div className={styles.compatBox}>
+            <span className={styles.compatBadge}>💑 ふたりの構造を比べる</span>
+            <h2>パートナー相性診断</h2>
+            <p className={styles.compatLead}>
+              「なんで伝わらないの？」——その答えは、ふたりの構造の違いにあるかもしれません。<br/>
+              生年月日を2人分入力するだけで、構造の相性・摩擦ポイント・最適なコミュニケーション法が分かります。
+            </p>
+            <div className={styles.compatUseCases}>
+              <span className={styles.compatUseCase}>夫婦・カップル</span>
+              <span className={styles.compatUseCase}>親子</span>
+              <span className={styles.compatUseCase}>友人・同僚</span>
+            </div>
+            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
+              公式LINEで相性診断を依頼
             </a>
           </div>
         </div>
@@ -210,9 +309,9 @@ export default function Home() {
             <details className={styles.faqItem}>
               <summary className={styles.faqQuestion}>何歳から何歳まで対象ですか？</summary>
               <p className={styles.faqAnswer}>
-                <strong>0歳〜17歳</strong>のお子様が対象です。
-                年齢区分（乳幼児期・未就学児・小学校低学年・高学年・中学生・高校生）に合わせて、
-                レポートのトーンや具体例を自動で調整してお届けします。
+                無料診断と図鑑は<strong>全年齢</strong>が対象です。
+                星守りレポート（お子様向け）は0〜17歳、セルフレポート（大人向け）は18歳以上が対象です。
+                パートナー相性診断は年齢を問わず、どなたでもご利用いただけます。
               </p>
             </details>
           </div>
