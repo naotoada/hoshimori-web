@@ -142,7 +142,9 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
     frictions.push('変化への向き合い方が大きく異なるため、「もっと動いて」「もっと落ち着いて」とすれ違いやすい');
   }
   if (Math.abs(a.action - b.action) >= 5) {
-    frictions.push('行動のスピードに差があり、一方が「遅い」一方が「早すぎる」と感じがち');
+    const fast = a.action > b.action ? nameA : nameB;
+    const slow = a.action > b.action ? nameB : nameA;
+    frictions.push(`${fast}は「早く動きたい！」タイプ、${slow}は「じっくり考えたい」タイプ。テンポのちがいでイライラしやすいかも`);
   }
   if (Math.abs(a.sensitive - b.sensitive) >= 5) {
     const sensitivePerson = a.sensitive > b.sensitive ? nameA : nameB;
