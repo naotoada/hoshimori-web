@@ -117,7 +117,7 @@ function ResultView({ result }: { result: CompatResult }) {
           <h3>✨ ふたりのいいところ</h3>
           <ul>{result.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
         </div>
-        <div className={styles.resultBox}>
+        <div className={`${styles.resultBox} ${styles.frictionBox}`}>
           <h3>⚡ すれちがいポイント</h3>
           <ul>{result.frictions.map((f, i) => <li key={i}>{f}</li>)}</ul>
         </div>
