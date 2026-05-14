@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { calculateHoshimori, HONMEI_NAMES } from '@/lib/kssLogic';
+import { calculateHoshimori } from '@/lib/kssLogic';
 import { getCharacterImageUrl, CHARACTER_MAP } from '@/lib/characterMap';
-import { calculateCompatibility, STAR_NAMES, type CompatibilityResult } from '@/lib/compatibility';
+import { calculateCompatibility, STAR_NAMES, type CompatResult } from '@/lib/compatibility';
 import Link from 'next/link';
 import styles from './page.module.css';
 
@@ -17,12 +17,9 @@ interface PersonResult {
 }
 
 function PersonForm({
-  label,
-  icon,
-  onResult,
+  label, icon, onResult,
 }: {
-  label: string;
-  icon: string;
+  label: string; icon: string;
   onResult: (result: PersonResult) => void;
 }) {
   const currentYear = new Date().getFullYear();
@@ -39,13 +36,9 @@ function PersonForm({
     const res = calculateHoshimori(year, month, day);
     const charName = CHARACTER_MAP[res.hoshimoriId]?.name || res.hoshimoriId;
     const imageUrl = getCharacterImageUrl(res.hoshimoriId);
-    const personResult: PersonResult = {
-      ...res,
-      charName,
-      imageUrl,
-    };
-    setResult(personResult);
-    onResult(personResult);
+    const p: PersonResult = { ...res, charName, imageUrl };
+    setResult(p);
+    onResult(p);
   };
 
   return (
@@ -77,7 +70,7 @@ function PersonForm({
           <img src={result.imageUrl} alt={result.charName} className={styles.personImg} />
           <div>
             <div className={styles.personName}>{result.charName}</div>
-            <div className={styles.personStar}>{result.honmeiName}</div>
+            <div className={styles.personStar}>{STAR_NAMES[result.honmei]}</div>
           </div>
         </div>
       )}
@@ -85,32 +78,36 @@ function PersonForm({
   );
 }
 
-function CompatResult({ result }: { result: CompatibilityResult }) {
-  const levelConfig: Record<string, { color: string; label: string; emoji: string }> = {
+function ResultView({ result }: { result: CompatResult }) {
+  const cfg: Record<string, { color: string; label: string; emoji: string }> = {
+    soulmate:  { color: '#a855f7', label: '魂の共鳴', emoji: '💜' },
     excellent: { color: '#10b981', label: '最高の相性', emoji: '💫' },
-    good: { color: '#3b82f6', label: '良い相性', emoji: '✨' },
-    neutral: { color: '#8b5cf6', label: 'ニュートラル', emoji: '🌙' },
-    friction: { color: '#f59e0b', label: '摩擦あり', emoji: '⚡' },
-    challenge: { color: '#ef4444', label: '挑戦的な関係', emoji: '🔥' },
+    good:      { color: '#3b82f6', label: '良い相性', emoji: '✨' },
+    neutral:   { color: '#f59e0b', label: '成長し合える関係', emoji: '🌙' },
+    growth:    { color: '#ef4444', label: '挑戦的な関係', emoji: '🔥' },
   };
-  const config = levelConfig[result.level];
+  const c = cfg[result.level];
 
   return (
     <div className={styles.resultSection}>
-      <div className={styles.scoreCircle} style={{ borderColor: config.color }}>
-        <span className={styles.scoreEmoji}>{config.emoji}</span>
+      <div className={styles.scoreCircle} style={{ borderColor: c.color }}>
+        <span className={styles.scoreEmoji}>{c.emoji}</span>
         <span className={styles.scoreNumber}>{result.score}</span>
         <span className={styles.scoreLabel}>/ 100</span>
       </div>
-      <div className={styles.resultLevel} style={{ color: config.color }}>
-        {config.label}
-      </div>
-      <div className={styles.resultRelation}>{result.relationship}</div>
+      <div className={styles.resultLevel} style={{ color: c.color }}>{c.label}</div>
 
-      <div className={styles.elementBadges}>
-        <span className={styles.elementBadge}>{STAR_NAMES[result.starA]}（{result.elementA}）</span>
-        <span className={styles.elementConnector}>×</span>
-        <span className={styles.elementBadge}>{STAR_NAMES[result.starB]}（{result.elementB}）</span>
+      <div className={styles.subScores}>
+        <div className={styles.subScore}>
+          <span className={styles.subIcon}>🤝</span>
+          <span className={styles.subLabel}>共鳴度</span>
+          <span className={styles.subValue}>{result.resonance}</span>
+        </div>
+        <div className={styles.subScore}>
+          <span className={styles.subIcon}>🧩</span>
+          <span className={styles.subLabel}>補完度</span>
+          <span className={styles.subValue}>{result.complement}</span>
+        </div>
       </div>
 
       <p className={styles.resultSummary}>{result.summary}</p>
@@ -118,15 +115,11 @@ function CompatResult({ result }: { result: CompatibilityResult }) {
       <div className={styles.resultGrid}>
         <div className={styles.resultBox}>
           <h3>✨ ふたりの強み</h3>
-          <ul>
-            {result.strengths.map((s, i) => <li key={i}>{s}</li>)}
-          </ul>
+          <ul>{result.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
         </div>
         <div className={styles.resultBox}>
           <h3>⚡ 摩擦ポイント</h3>
-          <ul>
-            {result.frictions.map((f, i) => <li key={i}>{f}</li>)}
-          </ul>
+          <ul>{result.frictions.map((f, i) => <li key={i}>{f}</li>)}</ul>
         </div>
       </div>
 
@@ -151,11 +144,11 @@ function CompatResult({ result }: { result: CompatibilityResult }) {
 export default function CompatibilityPage() {
   const [personA, setPersonA] = useState<PersonResult | null>(null);
   const [personB, setPersonB] = useState<PersonResult | null>(null);
-  const [compatResult, setCompatResult] = useState<CompatibilityResult | null>(null);
+  const [compatResult, setCompatResult] = useState<CompatResult | null>(null);
 
   const handleCompare = () => {
     if (personA && personB) {
-      const result = calculateCompatibility(personA.honmei, personB.honmei);
+      const result = calculateCompatibility(personA.hoshimoriId, personB.hoshimoriId);
       setCompatResult(result);
     }
   };
@@ -170,7 +163,10 @@ export default function CompatibilityPage() {
 
       <section className={styles.hero}>
         <h1>ふたりの構造相性診断</h1>
-        <p>生年月日を2人分入力するだけ。<br/>構造の相性がその場で分かります。</p>
+        <p>
+          90体すべての星守りの性格・強み・弱みを分析。<br/>
+          ふたりの「構造の相性」をその場で精密診断します。
+        </p>
       </section>
 
       <section className={styles.formSection}>
@@ -196,7 +192,7 @@ export default function CompatibilityPage() {
             </div>
           )}
 
-          {compatResult && <CompatResult result={compatResult} />}
+          {compatResult && <ResultView result={compatResult} />}
         </div>
       </section>
 
