@@ -16,11 +16,11 @@ export default function Header() {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerInner}>
-            <Link href="/" className={styles.logo}>
+            <a href="/" className={styles.logo}>
               <span className={styles.logoIcon}>⭐</span>
               <span className={styles.logoMain}>星守り</span>
               <span className={styles.logoSub}>- HOSHIMORI -</span>
-            </Link>
+            </a>
             <button
               className={`${styles.menuButton} ${isOpen ? styles.menuOpen : ''}`}
               onClick={() => setIsOpen(!isOpen)}
