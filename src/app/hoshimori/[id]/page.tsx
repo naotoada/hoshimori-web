@@ -121,7 +121,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       
       <div className={styles.ctaArea}>
         <p className={styles.ctaText}>
-          この記事は「星守り」のほんの一部です。<br/>
+          こちらの内容は「星守り」のほんの一部です。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
