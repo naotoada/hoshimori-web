@@ -172,20 +172,20 @@
 
 .zukanBtn {
   display: inline-block;
-  background-color: #FFB800;
-  color: #1a1a2e;
+  background-color: #4A90E2;
+  color: #FFF;
   font-weight: 900;
   padding: 16px 40px;
   border-radius: 40px;
   text-decoration: none;
   font-size: 1.2rem;
-  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
   transition: transform 0.2s;
 }
 
 .zukanBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(255, 184, 0, 0.5);
+  background-color: #357ABD;
 }
 
 /* Report Service Section */
@@ -195,7 +195,7 @@
 }
 
 .reportBox {
-  background: linear-gradient(135deg, #2d1b4e 0%, #4a2080 100%);
+  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
   border: none;
   border-radius: 30px;
   padding: 60px 40px;
@@ -203,7 +203,7 @@
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.15);
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
 }
 
 .reportBadge {
@@ -317,7 +317,7 @@
 }
 
 .premiumBox {
-  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 100%);
+  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
   border: none;
   border-radius: 30px;
   padding: 60px 40px;
