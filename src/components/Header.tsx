@@ -34,6 +34,9 @@ export default function Header() {
       {isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)}>
           <nav className={styles.menu} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setIsOpen(false)} aria-label="閉じる">
+              ✕
+            </button>
             <Link href="/#diagnosis" className={styles.menuLink} onClick={handleLinkClick}>
               🔍 星守りを調べる
             </Link>
