@@ -102,10 +102,11 @@ export function getCharacterImageUrl(id: string): string {
   return '/hero.png'; // Fallback
 }
 
-export function getSuzuriDesignUrl(id: string): string | null {
+export function getSuzuriDesignUrl(id: string): string {
   const char = CHARACTER_MAP[id];
   if (char?.suzuriDesignId) {
     return `${SUZURI_SHOP_URL}/designs/${char.suzuriDesignId}`;
   }
-  return null;
+  // 専用デザインがない場合はショップトップへ誘導
+  return SUZURI_SHOP_URL;
 }

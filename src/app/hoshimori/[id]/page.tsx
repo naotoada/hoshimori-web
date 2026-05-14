@@ -127,9 +127,10 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           </a>
         </div>
       )}
+
+      <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
       
       <div className={styles.ctaArea}>
-        <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
         
         <p className={styles.ctaText}>
           こちらの内容は「星守り」のほんの一部です。<br/>
