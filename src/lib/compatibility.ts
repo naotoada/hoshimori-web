@@ -140,7 +140,9 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
   const frictions: string[] = [];
 
   if (Math.abs(a.stability - b.stability) >= 5) {
-    frictions.push('変化への向き合い方が大きく異なるため、「もっと動いて」「もっと落ち着いて」とすれ違いやすい');
+    const steady = a.stability > b.stability ? nameA : nameB;
+    const explorer = a.stability > b.stability ? nameB : nameA;
+    frictions.push(`${steady}は「いつも通り」が安心するタイプ、${explorer}は「新しいことをやってみたい」タイプ。ペースが合わないと感じやすいかも`);
   }
   if (Math.abs(a.action - b.action) >= 5) {
     const fast = a.action > b.action ? nameA : nameB;
