@@ -191,7 +191,7 @@ export default function CompatibilityPage() {
       </header>
 
       <section className={styles.hero}>
-        <h1>ふたりのなかよし診断</h1>
+        <h1>星守りなかよし診断</h1>
         <p>
           90体すべての星守りの性格・強み・弱みをもとに<br/>
           ふたりの「なかよし度」をその場で診断するよ！
