@@ -472,7 +472,7 @@
 }
 
 .goodsBox {
-  background: linear-gradient(135deg, #6A0DAD 0%, #9B30FF 100%);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #2b6cb0 100%);
   border-radius: 30px;
   padding: 60px 40px;
   text-align: center;
