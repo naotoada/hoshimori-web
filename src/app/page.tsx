@@ -163,9 +163,10 @@ export default function Home() {
             <h2>星守りカルテ（完全版）</h2>
             <p className={styles.premiumLead}>
               星守りレポートでは伝えきれない「親子の構造的な相性」「お名前の力」「お部屋の環境診断」まで——<br/>
-              お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。
+              お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。<br/>
+              物理バインダーに製本してお届けする、世界にひとつだけの一冊です。
             </p>
-            <div className={styles.premiumPrice}>¥33,000 <span>(税込 / 物理バインダー納品)</span></div>
+            <div className={styles.premiumPrice}>¥33,000 <span>(税込)</span></div>
             <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
               公式LINEから詳細を見る
             </a>
