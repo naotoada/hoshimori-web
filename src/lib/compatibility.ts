@@ -211,15 +211,41 @@ function farthestDim(a: CharacterTraits, b: CharacterTraits): keyof CharacterTra
 
 // ---------- Dynamic summary & advice ----------
 
-/** 各次元の「違うと具体的にどうなるか＋どうすればいいか」 */
-const GAP_ADVICE: Record<keyof CharacterTraits, string> = {
-  social: '片方が「もっと一緒にいたい」、もう片方が「ひとりの時間がほしい」と感じやすいよ。「今日はひとりの日」「今日はいっしょの日」とルールを決めると楽になるよ。',
-  stability: '片方は「いつも通り」がいいのに、もう片方は「たまには違うことしたい」と感じがち。お互いの"安心ゾーン"を知っておくと、ケンカが減るよ。',
-  sensitive: '片方が傷ついてるのに、もう片方は気づかないことがあるかも。「今ちょっとつらい」と言葉にする練習をすると、ぐっと楽になるよ。',
-  action: 'テンポがちがうから「早くして！」「ちょっと待って！」とイライラしやすいかも。急がないときは相手のペースに合わせてみてね。',
-  aesthetic: '「こだわりたいこと」の量が違うから、片方が「なんでそこまで気にするの？」と感じるかも。お互いの"ゆずれないポイント"を1つだけ共有してみて。',
-  independent: '「自分でやりたい」と「一緒にやりたい」がぶつかりやすいよ。大事なことだけ一緒に決めて、あとはお互いの自由にするとうまくいくよ。',
-};
+/** 各次元の「違うと具体的にどうなるか＋どうすればいいか」をキャラ名入りで生成 */
+function getGapAdvice(dim: keyof CharacterTraits, a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string): string {
+  switch (dim) {
+    case 'social': {
+      const outgoing = a.social > b.social ? nameA : nameB;
+      const homebody = a.social > b.social ? nameB : nameA;
+      return `${outgoing}が「もっと一緒にいたい」ときでも、${homebody}は「ひとりの時間がほしい」と感じやすいよ。「今日はひとりの日」「今日はいっしょの日」とルールを決めると楽になるよ。`;
+    }
+    case 'stability': {
+      const steady = a.stability > b.stability ? nameA : nameB;
+      const explorer = a.stability > b.stability ? nameB : nameA;
+      return `${steady}は「いつも通り」がいいのに、${explorer}は「たまには違うことしたい」と感じがち。お互いの"安心ゾーン"を知っておくと、ケンカが減るよ。`;
+    }
+    case 'sensitive': {
+      const sensitivePerson = a.sensitive > b.sensitive ? nameA : nameB;
+      const toughPerson = a.sensitive > b.sensitive ? nameB : nameA;
+      return `${sensitivePerson}が傷ついてるのに、${toughPerson}は気づかないことがあるかも。「今ちょっとつらい」と言葉にする練習をすると、ぐっと楽になるよ。`;
+    }
+    case 'action': {
+      const fast = a.action > b.action ? nameA : nameB;
+      const slow = a.action > b.action ? nameB : nameA;
+      return `${fast}と${slow}ではテンポがちがうから「早くして！」「ちょっと待って！」とイライラしやすいかも。急がないときは相手のペースに合わせてみてね。`;
+    }
+    case 'aesthetic': {
+      const picky = a.aesthetic > b.aesthetic ? nameA : nameB;
+      const flexible = a.aesthetic > b.aesthetic ? nameB : nameA;
+      return `「こだわりたいこと」の量が違うから、${picky}のこだわりに${flexible}が「なんでそこまで気にするの？」と感じるかも。お互いの"ゆずれないポイント"を1つだけ共有してみて。`;
+    }
+    case 'independent': {
+      const solo = a.independent > b.independent ? nameA : nameB;
+      const together = a.independent > b.independent ? nameB : nameA;
+      return `${solo}の「自分でやりたい」と、${together}の「一緒にやりたい」がぶつかりやすいよ。大事なことだけ一緒に決めて、あとはお互いの自由にするとうまくいくよ。`;
+    }
+  }
+}
 
 function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number): string {
   const gap = farthestDim(a, b);
@@ -227,16 +253,18 @@ function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, n
   const close = closestDim(a, b);
   const closeLabel = DIM_LABELS[close];
 
+  const adviceText = getGapAdvice(gap, a, b, nameA, nameB);
+
   if (score >= 78) {
     return `ふたりは「${closeLabel}」がとっても似ていて、自然体でいっしょにいられる関係。お互いのペースを大切にしてね。`;
   }
   if (score >= 70) {
-    return `「${closeLabel}」が近いから分かり合える、すてきなバランスのふたり。「${gapLabel}」はちょっと違うけど、${GAP_ADVICE[gap]}`;
+    return `「${closeLabel}」が近いから分かり合える、すてきなバランスのふたり。「${gapLabel}」はちょっと違うけど、${adviceText}`;
   }
   if (score >= 62) {
-    return `「${gapLabel}」が一番ちがうところ。${GAP_ADVICE[gap]}`;
+    return `「${gapLabel}」が一番ちがうところ。${adviceText}`;
   }
-  return `ちがいが大きいぶん、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみて。「${gapLabel}」については——${GAP_ADVICE[gap]}`;
+  return `ちがいが大きいぶん、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみて。「${gapLabel}」については——${adviceText}`;
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
