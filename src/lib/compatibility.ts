@@ -128,9 +128,9 @@ function findTopStrengths(a: CharacterTraits, b: CharacterTraits, nameA: string,
     strengths.push(`${nameB}のしっかりした芯と、${nameA}のみんなを大切にする気持ちが、いいバランスを作ります`);
   }
   if (a.social >= 7 && b.social <= 4) {
-    strengths.push(`${nameA}がお友だちとの橋渡し役、${nameB}がおうちの安心を守る——すてきな役割分担です`);
+    strengths.push(`${nameA}がまわりとの関係を広げてくれて、${nameB}が自分の世界をじっくり深める——いいバランスです`);
   } else if (b.social >= 7 && a.social <= 4) {
-    strengths.push(`${nameB}がお友だちとの橋渡し役、${nameA}がおうちの安心を守る——すてきな役割分担です`);
+    strengths.push(`${nameB}がまわりとの関係を広げてくれて、${nameA}が自分の世界をじっくり深める——いいバランスです`);
   }
 
   return strengths.length > 0 ? strengths.slice(0, 4) : ['お互いに干渉しすぎない、自然な距離感を保てる関係'];
