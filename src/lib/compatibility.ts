@@ -183,11 +183,11 @@ function describeTopTrait(t: CharacterTraits, name: string): string {
   const ranked = DIMS.map(d => ({ dim: d, val: t[d] })).sort((x, y) => y.val - x.val);
   const top = ranked[0];
   const MAP: Record<keyof CharacterTraits, { high: string; low: string }> = {
-    social:      { high: 'みんなと一緒が大好き', low: 'ひとりの時間が大切' },
-    stability:   { high: 'いつものペースが安心', low: '新しいことにワクワクする' },
-    sensitive:   { high: 'こころがとっても繊細', low: 'たいていのことは気にしない' },
-    action:      { high: '思い立ったらすぐ動く', low: 'じっくり考えてから動く' },
-    aesthetic:   { high: 'こだわりが強い', low: 'なんでもOKの柔軟派' },
+    social: { high: 'みんなと一緒が大好き', low: 'ひとりの時間が大切' },
+    stability: { high: 'いつものペースが安心', low: '新しいことにワクワクする' },
+    sensitive: { high: 'こころがとっても繊細', low: 'たいていのことは気にしない' },
+    action: { high: '思い立ったらすぐ動く', low: 'じっくり考えてから動く' },
+    aesthetic: { high: 'こだわりが強い', low: 'なんでもOKの柔軟派' },
     independent: { high: '自分の道を信じるタイプ', low: 'まわりと合わせるのが上手' },
   };
   return `${name}は「${MAP[top.dim].high}」タイプ`;
@@ -211,13 +211,13 @@ function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, n
   const close = closestDim(a, b);
   const closeLabel = DIM_LABELS[close];
 
-  if (score >= 85) {
+  if (score >= 78) {
     return `ふたりは「${closeLabel}」がとっても似ていて、自然体でいっしょにいられる関係。お互いのペースを大切にしてね。`;
   }
   if (score >= 70) {
     return `「${closeLabel}」が近いから分かり合えるし、「${gapLabel}」が違うからお互いに学べる。すてきなバランスのふたりだよ。`;
   }
-  if (score >= 55) {
+  if (score >= 62) {
     return `「${gapLabel}」が一番ちがうところ。でもこの違いは「ダメなところ」じゃなくて、「自分にはない力を持ってる証拠」。お互いの星守りを知ると、ぐっと仲良くなれるよ。`;
   }
   return `ちがいが大きい分、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみてね。きっと意外な共通点が見つかるはず。`;
@@ -231,7 +231,7 @@ function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, 
   const far = farthestDim(a, b);
   const farLabel = DIM_LABELS[far];
 
-  if (score >= 85) {
+  if (score >= 78) {
     return `${descA}、${descB}。「${closeLabel}」がとっても近いから、いっしょにいるだけで安心できる関係です。`;
   }
   if (score >= 70) {
@@ -240,7 +240,7 @@ function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, 
     }
     return `${descA}、${descB}。「${farLabel}」はちがうけど、そのぶんお互いの苦手をカバーし合えるいいコンビです。`;
   }
-  if (score >= 55) {
+  if (score >= 62) {
     return `${descA}、${descB}。「${closeLabel}」は近いけど「${farLabel}」にはちょっと差がある組み合わせ。その違いが「ぶつかり」にも「成長のチャンス」にもなります。`;
   }
   return `${descA}、${descB}。タイプはかなり違うけど、「${closeLabel}」には共通点あり。ちがいを知って受け入れると、だれよりも深い絆になれる可能性を秘めています。`;
@@ -279,16 +279,16 @@ export function calculateCompatibility(idA: string, idB: string): CompatResult {
   const comp = complementScore(traitsA, traitsB);
   const life = lifestyleScore(traitsA, traitsB);
 
-  // 総合スコア: 共鳴40% + 補完35% + 生活一致25% + ベースブースト10
-  const raw = res * 0.40 + comp * 0.35 + life * 0.25 + 10;
-  // 30-95 の範囲にクランプ
+  // 総合スコア: 共鳴40% + 補完35% + 生活一致25%
+  const raw = res * 0.40 + comp * 0.35 + life * 0.25;
+  // 30-95 の範囲に正規化
   const score = Math.round(Math.max(30, Math.min(95, raw)));
 
   let level: CompatLevel;
-  if (score >= 85) level = 'soulmate';
-  else if (score >= 72) level = 'excellent';
-  else if (score >= 58) level = 'good';
-  else if (score >= 45) level = 'neutral';
+  if (score >= 78) level = 'soulmate';
+  else if (score >= 70) level = 'excellent';
+  else if (score >= 62) level = 'good';
+  else if (score >= 54) level = 'neutral';
   else level = 'growth';
 
   return {
