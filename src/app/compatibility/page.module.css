@@ -407,6 +407,57 @@
   line-height: 2;
 }
 
+/* Character Cards */
+.charCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.charCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 2px solid #FFE4B5;
+  border-radius: 20px;
+  padding: 24px 16px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.charCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.charCardImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #FFE4B5;
+  object-fit: contain;
+  background: white;
+  padding: 4px;
+}
+
+.charCardName {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #5D4037;
+}
+
+.charCardLink {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ee5a6f;
+  background: #FFF0F3;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
 /* CTA */
 .ctaSection {
   padding-top: 24px;

@@ -128,6 +128,19 @@ function ResultView({ result }: { result: CompatResult }) {
         <p>{result.advice}</p>
       </div>
 
+      <div className={styles.charCards}>
+        <Link href={`/hoshimori/${result.idA}`} className={styles.charCard}>
+          <img src={getCharacterImageUrl(result.idA)} alt={result.nameA} className={styles.charCardImg} />
+          <span className={styles.charCardName}>{result.nameA}</span>
+          <span className={styles.charCardLink}>くわしく見る →</span>
+        </Link>
+        <Link href={`/hoshimori/${result.idB}`} className={styles.charCard}>
+          <img src={getCharacterImageUrl(result.idB)} alt={result.nameB} className={styles.charCardImg} />
+          <span className={styles.charCardName}>{result.nameB}</span>
+          <span className={styles.charCardLink}>くわしく見る →</span>
+        </Link>
+      </div>
+
       <div className={styles.ctaSection}>
         <p className={styles.ctaText}>
           もっとくわしく知りたい方へ——<br/>
