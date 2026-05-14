@@ -5,7 +5,7 @@ export const CHARACTER_MAP: Record<string, { name: string, file: string, suzuriD
   '1_甲': { name: 'アイス', file: '1_kou', suzuriDesignId: '19967270' },
   '1_乙': { name: 'タンブラー', file: '1_otsu', suzuriDesignId: '19967358' },
   '1_丙': { name: 'ピクス', file: '1_hei', suzuriDesignId: '19965598' },
-  '1_丁': { name: 'カーク', file: '1_tei' },
+  '1_丁': { name: 'カーク', file: '1_tei', suzuriDesignId: '19967447' },
   '1_戊': { name: 'ゴードン', file: '1_bo', suzuriDesignId: '19967068' },
   '1_己': { name: 'ポレフ', file: '1_ki', suzuriDesignId: '19967182' },
   '1_庚': { name: 'リンガー', file: '1_kou2', suzuriDesignId: '19967321' },
@@ -91,7 +91,7 @@ export const CHARACTER_MAP: Record<string, { name: string, file: string, suzuriD
   '9_庚': { name: 'ピッカ', file: '9_kou2' },
   '9_辛': { name: 'ステラ', file: '9_shin' },
   '9_壬': { name: 'ミンク', file: '9_jin' },
-  '9_癸': { name: 'ウーパ', file: '9_ki2' },
+  '9_癸': { name: 'ウーパ', file: '9_ki2', suzuriDesignId: '19967252' },
 };
 
 export function getCharacterImageUrl(id: string): string {
