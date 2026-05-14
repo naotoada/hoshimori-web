@@ -259,12 +259,12 @@ function generateAdvice(a: CharacterTraits, b: CharacterTraits, nameA: string, n
     return `ふたりは「${closeLabel}」がとっても似ていて、自然体でいっしょにいられる関係。お互いのペースを大切にしてね。`;
   }
   if (score >= 70) {
-    return `「${closeLabel}」が近いから分かり合える、すてきなバランスのふたり。「${gapLabel}」はちょっと違うけど、${adviceText}`;
+    return `「${closeLabel}」が似ているから分かり合える、すてきなバランスのふたりです。ちがいが出やすい「${gapLabel}」については、${adviceText}`;
   }
   if (score >= 62) {
-    return `「${gapLabel}」が一番ちがうところ。${adviceText}`;
+    return `ふたりの一番のちがいは「${gapLabel}」です。${adviceText}`;
   }
-  return `ちがいが大きいぶん、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみて。「${gapLabel}」については——${adviceText}`;
+  return `ちがいが大きいぶん、わかり合えたときの絆はだれよりも強くなるよ。まずは「${closeLabel}」が似てるところから話してみて。すれちがいやすい「${gapLabel}」については、${adviceText}`;
 }
 
 function generateSummary(a: CharacterTraits, b: CharacterTraits, nameA: string, nameB: string, score: number, resonance: number, complement: number): string {
