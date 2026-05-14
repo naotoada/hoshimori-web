@@ -12,25 +12,27 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.headerInner}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>⭐</span>
-            <span className={styles.logoMain}>星守り</span>
-            <span className={styles.logoSub}>- HOSHIMORI -</span>
-          </Link>
-          <button
-            className={`${styles.menuButton} ${isOpen ? styles.menuOpen : ''}`}
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="メニュー"
-          >
-            <span className={styles.menuBar}></span>
-            <span className={styles.menuBar}></span>
-            <span className={styles.menuBar}></span>
-          </button>
+    <>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.headerInner}>
+            <Link href="/" className={styles.logo}>
+              <span className={styles.logoIcon}>⭐</span>
+              <span className={styles.logoMain}>星守り</span>
+              <span className={styles.logoSub}>- HOSHIMORI -</span>
+            </Link>
+            <button
+              className={`${styles.menuButton} ${isOpen ? styles.menuOpen : ''}`}
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="メニュー"
+            >
+              <span className={styles.menuBar}></span>
+              <span className={styles.menuBar}></span>
+              <span className={styles.menuBar}></span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
       {isOpen && (
         <div className={styles.overlay} onClick={() => setIsOpen(false)}>
           <nav className={styles.menu} onClick={(e) => e.stopPropagation()}>
@@ -70,6 +72,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
