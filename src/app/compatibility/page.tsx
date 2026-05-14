@@ -90,12 +90,14 @@ function ResultView({ result }: { result: CompatResult }) {
 
   return (
     <div className={styles.resultSection}>
-      <div className={styles.scoreCircle} style={{ borderColor: c.color }}>
-        <span className={styles.scoreEmoji}>{c.emoji}</span>
-        <span className={styles.scoreNumber}>{result.score}</span>
-        <span className={styles.scoreLabel}>/ 100</span>
+      <div className={styles.scoreHeader}>
+        <div className={styles.scoreCircle}>
+          <span className={styles.scoreEmoji}>{c.emoji}</span>
+          <span className={styles.scoreNumber}>{result.score}</span>
+          <span className={styles.scoreLabel}>/ 100</span>
+        </div>
+        <div className={styles.resultLevel}>{c.label}</div>
       </div>
-      <div className={styles.resultLevel} style={{ color: c.color }}>{c.label}</div>
 
       <div className={styles.subScores}>
         <div className={styles.subScore}>
