@@ -88,7 +88,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.reportBox}>
             <span className={styles.reportBadge}>📝 星守りレポート</span>
-            <h2>この子だけの「取扱説明書」</h2>
+            <h2>この子だけの<br/>「取扱説明書」</h2>
             <p className={styles.reportLead}>
               生年月日から導き出される90タイプの星守り構造を深掘りし、<br className={styles.spOnly}/>
               保護者が<strong>明日から実践できる</strong>関わり方をまとめたパーソナルレポートです。
@@ -160,7 +160,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.premiumBox}>
             <span className={styles.premiumBadge}>Premium</span>
-            <h2>星守りカルテ（完全版）</h2>
+            <h2>星守りカルテ<br/>【完全版】</h2>
             <p className={styles.premiumLead}>
               星守りレポートでは伝えきれない「親子の構造的な相性」「お名前の力」「お部屋の環境診断」まで——<br/>
               お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。<br/>
