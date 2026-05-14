@@ -155,24 +155,28 @@ function findFrictions(a: CharacterTraits, b: CharacterTraits, nameA: string, na
     frictions.push(`${sensitivePerson}が傷つく場面で${toughPerson}が気づけないことがある——「なぜそれで傷つくの？」のすれ違い`);
   }
   if (Math.abs(a.social - b.social) >= 5) {
-    frictions.push('人付き合いの量や距離感に差があり、「もっと一緒にいたい」「一人の時間がほしい」のギャップが生まれやすい');
+    const outgoing = a.social > b.social ? nameA : nameB;
+    const homebody = a.social > b.social ? nameB : nameA;
+    frictions.push(`${outgoing}は「みんなとワイワイ」が好きだけど、${homebody}は「ひとりの時間」が大切。休日の過ごし方などで「もっと一緒にいたい」「一人の時間がほしい」とギャップが生まれやすいです`);
   }
   if (Math.abs(a.independent - b.independent) >= 5) {
-    frictions.push('「自分でやりたい」と「一緒にやりたい」のバランスが異なり、距離感の調整が必要');
+    const solo = a.independent > b.independent ? nameA : nameB;
+    const together = a.independent > b.independent ? nameB : nameA;
+    frictions.push(`${solo}は「自分で決めたい」タイプ、${together}は「一緒に決めたい」タイプ。何でも相談してほしい${together}が寂しく感じることも`);
   }
   if (a.aesthetic >= 8 && b.aesthetic <= 3) {
-    frictions.push(`${nameA}が重視する美的基準を${nameB}が理解しにくく、「こだわりすぎ」と感じることも`);
+    frictions.push(`${nameA}の「こういうのが好き！」というこだわりが、${nameB}には「なんでそんなに気にするの？」と不思議に思えるかも`);
   } else if (b.aesthetic >= 8 && a.aesthetic <= 3) {
-    frictions.push(`${nameB}が重視する美的基準を${nameA}が理解しにくく、「こだわりすぎ」と感じることも`);
+    frictions.push(`${nameB}の「こういうのが好き！」というこだわりが、${nameA}には「なんでそんなに気にするの？」と不思議に思えるかも`);
   }
 
   // 両方が高い独立性 → ぶつかりやすい
   if (a.independent >= 8 && b.independent >= 8) {
-    frictions.push('ふたりとも「自分のやり方」に自信があるため、主導権争いが起きやすい');
+    frictions.push('ふたりとも「自分のやり方」に自信があるため、「私がやる！」「いや僕が！」と主導権争いが起きやすいかも');
   }
   // 両方が高い感受性 → 共倒れリスク
   if (a.sensitive >= 8 && b.sensitive >= 8) {
-    frictions.push('ふたりとも繊細なため、一方が沈むともう一方も引きずられやすい——「共倒れ」に注意');
+    frictions.push('ふたりとも心が繊細。一方が落ち込むともう一方も「自分のせいかも」と引きずられやすい——「共倒れ」に注意してね');
   }
 
   return frictions.length > 0 ? frictions.slice(0, 3) : ['大きな摩擦ポイントは見当たりません。穏やかに関係を続けられるでしょう'];
