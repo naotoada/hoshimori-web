@@ -80,11 +80,11 @@ function PersonForm({
 
 function ResultView({ result }: { result: CompatResult }) {
   const cfg: Record<string, { color: string; label: string; emoji: string }> = {
-    soulmate:  { color: '#a855f7', label: 'うんめいの相性', emoji: '💜' },
-    excellent: { color: '#10b981', label: 'さいこうの相性', emoji: '💫' },
-    good:      { color: '#3b82f6', label: 'いい相性', emoji: '✨' },
-    neutral:   { color: '#f59e0b', label: 'いっしょに成長できる', emoji: '🌙' },
-    growth:    { color: '#ef4444', label: 'チャレンジな関係', emoji: '🔥' },
+    soulmate:  { color: '#a855f7', label: 'うんめいのなかよし度', emoji: '💜' },
+    excellent: { color: '#10b981', label: 'なかよし度バツグン！', emoji: '💫' },
+    good:      { color: '#3b82f6', label: 'なかよし度たかめ！', emoji: '✨' },
+    neutral:   { color: '#f59e0b', label: 'なかよし度ふつう', emoji: '🌙' },
+    growth:    { color: '#ef4444', label: 'なかよし度のびしろ◎', emoji: '🔥' },
   };
   const c = cfg[result.level];
 
