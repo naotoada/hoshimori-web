@@ -6,7 +6,7 @@ import { ORACLE_MESSAGES, ORACLE_STAGES, THEMES, ThemeType } from './oracleData'
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import styles from './page.module.css';
 
-const ORACLE_PASSWORD = 'hoshimori-secret';
+const ORACLE_PASSWORD = 'hoshinohimitsu';
 
 const getGuardianPrefix = (guardianName: string) => {
   if (guardianName.includes('水')) return '1';
