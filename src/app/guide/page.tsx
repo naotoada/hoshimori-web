@@ -113,7 +113,7 @@ export default function GuideMap() {
               key={l.level} 
               className={`${styles.levelDot} ${currentLevel >= l.level ? styles.activeDot : ''} ${currentLevel === l.level ? styles.currentDot : ''}`}
             >
-              L{l.level}
+              {l.level}
             </div>
           ))}
         </div>
@@ -146,7 +146,7 @@ export default function GuideMap() {
                 setCurrentLevel(currentLevel + 1);
                 setShowGame(false);
               }}>
-                次のステップ（L{currentLevel + 1}）へ進む
+                次のステップ（{currentLevel + 1}）へ進む
               </button>
             )}
             {currentLevel === 5 && (
