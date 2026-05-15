@@ -196,7 +196,7 @@ export default function OraclePage() {
                 <div className={styles.themeIndicator}></div>
                 <div style={{ marginBottom: '0.5rem' }}>
                   <span className={styles.themeLabel}>
-                    【 {theme} 】への導き
+                    ⭐️星の導き：{theme}
                   </span>
                 </div>
                 <p className={styles.themeMessage}>
