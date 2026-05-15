@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { CHARACTER_MAP } from '@/lib/characterMap';
+import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import styles from './page.module.css';
 
 type Star = {
@@ -76,7 +76,11 @@ export default function HoshimoriGame() {
     // Pick a random Hoshimori Character
     const keys = Object.keys(CHARACTER_MAP);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    setRewardChar(CHARACTER_MAP[randomKey]);
+    const char = CHARACTER_MAP[randomKey];
+    setRewardChar({
+      name: char.name,
+      imageUrl: `${CHARACTER_BASE_URL}/${char.file}`
+    });
   };
 
   const resetGame = () => {
