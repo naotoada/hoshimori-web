@@ -172,6 +172,20 @@
   margin-bottom: 2rem;
 }
 
+.guardianBadge {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #FCD34D;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
 .mainTitle {
   font-size: 1.4rem;
   font-weight: 800;

@@ -133,6 +133,9 @@ export default function OraclePage() {
           <div className={styles.resultCard}>
             
             <div className={styles.mainResult}>
+              <div className={styles.guardianBadge}>
+                あなたを導く星：【 {result.guardian} 】
+              </div>
               <h2 className={styles.mainTitle}>
                 『 {result.title} 』
               </h2>
