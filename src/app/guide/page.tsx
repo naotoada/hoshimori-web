@@ -156,12 +156,23 @@ export default function GuideMap() {
         )}
 
         {!showGame ? (
-          <button className={styles.button} onClick={() => {
-            setShowGame(true);
-            sessionStorage.setItem('guide_unlocked', 'true');
-          }}>
-            はい、できています（扉を開く）
-          </button>
+          <div className={styles.doorContainer}>
+            <div 
+              className={styles.doorIcon}
+              onClick={() => {
+                setShowGame(true);
+                sessionStorage.setItem('guide_unlocked', 'true');
+              }}
+            >
+              🚪
+            </div>
+            <button className={styles.button} onClick={() => {
+              setShowGame(true);
+              sessionStorage.setItem('guide_unlocked', 'true');
+            }}>
+              はい、できています（扉を開く）
+            </button>
+          </div>
         ) : (
           <div className={styles.unlockedArea}>
             <div className={styles.unlockedMessage}>

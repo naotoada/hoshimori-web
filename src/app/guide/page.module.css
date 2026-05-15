@@ -87,6 +87,27 @@
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
 }
 
+.doorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.doorIcon {
+  font-size: 4.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 10px rgba(245, 158, 11, 0.4));
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
 /* Level Progress */
 .levelProgress {
   display: flex;
