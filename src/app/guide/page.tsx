@@ -195,7 +195,7 @@ export default function GuideMap() {
               setShowGame(true);
               sessionStorage.setItem('guide_unlocked', 'true');
             }}>
-              はい、できています（扉を開く）
+              はい、できています（🗝️扉を開く）
             </button>
           </div>
         ) : (
