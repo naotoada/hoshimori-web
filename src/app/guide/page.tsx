@@ -14,6 +14,7 @@ const LEVEL_DATA = [
     subtitle: '心の土台・安心基地',
     question: 'お子さんは、お家の中やパパ・ママのそばで「安心」して過ごせていますか？',
     advice: 'もし「いいえ」なら、今は他のルールや教育を急がず、まずは抱っこやスキンシップで「安心の泉」を満たすことに全力を注ぎましょう。',
+    praise: 'パパやママのそばで、安心して過ごせているね！とってもえらい！',
   },
   {
     level: 2,
@@ -21,6 +22,7 @@ const LEVEL_DATA = [
     subtitle: 'からだの土台・生活リズム',
     question: '食事・睡眠・運動など、毎日の生活リズムは安定して繰り返せていますか？',
     advice: '生活の土台が揺らぐと、心も揺らぎます。まずは決まった時間に寝て、起きる。「大地」をしっかり踏み固めましょう。',
+    praise: '毎日しっかり寝て、ごはんも食べて、からだが元気に育っているね！',
   },
   {
     level: 3,
@@ -28,6 +30,7 @@ const LEVEL_DATA = [
     subtitle: '心の芽生え・自己主張',
     question: '「イヤ！」「自分でやる！」といったワガママや自己主張を、しっかり外に出せていますか？',
     advice: '反抗は、順調に心が育っている証拠です。雷のようにまっすぐで力強い自己主張を受け止めることで、本当の個性が芽生えます。',
+    praise: '自分の気持ちを「イヤ！」ってちゃんと言えてすごい！心が大きくなっている証拠だよ！',
   },
   {
     level: 4,
@@ -35,6 +38,7 @@ const LEVEL_DATA = [
     subtitle: 'まわりとの調和・思いやり',
     question: 'お友達に優しくできたり、相手の気持ちを少しずつ想像できるようになってきましたか？',
     advice: '雷の季節で自己主張がしっかりできて初めて、他者への「思いやり（風の優しさ）」が育ちます。まずは大人が共感する姿をたくさん見せてあげましょう。',
+    praise: 'お友達に優しくできたり、順番を守れたりしてすごいね！思いやりの心が育っているよ！',
   },
   {
     level: 5,
@@ -42,6 +46,7 @@ const LEVEL_DATA = [
     subtitle: '自分だけの輝き・探究心',
     question: '誰に言われなくても、時間を忘れて夢中になっている「好きなこと」がありますか？',
     advice: 'ここまできたら、もう大丈夫。親の役割は「教える」ことから「見守る」ことへ変わります。お子さんだけの星を輝かせましょう！',
+    praise: '大好きなことに夢中になっている姿、とってもかっこいいよ！キミだけの星が輝いているね！',
   }
 ];
 
@@ -143,10 +148,12 @@ export default function GuideMap() {
           <span className={styles.levelSubtitle}>({levelInfo.subtitle})</span>
         </h2>
 
-        <div className={styles.questionBox}>
-          <p className={styles.questionText}>{levelInfo.question}</p>
-          <p className={styles.adviceText}>{levelInfo.advice}</p>
-        </div>
+        {!showGame && (
+          <div className={styles.questionBox}>
+            <p className={styles.questionText}>{levelInfo.question}</p>
+            <p className={styles.adviceText}>{levelInfo.advice}</p>
+          </div>
+        )}
 
         {!showGame ? (
           <button className={styles.button} onClick={() => {
@@ -159,7 +166,9 @@ export default function GuideMap() {
           <div className={styles.unlockedArea}>
             <div className={styles.unlockedMessage}>
               ✨ 星の扉が開きました！ ✨<br/>
-              お子さんをたくさん褒めて、一緒に遊んでください。
+              <span style={{ fontSize: '1.2rem', display: 'inline-block', marginTop: '0.5rem', fontWeight: 'bold' }}>
+                {levelInfo.praise}
+              </span>
             </div>
             <button className={styles.gameButton} onClick={handlePlayGame}>
               🎮 星守りミニゲームで遊ぶ
