@@ -244,8 +244,7 @@ export default function GuideMap() {
             </button>
           </div>
         )}
-        {currentLevel > 0 && (
-          </>
+        </>
         )}
       </div>
     </div>
