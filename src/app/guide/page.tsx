@@ -10,7 +10,7 @@ const GUIDE_PASSWORD = 'hoshinohimitsu';
 const LEVEL_DATA = [
   {
     level: 1,
-    name: '泉の季節',
+    name: '⛲️泉の季節',
     subtitle: '心の土台・安心基地',
     question: 'お子さんは、お家の中やパパ・ママのそばで「安心」して過ごせていますか？',
     advice: 'もし「いいえ」なら、今は他のルールや教育を急がず、まずは抱っこやスキンシップで「安心の泉」を満たすことに全力を注ぎましょう。',
@@ -18,7 +18,7 @@ const LEVEL_DATA = [
   },
   {
     level: 2,
-    name: '大地の季節',
+    name: '⛰️大地の季節',
     subtitle: 'からだの土台・生活リズム',
     question: '食事・睡眠・運動など、毎日の生活リズムは安定して繰り返せていますか？',
     advice: '生活の土台が揺らぐと、心も揺らぎます。まずは決まった時間に寝て、起きる。「大地」をしっかり踏み固めましょう。',
@@ -42,7 +42,7 @@ const LEVEL_DATA = [
   },
   {
     level: 5,
-    name: '天の季節',
+    name: '☀️天の季節',
     subtitle: '自分だけの輝き・探究心',
     question: '誰に言われなくても、時間を忘れて夢中になっている「好きなこと」がありますか？',
     advice: 'ここまできたら、もう大丈夫。親の役割は「教える」ことから「見守る」ことへ変わります。お子さんだけの星を輝かせましょう！',
@@ -217,7 +217,7 @@ export default function GuideMap() {
                 sessionStorage.setItem('guide_level', nextLvl.toString());
                 sessionStorage.setItem('guide_unlocked', 'false');
               }}>
-                次のステップ（{currentLevel + 1}）へ進む
+                次のステップへ進む
               </button>
             )}
             {currentLevel === 5 && (
