@@ -21,8 +21,16 @@ export default function HoshimoriGame() {
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
+  const [currentMapLevel, setCurrentMapLevel] = useState(1);
   
   const starIdCounter = useRef(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const lvl = sessionStorage.getItem('guide_level');
+      if (lvl) setCurrentMapLevel(parseInt(lvl, 10));
+    }
+  }, []);
 
   useEffect(() => {
     if (isGameOver) return;
@@ -79,7 +87,7 @@ export default function HoshimoriGame() {
     const char = CHARACTER_MAP[randomKey];
     setRewardChar({
       name: char.name,
-      imageUrl: `${CHARACTER_BASE_URL}/${char.file}`
+      imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
   };
 
@@ -132,6 +140,9 @@ export default function HoshimoriGame() {
           <button className={styles.replayBtn} onClick={resetGame}>
             もういっかい遊ぶ
           </button>
+          <Link href="/guide" className={styles.returnBtn}>
+            ステップ {currentMapLevel} に戻る
+          </Link>
         </div>
       )}
     </div>

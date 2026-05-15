@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import styles from './page.module.css';
@@ -50,13 +50,28 @@ export default function GuideMap() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [showGame, setShowGame] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (sessionStorage.getItem('guide_auth') === 'true') {
+        setIsAuthenticated(true);
+      }
+      const lvl = sessionStorage.getItem('guide_level');
+      if (lvl) {
+        setCurrentLevel(parseInt(lvl, 10));
+      }
+      setIsLoaded(true);
+    }
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === GUIDE_PASSWORD) {
       setIsAuthenticated(true);
+      sessionStorage.setItem('guide_auth', 'true');
     } else {
       alert('パスワードが違います。レポートに記載された合言葉を入力してください。');
     }
@@ -65,6 +80,8 @@ export default function GuideMap() {
   const handlePlayGame = () => {
     router.push('/guide/game');
   };
+
+  if (!isLoaded) return null;
 
   if (!isAuthenticated) {
     return (
@@ -143,7 +160,9 @@ export default function GuideMap() {
             </button>
             {currentLevel < 5 && (
               <button className={styles.nextLevelButton} onClick={() => {
-                setCurrentLevel(currentLevel + 1);
+                const nextLvl = currentLevel + 1;
+                setCurrentLevel(nextLvl);
+                sessionStorage.setItem('guide_level', nextLvl.toString());
                 setShowGame(false);
               }}>
                 次のステップ（{currentLevel + 1}）へ進む
