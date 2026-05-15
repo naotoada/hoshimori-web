@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import styles from './page.module.css';
 
-const GUIDE_PASSWORD = 'hoshinohimitsu';
+const GUIDE_PASSWORD = 'hoshinomichibiki';
 
 const LEVEL_DATA = [
   {
