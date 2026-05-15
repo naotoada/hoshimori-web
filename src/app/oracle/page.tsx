@@ -72,6 +72,7 @@ export default function OraclePage() {
   if (!isAuthenticated) {
     return (
       <div className={styles.loginContainer}>
+        <div className={styles.bgEffects} />
         <div className={styles.loginCard}>
           <div className={styles.header}>
             <span style={{ fontSize: '2rem', display: 'inline-block', marginBottom: '1rem', animation: 'pulse 2s infinite' }}>✨</span>
