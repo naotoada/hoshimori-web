@@ -53,7 +53,7 @@ const LEVEL_DATA = [
 export default function GuideMap() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentLevel, setCurrentLevel] = useState(1);
+  const [currentLevel, setCurrentLevel] = useState(0);
   const [showGame, setShowGame] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -143,17 +143,42 @@ export default function GuideMap() {
           ))}
         </div>
 
-        <h2 className={styles.levelName}>
-          STEP {levelInfo.level}：{levelInfo.name}
-          <span className={styles.levelSubtitle}>({levelInfo.subtitle})</span>
-        </h2>
-
-        {!showGame && (
-          <div className={styles.questionBox}>
-            <p className={styles.questionText}>{levelInfo.question}</p>
-            <p className={styles.adviceText}>{levelInfo.advice}</p>
+        {currentLevel === 0 ? (
+          <div className={styles.introBox} style={{ marginTop: '1rem' }}>
+            <h2 className={styles.levelName}>星守りの導きへようこそ</h2>
+            <div className={styles.adviceText} style={{ textAlign: 'left', marginBottom: '2rem' }}>
+              <p style={{ marginBottom: '1rem' }}>
+                この「星座マップ」は、九星教育論に基づき、お子さんの「心の土台（泉）」から「自立（天）」までを順番に育むためのサポートツールです。
+              </p>
+              <p style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: '#FBBF24' }}>
+                【使い方】
+              </p>
+              <ol style={{ paddingLeft: '1.5rem', lineHeight: '1.6' }}>
+                <li style={{ marginBottom: '0.5rem' }}>質問を見て、お子さんの日々の様子を振り返ります。</li>
+                <li style={{ marginBottom: '0.5rem' }}>「できている」と感じたら、扉を開いてください。</li>
+                <li>扉の向こうでは星守りたちが待っています。スマホをお子さんに渡し、一緒に「星集めミニゲーム」で遊んでたくさん褒めてあげましょう！</li>
+              </ol>
+            </div>
+            <button className={styles.button} onClick={() => {
+              setCurrentLevel(1);
+              sessionStorage.setItem('guide_level', '1');
+            }}>
+              マップを始める（STEP 1へ）
+            </button>
           </div>
-        )}
+        ) : (
+          <>
+            <h2 className={styles.levelName}>
+              STEP {levelInfo?.level}：{levelInfo?.name}
+              <span className={styles.levelSubtitle}>({levelInfo?.subtitle})</span>
+            </h2>
+
+            {!showGame && (
+              <div className={styles.questionBox}>
+                <p className={styles.questionText}>{levelInfo?.question}</p>
+                <p className={styles.adviceText}>{levelInfo?.advice}</p>
+              </div>
+            )}
 
         {!showGame ? (
           <div className={styles.doorContainer}>
@@ -178,7 +203,7 @@ export default function GuideMap() {
             <div className={styles.unlockedMessage}>
               ✨ 星の扉が開きました！ ✨<br/>
               <span style={{ fontSize: '1.2rem', display: 'inline-block', marginTop: '0.5rem', fontWeight: 'bold' }}>
-                {levelInfo.praise}
+                {levelInfo?.praise}
               </span>
             </div>
             <button className={styles.gameButton} onClick={handlePlayGame}>
@@ -218,6 +243,9 @@ export default function GuideMap() {
               ◀ 前のステップ（{currentLevel - 1}）に戻る
             </button>
           </div>
+        )}
+        {currentLevel > 0 && (
+          </>
         )}
       </div>
     </div>
