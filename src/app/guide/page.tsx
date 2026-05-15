@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import styles from './page.module.css';
 
@@ -50,6 +51,8 @@ export default function GuideMap() {
   const [currentLevel, setCurrentLevel] = useState(1);
   const [showGame, setShowGame] = useState(false);
 
+  const router = useRouter();
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === GUIDE_PASSWORD) {
@@ -60,7 +63,7 @@ export default function GuideMap() {
   };
 
   const handlePlayGame = () => {
-    alert("ここで星集めミニゲームが起動します！（次ステップで実装）");
+    router.push('/guide/game');
   };
 
   if (!isAuthenticated) {
