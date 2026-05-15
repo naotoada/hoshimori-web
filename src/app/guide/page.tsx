@@ -206,9 +206,6 @@ export default function GuideMap() {
                 {levelInfo?.praise}
               </span>
             </div>
-            <button className={styles.gameButton} onClick={handlePlayGame}>
-              🎮 星守りミニゲームで遊ぶ
-            </button>
             {currentLevel < 5 && (
               <button className={styles.nextLevelButton} onClick={() => {
                 const nextLvl = currentLevel + 1;
@@ -220,6 +217,9 @@ export default function GuideMap() {
                 次のステップへ進む
               </button>
             )}
+            <button className={styles.gameButton} onClick={handlePlayGame} style={{ marginTop: '0.5rem' }}>
+              🎮 星守りミニゲームで遊ぶ
+            </button>
             {currentLevel === 5 && (
               <div className={styles.adviceText} style={{ border: 'none', textAlign: 'center' }}>
                 すべてのステップをクリアしました！<br />これからもお子さんの輝きを見守ってください。
