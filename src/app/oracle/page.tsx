@@ -3,9 +3,23 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { ORACLE_MESSAGES, ORACLE_STAGES, THEMES, ThemeType } from './oracleData';
+import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import styles from './page.module.css';
 
 const ORACLE_PASSWORD = 'hoshimori-secret';
+
+const getGuardianPrefix = (guardianName: string) => {
+  if (guardianName.includes('水')) return '1';
+  if (guardianName.includes('大地')) return '2';
+  if (guardianName.includes('雷')) return '3';
+  if (guardianName.includes('風')) return '4';
+  if (guardianName.includes('帝')) return '5';
+  if (guardianName.includes('天')) return '6';
+  if (guardianName.includes('湖') || guardianName.includes('沢') || guardianName.includes('果実')) return '7';
+  if (guardianName.includes('山')) return '8';
+  if (guardianName.includes('炎') || guardianName.includes('火')) return '9';
+  return '1';
+};
 
 export default function OraclePage() {
   const [password, setPassword] = useState('');
@@ -14,6 +28,7 @@ export default function OraclePage() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [result, setResult] = useState<typeof ORACLE_MESSAGES[0] | null>(null);
   const [lineResult, setLineResult] = useState<typeof ORACLE_STAGES[0] | null>(null);
+  const [guardianChar, setGuardianChar] = useState<{name: string, imageUrl: string} | null>(null);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,8 +49,22 @@ export default function OraclePage() {
       const randomHexIndex = Math.floor(Math.random() * ORACLE_MESSAGES.length);
       const randomStageIndex = Math.floor(Math.random() * ORACLE_STAGES.length);
       
-      setResult(ORACLE_MESSAGES[randomHexIndex]);
+      const selectedMessage = ORACLE_MESSAGES[randomHexIndex];
+      setResult(selectedMessage);
       setLineResult(ORACLE_STAGES[randomStageIndex]);
+      
+      const guardianPrefix = getGuardianPrefix(selectedMessage.guardian);
+      const possibleIds = Object.keys(CHARACTER_MAP).filter(id => id.startsWith(`${guardianPrefix}_`));
+      const randomCharId = possibleIds[Math.floor(Math.random() * possibleIds.length)];
+      const char = CHARACTER_MAP[randomCharId];
+      
+      if (char) {
+        setGuardianChar({
+          name: char.name,
+          imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
+        });
+      }
+
       setIsDrawing(false);
     }, 2500);
   };
@@ -136,6 +165,12 @@ export default function OraclePage() {
               <div className={styles.guardianBadge}>
                 あなたを導く星：【 {result.guardian} 】
               </div>
+              {guardianChar && (
+                <div className={styles.guardianCharacter}>
+                  <img src={guardianChar.imageUrl} alt={guardianChar.name} className={styles.characterImg} />
+                  <span className={styles.characterName}>{guardianChar.name}</span>
+                </div>
+              )}
               <h2 className={styles.mainTitle}>
                 『 {result.title} 』
               </h2>

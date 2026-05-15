@@ -182,8 +182,34 @@
   letter-spacing: 0.1em;
   padding: 0.5rem 1.5rem;
   border-radius: 20px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   box-shadow: 0 4px 15px rgba(217, 119, 6, 0.2);
+}
+
+.guardianCharacter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: reveal 1s ease-out forwards;
+}
+
+.characterImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #F59E0B;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  margin-bottom: 0.5rem;
+  background-color: #FFFDF9;
+}
+
+.characterName {
+  font-size: 0.85rem;
+  color: #FCD34D;
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
 .mainTitle {
