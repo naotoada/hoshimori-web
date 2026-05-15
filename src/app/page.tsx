@@ -52,6 +52,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Zukan Section */}
+      <section className={styles.zukanSection}>
+        <div className={styles.container}>
+          <div className={styles.zukanCard}>
+            <div className={styles.zukanContent}>
+              <h2>📚 全90体の星守り図鑑</h2>
+              <p>
+                水、木、火、土、金。<br/>
+                自然界のエレメントから生まれた、90種類の星守りたち。<br/>
+                ご自身やご家族の星を探してみてください。
+              </p>
+              <Link href="/zukan" className={styles.zukanBtn}>
+                図鑑をひらく
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Concept Section */}
       <section className={styles.conceptSection}>
         <div className={styles.container}>
@@ -76,25 +95,6 @@ export default function Home() {
                 星守りを通じて、自分やお子様の才能が伸びる「環境」を見つけてみませんか。<br/>
                 私たちは、<strong>心の構造を見える化する</strong>ための地図をお渡しします。
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Zukan Section */}
-      <section className={styles.zukanSection}>
-        <div className={styles.container}>
-          <div className={styles.zukanCard}>
-            <div className={styles.zukanContent}>
-              <h2>📚 全90体の星守り図鑑</h2>
-              <p>
-                水、木、火、土、金。<br/>
-                自然界のエレメントから生まれた、90種類の星守りたち。<br/>
-                ご自身やご家族の星を探してみてください。
-              </p>
-              <Link href="/zukan" className={styles.zukanBtn}>
-                図鑑をひらく
-              </Link>
             </div>
           </div>
         </div>
