@@ -63,6 +63,9 @@ export default function GuideMap() {
       if (lvl) {
         setCurrentLevel(parseInt(lvl, 10));
       }
+      if (sessionStorage.getItem('guide_unlocked') === 'true') {
+        setShowGame(true);
+      }
       setIsLoaded(true);
     }
   }, []);
@@ -146,7 +149,10 @@ export default function GuideMap() {
         </div>
 
         {!showGame ? (
-          <button className={styles.button} onClick={() => setShowGame(true)}>
+          <button className={styles.button} onClick={() => {
+            setShowGame(true);
+            sessionStorage.setItem('guide_unlocked', 'true');
+          }}>
             はい、できています（扉を開く）
           </button>
         ) : (
@@ -162,8 +168,9 @@ export default function GuideMap() {
               <button className={styles.nextLevelButton} onClick={() => {
                 const nextLvl = currentLevel + 1;
                 setCurrentLevel(nextLvl);
-                sessionStorage.setItem('guide_level', nextLvl.toString());
                 setShowGame(false);
+                sessionStorage.setItem('guide_level', nextLvl.toString());
+                sessionStorage.setItem('guide_unlocked', 'false');
               }}>
                 次のステップ（{currentLevel + 1}）へ進む
               </button>
