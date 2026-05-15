@@ -2,14 +2,53 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from './page.module.css';
 
 const GUIDE_PASSWORD = 'hoshinohimitsu';
 
-export default function GuidePortal() {
+const LEVEL_DATA = [
+  {
+    level: 1,
+    name: '泉の季節',
+    subtitle: '心の土台・安心基地',
+    question: 'お子さんは、お家の中やパパ・ママのそばで「安心」して過ごせていますか？',
+    advice: 'もし「いいえ」なら、今は他のルールや教育を急がず、まずは抱っこやスキンシップで「安心の泉」を満たすことに全力を注ぎましょう。',
+  },
+  {
+    level: 2,
+    name: '大地の季節',
+    subtitle: 'からだの土台・生活リズム',
+    question: '食事・睡眠・運動など、毎日の生活リズムは安定して繰り返せていますか？',
+    advice: '生活の土台が揺らぐと、心も揺らぎます。まずは決まった時間に寝て、起きる。「大地」をしっかり踏み固めましょう。',
+  },
+  {
+    level: 3,
+    name: '風の季節',
+    subtitle: '心の芽生え・自己主張',
+    question: '「イヤ！」「自分でやる！」といったワガママや自己主張を、しっかり外に出せていますか？',
+    advice: '反抗は、順調に心が育っている証拠です。風のように自由に感情を表現させることで、本当の個性が芽生えます。',
+  },
+  {
+    level: 4,
+    name: '雷の季節',
+    subtitle: 'まわりとの調和・ルール',
+    question: 'お友達との順番や、お家でのお約束を少しずつ守れるようになってきましたか？',
+    advice: 'L3までの土台ができて初めて、ルール（雷の秩序）を理解できます。焦らず、少しずつ社会のルールを教えていきましょう。',
+  },
+  {
+    level: 5,
+    name: '天の季節',
+    subtitle: '自分だけの輝き・探究心',
+    question: '誰に言われなくても、時間を忘れて夢中になっている「好きなこと」がありますか？',
+    advice: 'ここまできたら、もう大丈夫。親の役割は「教える」ことから「見守る」ことへ変わります。お子さんだけの星を輝かせましょう！',
+  }
+];
+
+export default function GuideMap() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentLevel, setCurrentLevel] = useState(1);
+  const [showGame, setShowGame] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +57,10 @@ export default function GuidePortal() {
     } else {
       alert('パスワードが違います。レポートに記載された合言葉を入力してください。');
     }
+  };
+
+  const handlePlayGame = () => {
+    alert("ここで星集めミニゲームが起動します！（次ステップで実装）");
   };
 
   if (!isAuthenticated) {
@@ -34,7 +77,7 @@ export default function GuidePortal() {
             合言葉を入力して、扉を開いてください。
           </p>
           
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} style={{ width: '100%' }}>
             <input
               type="password"
               value={password}
@@ -52,38 +95,64 @@ export default function GuidePortal() {
     );
   }
 
+  const levelInfo = LEVEL_DATA[currentLevel - 1];
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>星守りの導き | ポータル</title>
+        <title>星守りの導き | 星座マップ</title>
       </Head>
       
-      <div className={styles.portalCard}>
-        <h1 className={styles.title}>星守りの導き</h1>
-        <p className={styles.subtitle}>
-          お子さまの現在の成長段階をチェックし、<br />
-          次のステップへ導くための星のマップです。
-        </p>
-
-        <div className={styles.menuGrid}>
-          <Link href="/guide/map" className={styles.menuItem}>
-            <span className={styles.menuIcon}>🗺️</span>
-            <h2 className={styles.menuTitle}>星を繋ぐ星座マップ</h2>
-            <p className={styles.menuDesc}>
-              成長の5つのステップ（L1〜L5）をチェックし、<br />
-              今お子さまがどこにいるのかを確認します。
-            </p>
-          </Link>
-
-          <Link href="/guide/game" className={styles.menuItem}>
-            <span className={styles.menuIcon}>🎮</span>
-            <h2 className={styles.menuTitle}>星守りミニゲーム</h2>
-            <p className={styles.menuDesc}>
-              星座マップを進めると遊べるようになる<br />
-              お子さま専用の星集めブラウザゲームです。
-            </p>
-          </Link>
+      <div className={styles.mapCard}>
+        <div className={styles.levelProgress}>
+          {LEVEL_DATA.map((l) => (
+            <div 
+              key={l.level} 
+              className={`${styles.levelDot} ${currentLevel >= l.level ? styles.activeDot : ''} ${currentLevel === l.level ? styles.currentDot : ''}`}
+            >
+              L{l.level}
+            </div>
+          ))}
         </div>
+
+        <h2 className={styles.levelName}>
+          STEP {levelInfo.level}：{levelInfo.name}
+          <span className={styles.levelSubtitle}>({levelInfo.subtitle})</span>
+        </h2>
+
+        <div className={styles.questionBox}>
+          <p className={styles.questionText}>{levelInfo.question}</p>
+          <p className={styles.adviceText}>{levelInfo.advice}</p>
+        </div>
+
+        {!showGame ? (
+          <button className={styles.button} onClick={() => setShowGame(true)}>
+            はい、できています（扉を開く）
+          </button>
+        ) : (
+          <div className={styles.unlockedArea}>
+            <div className={styles.unlockedMessage}>
+              ✨ 星の扉が開きました！ ✨<br/>
+              お子さんをたくさん褒めて、一緒に遊んでください。
+            </div>
+            <button className={styles.gameButton} onClick={handlePlayGame}>
+              🎮 星守りミニゲームで遊ぶ
+            </button>
+            {currentLevel < 5 && (
+              <button className={styles.nextLevelButton} onClick={() => {
+                setCurrentLevel(currentLevel + 1);
+                setShowGame(false);
+              }}>
+                次のステップ（L{currentLevel + 1}）へ進む
+              </button>
+            )}
+            {currentLevel === 5 && (
+              <div className={styles.adviceText} style={{ border: 'none', textAlign: 'center' }}>
+                すべてのステップをクリアしました！<br />これからもお子さんの輝きを見守ってください。
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

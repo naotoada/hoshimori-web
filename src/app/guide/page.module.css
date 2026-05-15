@@ -13,7 +13,7 @@
   background-attachment: fixed;
 }
 
-.loginCard, .portalCard {
+.loginCard, .mapCard {
   background: rgba(30, 41, 59, 0.6);
   backdrop-filter: blur(16px);
   padding: 3rem 2rem;
@@ -23,6 +23,9 @@
   max-width: 600px;
   width: 100%;
   animation: fadeInUp 0.8s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
@@ -84,50 +87,153 @@
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
 }
 
-.menuGrid {
+/* Level Progress */
+.levelProgress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.levelDot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.levelDot:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  width: 1rem;
+  height: 2px;
+  background: rgba(245, 158, 11, 0.3);
+}
+
+.activeDot {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #F59E0B;
+  color: #F59E0B;
+}
+
+.activeDot:not(:last-child)::after {
+  background: #F59E0B;
+}
+
+.currentDot {
+  background: #F59E0B;
+  color: #FFF;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  transform: scale(1.1);
+  border-color: #F59E0B;
+}
+
+.levelName {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #F59E0B;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.levelSubtitle {
+  display: block;
+  font-size: 1rem;
+  color: #FBBF24;
+  opacity: 0.9;
+  font-weight: normal;
+  margin-top: 0.5rem;
+}
+
+.questionBox {
+  background: rgba(15, 23, 42, 0.7);
+  padding: 2rem;
+  border-radius: 16px;
+  border-left: 4px solid #F59E0B;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.questionText {
+  font-size: 1.15rem;
+  color: #FFFDF9;
+  line-height: 1.7;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.adviceText {
+  font-size: 0.95rem;
+  color: #E2E8F0;
+  line-height: 1.6;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(245, 158, 11, 0.3);
+}
+
+.unlockedArea {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  align-items: center;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-.menuItem {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: 20px;
-  padding: 2rem;
+.unlockedMessage {
+  font-size: 1.1rem;
+  color: #FBBF24;
   text-align: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: block;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  transform: translateY(-4px);
-  border-color: #F59E0B;
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
-  background: rgba(30, 41, 59, 0.8);
-}
-
-.menuIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.menuTitle {
-  color: #F59E0B;
-  font-size: 1.4rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-.menuDesc {
-  color: #FFFDF9;
+.gameButton {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+  color: #FFF;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.gameButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+.nextLevelButton {
+  background: transparent;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #FBBF24;
+  padding: 0.8rem 2rem;
+  border-radius: 20px;
+  cursor: pointer;
   font-size: 0.95rem;
-  opacity: 0.9;
-  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.nextLevelButton:hover {
+  background: rgba(245, 158, 11, 0.1);
 }
 
 @keyframes fadeInUp {
