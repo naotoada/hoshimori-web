@@ -254,7 +254,31 @@
 }
 
 .nextLevelButton:hover {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #FFF;
+}
+
+.prevButtonContainer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.prevLevelButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFF;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.prevLevelButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #FFF;
 }
 
 @keyframes fadeInUp {

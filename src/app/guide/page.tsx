@@ -202,6 +202,23 @@ export default function GuideMap() {
             )}
           </div>
         )}
+
+        {currentLevel > 1 && (
+          <div className={styles.prevButtonContainer}>
+            <button 
+              className={styles.prevLevelButton} 
+              onClick={() => {
+                const prevLvl = currentLevel - 1;
+                setCurrentLevel(prevLvl);
+                setShowGame(false);
+                sessionStorage.setItem('guide_level', prevLvl.toString());
+                sessionStorage.setItem('guide_unlocked', 'false');
+              }}
+            >
+              ◀ 前のステップ（{currentLevel - 1}）に戻る
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
