@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   background-color: #0B1120; /* Deep Navy Background Fallback */
-  color: #FEF3C7; /* Soft yellow text */
+  color: #FFFDF9; /* Warm White text */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +87,7 @@
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(245, 158, 11, 0.5);
   border-radius: 16px;
-  color: #FEF3C7;
+  color: #FFFDF9;
   text-align: center;
   font-size: 1.1rem;
   font-weight: bold;
@@ -118,7 +118,7 @@
 
 .select option {
   background: #0F172A;
-  color: #FEF3C7;
+  color: #FFFDF9;
 }
 
 .button {
@@ -229,7 +229,7 @@
 .mainMessage {
   font-size: 1.05rem;
   line-height: 1.9;
-  color: #FEF3C7;
+  color: #FFFDF9;
   max-width: 95%;
   margin: 0 auto;
 }
@@ -264,8 +264,8 @@
 
 .stageDesc {
   font-size: 0.95rem;
-  color: #FEF3C7;
-  opacity: 0.8;
+  color: #FFFDF9;
+  opacity: 0.9;
   text-align: center;
   line-height: 1.7;
 }
@@ -332,7 +332,7 @@
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(245, 158, 11, 0.5);
   border-radius: 16px;
-  color: #F59E0B;
+  color: #FFFDF9;
   text-align: center;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
