@@ -100,6 +100,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Adult Self Report Section */}
+      <section className={styles.selfReportSection} id="self-report">
+        <div className={styles.container}>
+          <div className={styles.selfReportBox}>
+            <span className={styles.selfReportBadge}>🌟 大人のための星守り</span>
+            <h2>自分自身の<br/>「取扱説明書」</h2>
+            <p className={styles.selfReportLead}>
+              あなた自身の構造タイプを深掘りし、<br className={styles.spOnly}/>
+              <strong>強みの活かし方</strong>・<strong>エネルギーの回復法</strong>・<strong>人間関係の処方箋</strong>をまとめた<br className={styles.spOnly}/>
+              パーソナルレポートです。
+            </p>
+            <div className={styles.selfReportFeatures}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🔍</span>
+                <div>
+                  <h4>構造タイプ解析</h4>
+                  <p>星・器・型の3層構造から、あなたの思考・感情・行動パターンを立体的に分析</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💎</span>
+                <div>
+                  <h4>才能の棚卸し</h4>
+                  <p>あなたが最も輝く環境・活動・役割を構造的に特定</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🤝</span>
+                <div>
+                  <h4>人間関係マップ</h4>
+                  <p>パートナー・上司・部下との構造摩擦ポイントと対処法</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>📅</span>
+                <div>
+                  <h4>今年のナビゲーション</h4>
+                  <p>好調月・注意月の年間カレンダーと転機のタイミング</p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.selfReportMeta}>
+              <span>📄 全5章・8,000〜12,000字</span>
+              <span>📱 公式LINEからドキュメントで納品</span>
+              <span>🎯 対象: 18歳以上</span>
+            </div>
+            <div className={styles.selfReportPrice}>¥3,980 <span>(税込)</span></div>
+            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
+              公式LINEから申し込む
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Report Service Section (Entry: ¥4,980) */}
       <section className={styles.reportSection} id="report">
         <div className={styles.container}>
@@ -166,60 +220,6 @@ export default function Home() {
             <div className={styles.reportPrice}>¥4,980 <span>(税込)</span></div>
 
             <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
-              公式LINEから申し込む
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Adult Self Report Section */}
-      <section className={styles.selfReportSection} id="self-report">
-        <div className={styles.container}>
-          <div className={styles.selfReportBox}>
-            <span className={styles.selfReportBadge}>🌟 大人のための星守り</span>
-            <h2>自分自身の<br/>「取扱説明書」</h2>
-            <p className={styles.selfReportLead}>
-              あなた自身の構造タイプを深掘りし、<br className={styles.spOnly}/>
-              <strong>強みの活かし方</strong>・<strong>エネルギーの回復法</strong>・<strong>人間関係の処方箋</strong>をまとめた<br className={styles.spOnly}/>
-              パーソナルレポートです。
-            </p>
-            <div className={styles.selfReportFeatures}>
-              <div className={styles.featureItem}>
-                <span className={styles.featureIcon}>🔍</span>
-                <div>
-                  <h4>構造タイプ解析</h4>
-                  <p>星・器・型の3層構造から、あなたの思考・感情・行動パターンを立体的に分析</p>
-                </div>
-              </div>
-              <div className={styles.featureItem}>
-                <span className={styles.featureIcon}>💎</span>
-                <div>
-                  <h4>才能の棚卸し</h4>
-                  <p>あなたが最も輝く環境・活動・役割を構造的に特定</p>
-                </div>
-              </div>
-              <div className={styles.featureItem}>
-                <span className={styles.featureIcon}>🤝</span>
-                <div>
-                  <h4>人間関係マップ</h4>
-                  <p>パートナー・上司・部下との構造摩擦ポイントと対処法</p>
-                </div>
-              </div>
-              <div className={styles.featureItem}>
-                <span className={styles.featureIcon}>📅</span>
-                <div>
-                  <h4>今年のナビゲーション</h4>
-                  <p>好調月・注意月の年間カレンダーと転機のタイミング</p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.selfReportMeta}>
-              <span>📄 全5章・8,000〜12,000字</span>
-              <span>📱 公式LINEからドキュメントで納品</span>
-              <span>🎯 対象: 18歳以上</span>
-            </div>
-            <div className={styles.selfReportPrice}>¥3,980 <span>(税込)</span></div>
-            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
               公式LINEから申し込む
             </a>
           </div>
