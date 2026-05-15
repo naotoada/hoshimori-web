@@ -148,7 +148,7 @@ export default function GuideMap() {
             <h2 className={styles.levelName}>💫星守りの導きへようこそ</h2>
             <div className={styles.adviceText} style={{ textAlign: 'left', marginBottom: '2rem' }}>
               <p style={{ marginBottom: '1rem' }}>
-                この「星座マップ」は、九星教育論に基づき、お子さんの「心の土台（泉）」から「自立（天）」までを順番に育むためのサポートツールです。
+                この「星座マップ」は、星の成長プロセスに基づき、お子さんの「心の土台（泉）」から「自立（天）」までを順番に育むためのサポートツールです。
               </p>
               <p style={{ marginBottom: '0.5rem', fontWeight: 'bold', color: '#FBBF24' }}>
                 【使い方】
