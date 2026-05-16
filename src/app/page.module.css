@@ -198,6 +198,7 @@
 }
 
 .reportBox {
+  font-family: 'Nunito', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: linear-gradient(135deg, #0096C7, #005B82);
   border: none;
   border-radius: 30px;
@@ -448,6 +449,7 @@
 }
 
 .selfReportBox {
+  font-family: 'Nunito', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: linear-gradient(135deg, #4a0a7a, #7B20CC);
   border: none;
   border-radius: 30px;
