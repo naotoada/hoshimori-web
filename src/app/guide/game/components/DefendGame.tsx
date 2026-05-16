@@ -19,6 +19,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
   const [timeLeft, setTimeLeft] = useState(SURVIVE_TIME);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hasWon, setHasWon] = useState(false);
+  const [isCelebrating, setIsCelebrating] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const enemyIdCounter = useRef(0);
@@ -28,22 +29,31 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
 
   // Timer
   useEffect(() => {
-    if (isGameOver || hasWon) return;
+    if (isGameOver || hasWon || isCelebrating) return;
 
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
           hasWonRef.current = true;
-          setHasWon(true);
-          setEnemies([]);
           
-          const keys = Object.keys(CHARACTER_MAP);
-          const randomKey = keys[Math.floor(Math.random() * keys.length)];
-          const char = CHARACTER_MAP[randomKey];
-          setRewardChar({
-            name: char.name,
-            imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
-          });
+          setTimeout(() => {
+            setIsCelebrating(true);
+            setEnemies([]);
+            
+            const keys = Object.keys(CHARACTER_MAP);
+            const randomKey = keys[Math.floor(Math.random() * keys.length)];
+            const char = CHARACTER_MAP[randomKey];
+            setRewardChar({
+              name: char.name,
+              imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
+            });
+            
+            setTimeout(() => {
+              setIsCelebrating(false);
+              setHasWon(true);
+            }, 2500);
+          }, 0);
+          
           return 0;
         }
         return prev - 1;
@@ -51,11 +61,11 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isGameOver, hasWon]);
+  }, [isGameOver, hasWon, isCelebrating]);
 
   // Spawner
   useEffect(() => {
-    if (isGameOver || hasWon) return;
+    if (isGameOver || hasWon || isCelebrating) return;
 
     const spawnInterval = setInterval(() => {
       if (isGameOverRef.current || hasWonRef.current) return;
@@ -83,11 +93,11 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     }, 1200);
 
     return () => clearInterval(spawnInterval);
-  }, [isGameOver, hasWon]);
+  }, [isGameOver, hasWon, isCelebrating]);
 
   // Movement logic
   useEffect(() => {
-    if (isGameOver || hasWon) return;
+    if (isGameOver || hasWon || isCelebrating) return;
 
     let lastTime = performance.now();
     
@@ -135,7 +145,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     return () => {
       if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
     };
-  }, [isGameOver, hasWon]);
+  }, [isGameOver, hasWon, isCelebrating]);
 
   const tapEnemy = (id: number) => {
     if (isGameOverRef.current || hasWonRef.current) return;
@@ -147,6 +157,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     hasWonRef.current = false;
     setIsGameOver(false);
     setHasWon(false);
+    setIsCelebrating(false);
     setTimeLeft(SURVIVE_TIME);
     setEnemies([]);
     setRewardChar(null);
@@ -163,7 +174,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
         </div>
       </div>
 
-      {!isGameOver && !hasWon && (
+      {!isGameOver && !hasWon && !isCelebrating && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
           <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>
             迫ってくる雲をタッチして星を守れ！
@@ -190,7 +201,16 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
         </div>
       )}
 
-      {isGameOver && !hasWon && (
+      {isCelebrating && (
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ fontSize: '5rem', animation: 'bounceIn 1s ease', marginBottom: '1rem' }}>🌟</div>
+          <h2 style={{ fontSize: '3rem', color: '#FCD34D', animation: 'fadeInUp 0.8s ease-out', textShadow: '0 0 20px rgba(252, 211, 77, 0.8)', letterSpacing: '0.1em' }}>
+            CLEAR!!
+          </h2>
+        </div>
+      )}
+
+      {isGameOver && !hasWon && !isCelebrating && (
         <div className={styles.resultScreen}>
           <h2 style={{ fontSize: '2rem', color: '#F56565', marginBottom: '2rem' }}>ゲームオーバー...</h2>
           <p className={styles.praiseMessage}>
