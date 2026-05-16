@@ -282,17 +282,17 @@
 }
 
 .ctaArea .ctaButton {
-  background-color: #FFF;
-  color: #007EA7;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  background-color: #FFB800;
+  color: #1a1a2e;
+  box-shadow: 0 4px 15px rgba(255, 184, 0, 0.3);
 }
 
 .ctaArea .ctaButton:hover {
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 20px rgba(255, 184, 0, 0.5);
 }
 
 .ctaArea .ctaPriceTag {
-  color: #FFF;
+  color: #FFB800;
 }
 
 .ctaText {
