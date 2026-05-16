@@ -59,9 +59,9 @@ export default function Home() {
             <div className={styles.zukanContent}>
               <h2>📚 星守り図鑑</h2>
               <p>
-                水、木、火、土、金。<br/>
-                自然界のエレメントから生まれた、90種類の星守りたち。<br/>
-                ご自身やご家族の星を探してみてください。
+                「💧水・🌳木・🔥火・⛰️土・🪙金」<br/>
+                自然界のエレメントから生まれた、90種類の星守りたち💫<br/>
+                ご自身やご家族、友人の星を探してみてください💡
               </p>
               <Link href="/zukan" className={styles.zukanBtn}>
                 図鑑をひらく
