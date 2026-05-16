@@ -3,6 +3,7 @@ import { getCharacterImageUrl, getSuzuriDesignUrl, SUZURI_SHOP_URL } from '@/lib
 import { TRAITS_TABLE } from '@/lib/traits';
 import { getTopTraitText } from '@/lib/compatibility';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { marked } from 'marked';
 import ShareButtons from '@/components/ShareButtons';
 import styles from './page.module.css';
@@ -60,6 +61,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   const shareUrl = `https://hoshimori-web.vercel.app/hoshimori/${data.id}`;
 
   return (
+    <>
     <main className="container">
       <div className={styles.header}>
         <a href="/zukan" className={styles.backButton}>← 一覧へ戻る</a>
@@ -155,5 +157,11 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
         <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
       </div>
     </main>
+
+    <footer className={styles.footer}>
+      <Link href="/" className={styles.backLink}>← トップページに戻る</Link>
+      <p className={styles.copy}>© 2026 あだちなおと. All rights reserved.</p>
+    </footer>
+    </>
   );
 }

@@ -34,6 +34,7 @@ export default function ZukanIndex() {
   };
 
   return (
+    <>
     <main className="container">
       <div className={styles.header}>
         <Link href="/" className={styles.backButton}>← ホームへ</Link>
@@ -68,5 +69,11 @@ export default function ZukanIndex() {
         })}
       </div>
     </main>
+
+    <footer className={styles.footer}>
+      <Link href="/" className={styles.backLink}>← トップページに戻る</Link>
+      <p className={styles.copy}>© 2026 あだちなおと. All rights reserved.</p>
+    </footer>
+    </>
   );
 }

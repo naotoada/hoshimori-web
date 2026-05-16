@@ -355,3 +355,29 @@
   color: #fff;
   box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
 }
+
+.footer {
+  background: #5D4037;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.backLink {
+  color: #FFE4B5;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 16px;
+  transition: opacity 0.2s;
+}
+
+.backLink:hover {
+  opacity: 0.8;
+}
+
+.copy {
+  font-size: 0.8rem;
+  color: #8D6E63;
+}
+
