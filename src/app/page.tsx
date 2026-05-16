@@ -309,6 +309,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Oracle Section */}
+      <section className={styles.oracleSection} id="oracle">
+        <div className={styles.container}>
+          <div className={styles.oracleBox}>
+            <span className={styles.oracleBadge}>🔮 毎日引ける・何度でも引ける</span>
+            <h2>星守りの神託所</h2>
+            <p className={styles.oracleLead}>
+              今のあなたに必要な言葉を、星守りたちが伝えてくれます。<br/>
+              ちょっと疲れたとき、背中を押してほしいとき。<br className={styles.spOnly}/>
+              いつでもここに遊びにきてね。
+            </p>
+            <div className={styles.oracleButtons}>
+              <Link href="/oracle" className={styles.oracleBtn}>
+                星守り神託所へ行く
+              </Link>
+              <Link href="/guide" className={styles.oracleBtn}>
+                星守りの導きを見る
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.container}>
