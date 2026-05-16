@@ -40,7 +40,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     
     spinning.forEach((isSpinning, i) => {
       if (isSpinning) {
-        const speed = 100 + (i * 20);
+        const speed = 140 - (i * 20);
         intervals[i] = setInterval(() => {
           setSlots(prev => {
             const next = [...prev];
