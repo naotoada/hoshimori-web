@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import styles from '../page.module.css';
@@ -9,11 +9,11 @@ type ElementType = 'fire' | 'water' | 'wood';
 type FallingItem = {
   id: number;
   type: ElementType;
-  y: number;
+  speed: number;
   x: number;
 };
 
-const ELEMENT_EMOJIS = {
+const ELEMENT_EMOJIS: Record<ElementType, string> = {
   fire: '🔥',
   water: '💧',
   wood: '🍃'
@@ -25,88 +25,72 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   const [items, setItems] = useState<FallingItem[]>([]);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [feedback, setFeedback] = useState('');
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const itemIdCounter = useRef(0);
-  const gameLoopRef = useRef<number>(null);
 
-  // Spawner
+  // Spawn items using CSS animation for falling
   useEffect(() => {
     if (isGameOver) return;
 
     const spawnInterval = setInterval(() => {
       setItems(prev => {
-        if (prev.length >= 3) return prev; // Limit items on screen
+        if (prev.length >= 4) return prev;
         
         itemIdCounter.current += 1;
         const types: ElementType[] = ['fire', 'water', 'wood'];
         const newItem: FallingItem = {
           id: itemIdCounter.current,
           type: types[Math.floor(Math.random() * types.length)],
-          y: -10, // start above screen
-          x: Math.random() * 60 + 20, // 20% to 80%
+          speed: Math.random() * 1.5 + 3, // 3-4.5 seconds to fall
+          x: Math.random() * 60 + 20,
         };
         return [...prev, newItem];
       });
-    }, 1500);
+    }, 1200);
 
     return () => clearInterval(spawnInterval);
   }, [isGameOver]);
 
-  // Fall logic
+  // Cleanup items that have finished falling (animation ended)
   useEffect(() => {
     if (isGameOver) return;
-
-    let lastTime = performance.now();
-    
-    const update = (time: number) => {
-      const deltaTime = time - lastTime;
-      lastTime = time;
-      
-      setItems(prev => {
-        let missed = false;
-        const updated = prev.map(item => {
-          const newY = item.y + (deltaTime * 0.02); // Fall speed
-          if (newY > 100) missed = true;
-          return { ...item, y: newY };
-        }).filter(item => item.y <= 100);
-        
-        // If an item fell past the screen, penalize or ignore. Let's just ignore.
-        return updated;
-      });
-
-      gameLoopRef.current = requestAnimationFrame(update);
-    };
-
-    gameLoopRef.current = requestAnimationFrame(update);
-    
-    return () => {
-      if (gameLoopRef.current) cancelAnimationFrame(gameLoopRef.current);
-    };
+    const cleanup = setInterval(() => {
+      // Remove items older than 5 seconds (they've fallen off screen)
+      setItems(prev => prev.slice(-6));
+    }, 5000);
+    return () => clearInterval(cleanup);
   }, [isGameOver]);
 
-  const handleBinClick = (type: ElementType) => {
-    if (isGameOver || items.length === 0) return;
+  const handleBinClick = useCallback((type: ElementType) => {
+    if (isGameOver) return;
     
-    // Find the lowest item (closest to bottom)
-    const lowestItem = items.reduce((lowest, current) => {
-      return current.y > lowest.y ? current : lowest;
-    }, items[0]);
-
-    // If lowest item is at least 50% down the screen, allow catch
-    if (lowestItem.y > 40) {
-      if (lowestItem.type === type) {
-        // Correct catch!
-        setItems(prev => prev.filter(i => i.id !== lowestItem.id));
-        const newScore = score + 1;
-        setScore(newScore);
-        if (newScore >= TARGET_SCORE) handleWin();
+    setItems(prev => {
+      if (prev.length === 0) return prev;
+      
+      // Take the first (oldest) item — the one closest to the bottom
+      const targetItem = prev[0];
+      
+      if (targetItem.type === type) {
+        // Correct!
+        setScore(s => {
+          const newScore = s + 1;
+          if (newScore >= TARGET_SCORE) {
+            handleWin();
+          }
+          return newScore;
+        });
+        setFeedback('⭕️');
       } else {
-        // Wrong! Penalize slightly by removing it but no points.
-        setItems(prev => prev.filter(i => i.id !== lowestItem.id));
+        // Wrong
+        setFeedback('❌');
       }
-    }
-  };
+      
+      setTimeout(() => setFeedback(''), 400);
+      return prev.slice(1); // Remove the first item
+    });
+  }, [isGameOver]);
 
   const handleWin = () => {
     setIsGameOver(true);
@@ -124,6 +108,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     setScore(0);
     setIsGameOver(false);
     setItems([]);
+    setFeedback('');
   };
 
   return (
@@ -139,20 +124,33 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
 
       {!isGameOver && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
-          <div className={styles.instructions} style={{ position: 'absolute', top: '10px', width: '100%', textAlign: 'center' }}>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '70px', width: '100%', textAlign: 'center', zIndex: 5 }}>
             落ちてくるマークと同じボタンをおしてね！
           </div>
           
+          {/* Feedback indicator */}
+          {feedback && (
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              fontSize: '5rem',
+              zIndex: 20,
+              pointerEvents: 'none'
+            }}>
+              {feedback}
+            </div>
+          )}
+
           {items.map(item => (
             <div
               key={item.id}
-              className={styles.fallingElement}
+              className={styles.fallingStar}
               style={{
                 left: `${item.x}%`,
-                top: `${item.y}%`,
-                position: 'absolute',
-                fontSize: '3rem',
-                transform: 'translateX(-50%)'
+                animationDuration: `${item.speed}s`,
+                fontSize: '3.5rem'
               }}
             >
               {ELEMENT_EMOJIS[item.type]}
@@ -161,13 +159,13 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
 
           {/* Bins at bottom */}
           <div className={styles.binContainer}>
-            <button className={`${styles.binBtn} ${styles.binFire}`} onPointerDown={() => handleBinClick('fire')}>
+            <button className={`${styles.binBtn} ${styles.binFire}`} onClick={() => handleBinClick('fire')}>
               🔥
             </button>
-            <button className={`${styles.binBtn} ${styles.binWood}`} onPointerDown={() => handleBinClick('wood')}>
+            <button className={`${styles.binBtn} ${styles.binWood}`} onClick={() => handleBinClick('wood')}>
               🍃
             </button>
-            <button className={`${styles.binBtn} ${styles.binWater}`} onPointerDown={() => handleBinClick('water')}>
+            <button className={`${styles.binBtn} ${styles.binWater}`} onClick={() => handleBinClick('water')}>
               💧
             </button>
           </div>
