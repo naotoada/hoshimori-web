@@ -12,7 +12,7 @@ type Enemy = {
   speed: number;
 };
 
-const SURVIVE_TIME = 20; // 20 seconds to win
+const SURVIVE_TIME = 20;
 
 export default function DefendGame({ onBack }: { onBack: () => void }) {
   const [enemies, setEnemies] = useState<Enemy[]>([]);
@@ -22,7 +22,9 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const enemyIdCounter = useRef(0);
-  const gameLoopRef = useRef<number>(null);
+  const gameLoopRef = useRef<number | null>(null);
+  const isGameOverRef = useRef(false);
+  const hasWonRef = useRef(false);
 
   // Timer
   useEffect(() => {
@@ -31,7 +33,17 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          handleWin();
+          hasWonRef.current = true;
+          setHasWon(true);
+          setEnemies([]);
+          
+          const keys = Object.keys(CHARACTER_MAP);
+          const randomKey = keys[Math.floor(Math.random() * keys.length)];
+          const char = CHARACTER_MAP[randomKey];
+          setRewardChar({
+            name: char.name,
+            imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
+          });
           return 0;
         }
         return prev - 1;
@@ -46,40 +58,43 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     if (isGameOver || hasWon) return;
 
     const spawnInterval = setInterval(() => {
+      if (isGameOverRef.current || hasWonRef.current) return;
+      
       setEnemies(prev => {
         if (prev.length >= 8) return prev;
         
         enemyIdCounter.current += 1;
-        // Spawn randomly on edges
         let startX = 0;
         let startY = 0;
         const edge = Math.floor(Math.random() * 4);
-        if (edge === 0) { startX = Math.random() * 100; startY = -10; } // Top
-        else if (edge === 1) { startX = 110; startY = Math.random() * 100; } // Right
-        else if (edge === 2) { startX = Math.random() * 100; startY = 110; } // Bottom
-        else { startX = -10; startY = Math.random() * 100; } // Left
+        if (edge === 0) { startX = Math.random() * 80 + 10; startY = 0; }
+        else if (edge === 1) { startX = 100; startY = Math.random() * 80 + 10; }
+        else if (edge === 2) { startX = Math.random() * 80 + 10; startY = 100; }
+        else { startX = 0; startY = Math.random() * 80 + 10; }
 
         const newEnemy: Enemy = {
           id: enemyIdCounter.current,
           x: startX,
           y: startY,
-          speed: Math.random() * 0.1 + 0.1, // movement per frame
+          speed: 0.15 + Math.random() * 0.1,
         };
         return [...prev, newEnemy];
       });
-    }, 1000);
+    }, 1200);
 
     return () => clearInterval(spawnInterval);
   }, [isGameOver, hasWon]);
 
-  // Movement logic toward center (50, 50)
+  // Movement logic
   useEffect(() => {
     if (isGameOver || hasWon) return;
 
     let lastTime = performance.now();
     
     const update = (time: number) => {
-      const deltaTime = time - lastTime;
+      if (isGameOverRef.current || hasWonRef.current) return;
+      
+      const deltaTime = Math.min(time - lastTime, 50); // cap delta
       lastTime = time;
       
       setEnemies(prev => {
@@ -89,22 +104,30 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
           const dy = 50 - enemy.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           
-          if (dist < 5) hitCenter = true; // Hit center star!
+          if (dist < 6) hitCenter = true;
+          if (dist < 1) return enemy; // Prevent NaN
           
-          const moveX = (dx / dist) * enemy.speed * (deltaTime * 0.1);
-          const moveY = (dy / dist) * enemy.speed * (deltaTime * 0.1);
+          const moveX = (dx / dist) * enemy.speed * deltaTime * 0.06;
+          const moveY = (dy / dist) * enemy.speed * deltaTime * 0.06;
           
           return { ...enemy, x: enemy.x + moveX, y: enemy.y + moveY };
         });
 
-        if (hitCenter) {
-          handleLose();
+        if (hitCenter && !isGameOverRef.current) {
+          isGameOverRef.current = true;
+          // Schedule state update outside of setEnemies
+          setTimeout(() => {
+            setIsGameOver(true);
+            setEnemies([]);
+          }, 0);
         }
         
-        return updated;
+        return hitCenter ? prev : updated;
       });
 
-      gameLoopRef.current = requestAnimationFrame(update);
+      if (!isGameOverRef.current && !hasWonRef.current) {
+        gameLoopRef.current = requestAnimationFrame(update);
+      }
     };
 
     gameLoopRef.current = requestAnimationFrame(update);
@@ -115,37 +138,22 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
   }, [isGameOver, hasWon]);
 
   const tapEnemy = (id: number) => {
-    if (isGameOver || hasWon) return;
+    if (isGameOverRef.current || hasWonRef.current) return;
     setEnemies(prev => prev.filter(e => e.id !== id));
   };
 
-  const handleWin = () => {
-    setHasWon(true);
-    setEnemies([]);
-    
-    const keys = Object.keys(CHARACTER_MAP);
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    const char = CHARACTER_MAP[randomKey];
-    setRewardChar({
-      name: char.name,
-      imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
-    });
-  };
-
-  const handleLose = () => {
-    setIsGameOver(true);
-    setEnemies([]);
-  };
-
   const resetGame = () => {
+    isGameOverRef.current = false;
+    hasWonRef.current = false;
     setIsGameOver(false);
     setHasWon(false);
     setTimeLeft(SURVIVE_TIME);
     setEnemies([]);
+    setRewardChar(null);
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
           ◀ ゲーム選択に戻る
@@ -156,39 +164,39 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
       </div>
 
       {!isGameOver && !hasWon && (
-        <div className={styles.playArea} style={{ position: 'relative', overflow: 'hidden' }}>
-          <div className={styles.instructions} style={{ position: 'absolute', top: '10px', width: '100%', textAlign: 'center', zIndex: 10 }}>
-            迫ってくる黒い雲をタッチして、真ん中の星を守れ！
+        <div className={styles.playArea} style={{ position: 'relative' }}>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '80px', width: '100%', textAlign: 'center', zIndex: 5 }}>
+            迫ってくる雲をタッチして星を守れ！
           </div>
           
           {/* Center Star */}
-          <div 
-            className={styles.centerStar}
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              fontSize: '4rem',
-              animation: 'pulse 1s infinite'
-            }}
-          >
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            fontSize: '4rem',
+            filter: 'drop-shadow(0 0 20px rgba(245, 158, 11, 0.8))',
+            zIndex: 2
+          }}>
             ⭐️
           </div>
 
           {enemies.map(enemy => (
             <div
               key={enemy.id}
-              className={styles.defendEnemy}
               style={{
                 left: `${enemy.x}%`,
                 top: `${enemy.y}%`,
                 position: 'absolute',
                 fontSize: '2.5rem',
                 transform: 'translate(-50%, -50%)',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                userSelect: 'none',
+                zIndex: 3,
+                filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))'
               }}
-              onPointerDown={() => tapEnemy(enemy.id)}
+              onClick={() => tapEnemy(enemy.id)}
             >
               ☁️
             </div>

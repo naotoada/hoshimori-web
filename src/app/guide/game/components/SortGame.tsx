@@ -11,6 +11,7 @@ type FallingItem = {
   type: ElementType;
   speed: number;
   x: number;
+  createdAt: number;
 };
 
 const ELEMENT_EMOJIS: Record<ElementType, string> = {
@@ -29,8 +30,9 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const itemIdCounter = useRef(0);
+  const scoreRef = useRef(0);
 
-  // Spawn items using CSS animation for falling
+  // Spawn items
   useEffect(() => {
     if (isGameOver) return;
 
@@ -43,8 +45,9 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
         const newItem: FallingItem = {
           id: itemIdCounter.current,
           type: types[Math.floor(Math.random() * types.length)],
-          speed: Math.random() * 1.5 + 3, // 3-4.5 seconds to fall
+          speed: Math.random() * 1.5 + 3,
           x: Math.random() * 60 + 20,
+          createdAt: Date.now(),
         };
         return [...prev, newItem];
       });
@@ -53,13 +56,13 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     return () => clearInterval(spawnInterval);
   }, [isGameOver]);
 
-  // Cleanup items that have finished falling (animation ended)
+  // Cleanup old items
   useEffect(() => {
     if (isGameOver) return;
     const cleanup = setInterval(() => {
-      // Remove items older than 5 seconds (they've fallen off screen)
-      setItems(prev => prev.slice(-6));
-    }, 5000);
+      const now = Date.now();
+      setItems(prev => prev.filter(item => now - item.createdAt < 5000));
+    }, 2000);
     return () => clearInterval(cleanup);
   }, [isGameOver]);
 
@@ -69,26 +72,21 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     setItems(prev => {
       if (prev.length === 0) return prev;
       
-      // Take the first (oldest) item — the one closest to the bottom
       const targetItem = prev[0];
       
       if (targetItem.type === type) {
-        // Correct!
-        setScore(s => {
-          const newScore = s + 1;
-          if (newScore >= TARGET_SCORE) {
-            handleWin();
-          }
-          return newScore;
-        });
+        scoreRef.current += 1;
+        setScore(scoreRef.current);
         setFeedback('⭕️');
+        if (scoreRef.current >= TARGET_SCORE) {
+          setTimeout(() => handleWin(), 100);
+        }
       } else {
-        // Wrong
         setFeedback('❌');
       }
       
       setTimeout(() => setFeedback(''), 400);
-      return prev.slice(1); // Remove the first item
+      return prev.slice(1);
     });
   }, [isGameOver]);
 
@@ -106,13 +104,14 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
 
   const resetGame = () => {
     setScore(0);
+    scoreRef.current = 0;
     setIsGameOver(false);
     setItems([]);
     setFeedback('');
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
           ◀ ゲーム選択に戻る
@@ -124,15 +123,14 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
 
       {!isGameOver && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
-          <div className={styles.instructions} style={{ position: 'absolute', top: '70px', width: '100%', textAlign: 'center', zIndex: 5 }}>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '80px', width: '100%', textAlign: 'center', zIndex: 5 }}>
             落ちてくるマークと同じボタンをおしてね！
           </div>
           
-          {/* Feedback indicator */}
           {feedback && (
             <div style={{
               position: 'absolute',
-              top: '50%',
+              top: '45%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
               fontSize: '5rem',
@@ -157,7 +155,6 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
             </div>
           ))}
 
-          {/* Bins at bottom */}
           <div className={styles.binContainer}>
             <button className={`${styles.binBtn} ${styles.binFire}`} onClick={() => handleBinClick('fire')}>
               🔥

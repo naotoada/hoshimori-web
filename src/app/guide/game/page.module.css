@@ -10,6 +10,20 @@
   font-family: sans-serif;
 }
 
+/* Game screens: fixed, no scroll */
+.gameContainer {
+  height: 100vh;
+  background-color: #0B1120;
+  background-image: linear-gradient(rgba(11, 17, 32, 0.5), rgba(11, 17, 32, 0.8)), url('/images/calm_space_bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  color: #FFFDF9;
+  font-family: sans-serif;
+}
+
 .header {
   position: absolute;
   top: 0;

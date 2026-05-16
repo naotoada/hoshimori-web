@@ -119,7 +119,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
           ◀ ゲーム選択に戻る
