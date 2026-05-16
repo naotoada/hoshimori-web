@@ -8,7 +8,7 @@
   padding: 4rem 1rem;
   position: relative;
   overflow-x: hidden;
-  font-family: 'Zen Maru Gothic', 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
 }
 
 .bgEffects {
@@ -311,7 +311,7 @@
   justify-content: center;
   background-color: #0B1120;
   padding: 1rem;
-  font-family: 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
 }
 
 .loginCard {
