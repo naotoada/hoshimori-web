@@ -257,9 +257,9 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
           <button className={styles.replayBtn} onClick={startSpin}>
             もういっかい遊ぶ
           </button>
-          <Link href="/guide" className={styles.returnBtn}>
-            マップに戻る
-          </Link>
+          <button className={styles.returnBtn} onClick={onBack}>
+            ゲーム選択に戻る
+          </button>
         </div>
       )}
     </div>
