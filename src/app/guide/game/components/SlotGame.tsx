@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import styles from '../page.module.css';
@@ -29,6 +29,11 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const [celebrationPhase, setCelebrationPhase] = useState(0);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
 
+  // Use refs to track the final stopped values
+  const slotsRef = useRef([0, 1, 2]);
+  const stoppedCountRef = useRef(0);
+  const hasCheckedRef = useRef(false);
+
   useEffect(() => {
     const intervals: NodeJS.Timeout[] = [];
     
@@ -39,6 +44,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
           setSlots(prev => {
             const next = [...prev];
             next[i] = (next[i] + 1) % SLOT_EMOJIS.length;
+            slotsRef.current = next;
             return next;
           });
         }, speed);
@@ -60,20 +66,49 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     setMessage('');
     setRewardChar(null);
     setParticles([]);
+    stoppedCountRef.current = 0;
+    hasCheckedRef.current = false;
   };
 
   const stopSlot = (index: number) => {
+    if (!spinning[index]) return;
+    
     setSpinning(prev => {
       const next = [...prev];
       next[index] = false;
       return next;
     });
+
+    stoppedCountRef.current += 1;
+
+    // When all 3 are stopped, check result
+    if (stoppedCountRef.current === 3 && !hasCheckedRef.current) {
+      hasCheckedRef.current = true;
+      // Small delay to let the last interval clear and final slot value settle
+      setTimeout(() => checkResult(), 200);
+    }
   };
 
-  const startCelebration = useCallback(() => {
+  const checkResult = () => {
+    const s = slotsRef.current;
+    const allMatch = s[0] === s[1] && s[1] === s[2];
+    const twoMatch = s[0] === s[1] || s[1] === s[2] || s[0] === s[2];
+
+    if (allMatch) {
+      setMessage('');
+      setTimeout(() => startCelebration(), 300);
+    } else if (twoMatch) {
+      setMessage('おしい！あと1つだった！');
+      setTimeout(() => setIsMiss(true), 800);
+    } else {
+      setMessage('ざんねん…！もういっかい！');
+      setTimeout(() => setIsMiss(true), 800);
+    }
+  };
+
+  const startCelebration = () => {
     setIsCelebrating(true);
 
-    // Generate particles in waves
     const allParticles: Particle[] = [];
     for (let wave = 0; wave < 3; wave++) {
       for (let i = 0; i < 15; i++) {
@@ -89,38 +124,15 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     }
     setParticles(allParticles);
 
-    // Phase 1: Flash + "大当たり！"
     setCelebrationPhase(1);
-
-    // Phase 2: Bigger text
     setTimeout(() => setCelebrationPhase(2), 1200);
 
-    // Phase 3: Transition to result
     setTimeout(() => {
       setIsCelebrating(false);
       setParticles([]);
       handleWin();
     }, 3500);
-  }, []);
-
-  // Check result when all stopped
-  useEffect(() => {
-    if (hasStarted && !spinning.includes(true) && !isGameOver && !isMiss && !isCelebrating) {
-      const allMatch = slots[0] === slots[1] && slots[1] === slots[2];
-      const twoMatch = slots[0] === slots[1] || slots[1] === slots[2] || slots[0] === slots[2];
-
-      if (allMatch) {
-        setMessage('');
-        setTimeout(() => startCelebration(), 300);
-      } else if (twoMatch) {
-        setMessage('おしい！あと1つだった！');
-        setTimeout(() => setIsMiss(true), 800);
-      } else {
-        setMessage('ざんねん…！もういっかい！');
-        setTimeout(() => setIsMiss(true), 800);
-      }
-    }
-  }, [spinning, isGameOver, isMiss, hasStarted, isCelebrating, slots, startCelebration]);
+  };
 
   const handleWin = () => {
     setIsGameOver(true);
@@ -144,10 +156,8 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       {/* Celebration Overlay */}
       {isCelebrating && (
         <div className={styles.celebrationOverlay}>
-          {/* Screen flash */}
           <div className={styles.screenFlash} />
 
-          {/* Particles */}
           {particles.map(p => (
             <div
               key={p.id}
@@ -163,7 +173,6 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
             </div>
           ))}
 
-          {/* Center text */}
           <div className={styles.celebrationText}>
             {celebrationPhase >= 1 && (
               <div className={styles.jackpotText1}>
@@ -177,7 +186,6 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
             )}
           </div>
 
-          {/* Slot machine still visible behind */}
           <div className={styles.slotMachine} style={{ opacity: 0.3, position: 'relative', zIndex: 1 }}>
             {slots.map((slotValue, i) => (
               <div key={i} className={styles.slotColumn}>
@@ -219,9 +227,21 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
             </p>
           )}
 
-          {!spinning.includes(true) && (
+          {!spinning.includes(true) && !hasStarted && (
             <button className={styles.slotStartBtn} onClick={startSpin}>
-              {isMiss ? 'もういっかい！' : 'スピンスタート！'}
+              スピンスタート！
+            </button>
+          )}
+
+          {!spinning.includes(true) && isMiss && (
+            <button className={styles.slotStartBtn} onClick={startSpin}>
+              もういっかい！
+            </button>
+          )}
+
+          {!spinning.includes(true) && hasStarted && !isMiss && !message && (
+            <button className={styles.slotStartBtn} onClick={startSpin}>
+              スピンスタート！
             </button>
           )}
         </div>
