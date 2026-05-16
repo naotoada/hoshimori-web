@@ -667,7 +667,7 @@
 }
 
 .goodsBox {
-  background: linear-gradient(135deg, #FFCA28, #FF9800);
+  background: linear-gradient(135deg, #F59E0B, #D97706);
   border-radius: 30px;
   padding: 60px 40px;
   text-align: center;
@@ -731,7 +731,7 @@
 .goodsBtn {
   display: inline-block;
   background-color: #FFF;
-  color: #FF9800;
+  color: #D97706;
   font-weight: 900;
   padding: 18px 40px;
   border-radius: 40px;
