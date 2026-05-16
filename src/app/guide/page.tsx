@@ -102,7 +102,8 @@ export default function GuideMap() {
           <h1 className={styles.title}>星守りの導き</h1>
           <p className={styles.subtitle}>
             お子さまの成長を導く星のマップへようこそ。<br />
-            合言葉を入力して、扉を開いてください。
+            合言葉を入力して、扉を開いてください。<br/>
+            <span style={{ fontSize: '0.85em', opacity: 0.8 }}>（※お子さん向け星守りレポート購入者特典）</span>
           </p>
           
           <form onSubmit={handleLogin} style={{ width: '100%' }}>

@@ -80,7 +80,8 @@ export default function OraclePage() {
           </div>
           <p className={styles.subtitle} style={{ marginBottom: '2rem' }}>
             ここは星の声を聴く者だけが訪れる秘密の場所。<br/>
-            あなたに託された合言葉を入力してください。
+            あなたに託された合言葉を入力してください。<br/>
+            <span style={{ fontSize: '0.85em', opacity: 0.8 }}>（※星守りレポート購入者特典）</span>
           </p>
           <form onSubmit={handleLogin}>
             <input
