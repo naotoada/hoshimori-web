@@ -777,13 +777,21 @@
   font-size: 0.8rem;
   color: #8D6E63;
 }
-/* Oracle Section */
+/* Secret Oracle & Guide Cards */
 .oracleSection {
   padding: 80px 0;
   background-color: #FFF;
 }
 
-.oracleBox {
+.secretGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.secretCard {
   font-family: 'Nunito', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-image: 
     radial-gradient(circle at 100% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
@@ -791,65 +799,59 @@
     url('/images/calm_space_bg.png');
   background-size: cover, cover, cover;
   background-position: center, center, center;
-  border-radius: 30px;
-  padding: 60px 40px;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  box-shadow: 0 15px 40px rgba(11, 17, 32, 0.3);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.oracleBadge {
-  display: inline-block;
-  background: linear-gradient(135deg, #FFB347, #D97706);
-  color: #FFF;
-  font-weight: bold;
-  padding: 10px 28px;
   border-radius: 24px;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
-}
-
-.oracleBox h2 {
-  font-size: 2.2rem;
-  color: #F59E0B;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.2);
-}
-
-.oracleLead {
-  font-size: 1.05rem;
-  color: #FFFDF9;
-  margin-bottom: 30px;
-  line-height: 1.8;
-}
-
-.oracleButtons {
+  padding: 50px 30px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(11, 17, 32, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
 }
 
-.oracleBtn {
+.secretTitle {
+  font-size: 1.6rem;
+  color: #F59E0B;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.secretDoor {
+  font-size: 4.5rem;
+  margin-bottom: 40px;
+  animation: floatDoor 3s ease-in-out infinite, glowDoor 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatDoor {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes glowDoor {
+  from { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4)); }
+  to { filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.8)); }
+}
+
+.secretBtn {
   display: inline-block;
   background: linear-gradient(135deg, #FBBF24, #D97706);
   color: #1E293B;
   font-weight: 800;
   font-size: 1.1rem;
-  padding: 16px 36px;
+  padding: 14px 32px;
   border-radius: 30px;
   text-decoration: none;
   box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
   transition: transform 0.2s, box-shadow 0.2s;
-  min-width: 200px;
+  min-width: 180px;
 }
 
-.oracleBtn:hover {
+.secretBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(217, 119, 6, 0.6);
   background: linear-gradient(135deg, #FCD34D, #EA580C);
@@ -879,8 +881,13 @@
     font-size: 1.8rem;
   }
   
-  .diagnosisBox, .premiumBox, .reportBox, .selfReportBox, .compatBox, .oracleBox {
+  .diagnosisBox, .premiumBox, .reportBox, .selfReportBox, .compatBox, .secretCard {
     padding: 40px 20px;
+  }
+
+  .secretGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .reportFeatures, .selfReportFeatures {

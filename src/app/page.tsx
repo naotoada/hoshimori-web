@@ -309,23 +309,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Oracle Section */}
+      {/* Secret Oracle Section */}
       <section className={styles.oracleSection} id="oracle">
         <div className={styles.container}>
-          <div className={styles.oracleBox}>
-            <span className={styles.oracleBadge}>🔮 毎日引ける・何度でも引ける</span>
-            <h2>星守りの神託所</h2>
-            <p className={styles.oracleLead}>
-              今のあなたに必要な言葉を、星守りたちが伝えてくれます。<br/>
-              ちょっと疲れたとき、背中を押してほしいとき。<br className={styles.spOnly}/>
-              いつでもここに遊びにきてね。
-            </p>
-            <div className={styles.oracleButtons}>
-              <Link href="/oracle" className={styles.oracleBtn}>
-                星守り神託所へ行く
+          <div className={styles.secretGrid}>
+            <div className={styles.secretCard}>
+              <h2 className={styles.secretTitle}>🏛️ 星守り神託所</h2>
+              <div className={styles.secretDoor}>🚪</div>
+              <Link href="/oracle" className={styles.secretBtn}>
+                🗝️ 扉を開く
               </Link>
-              <Link href="/guide" className={styles.oracleBtn}>
-                星守りの導きを見る
+            </div>
+            <div className={styles.secretCard}>
+              <h2 className={styles.secretTitle}>💫 星守りの導き</h2>
+              <div className={styles.secretDoor}>🚪</div>
+              <Link href="/guide" className={styles.secretBtn}>
+                🗝️ 扉を開く
               </Link>
             </div>
           </div>
