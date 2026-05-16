@@ -94,7 +94,7 @@ export default function Home() {
               </p>
               <p>
                 星守りを通じて、才能が輝く「環境」を見つけてみませんか？<br/>
-                私たちは、<strong>心の構造を見える化する</strong>ための地図をお渡しします。
+                星守りレポートでは、<strong>心の構造を見える化する</strong>ための地図をお渡しします。
               </p>
             </div>
           </div>
