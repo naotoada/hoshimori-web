@@ -57,7 +57,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.zukanCard}>
             <div className={styles.zukanContent}>
-              <h2>📚 全90体の星守り図鑑</h2>
+              <h2>📚 星守り図鑑</h2>
               <p>
                 水、木、火、土、金。<br/>
                 自然界のエレメントから生まれた、90種類の星守りたち。<br/>
