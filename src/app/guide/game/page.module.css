@@ -7,7 +7,7 @@
   position: relative;
   overflow-y: auto;
   color: #FFFDF9;
-  font-family: sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
 }
 
 /* Game screens: fixed, no scroll */
@@ -21,7 +21,7 @@
   overflow: hidden;
   touch-action: none;
   color: #FFFDF9;
-  font-family: sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
 }
 
 .header {
