@@ -1,5 +1,5 @@
 .main {
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
   color: #4A4A4A;
   background-color: #FFFDF9;
   min-height: 100vh;
@@ -488,7 +488,7 @@
 }
 
 .ctaArea {
-  font-family: 'Nunito', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
   width: calc(100% - 40px);
   max-width: 700px;
   margin: 0 auto 60px;
@@ -515,7 +515,7 @@
 }
 
 .ctaAreaSelf {
-  font-family: 'Nunito', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
   width: calc(100% - 40px);
   max-width: 700px;
   margin: 50px auto 24px;
