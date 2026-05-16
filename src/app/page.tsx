@@ -40,7 +40,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.compatBox}>
             <span className={styles.compatBadge}>⭐ 無料でなかよし度がわかる</span>
-            <h2>ふたりのなかよし診断</h2>
+            <h2>星守りなかよし診断</h2>
             <p className={styles.compatLead}>
               生年月日をふたり分入力するだけで、なかよし度がその場でわかるよ！<br/>
               親子・きょうだい・お友だち——どんな関係でもOK。
