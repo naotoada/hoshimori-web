@@ -1,11 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  // ゲーム画面では全体ヘッダーを非表示にする
+  if (pathname?.startsWith('/guide/game')) {
+    return null;
+  }
 
   const handleLinkClick = () => {
     setIsOpen(false);
