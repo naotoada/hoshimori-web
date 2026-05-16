@@ -57,13 +57,19 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
   const catchStar = (id: number) => {
     if (isGameOver || isCelebrating) return;
     
+    const targetStar = stars.find(s => s.id === id);
+    if (!targetStar) return;
+
     setStars(prev => prev.filter(s => s.id !== id));
     
-    const newScore = score + 1;
-    setScore(newScore);
+    const starEmojis = ['✨', '⭐️', '🌟', '💫'];
+    if (starEmojis.includes(targetStar.emoji)) {
+      const newScore = score + 1;
+      setScore(newScore);
 
-    if (newScore >= TARGET_SCORE) {
-      handleWin();
+      if (newScore >= TARGET_SCORE) {
+        handleWin();
+      }
     }
   };
 
