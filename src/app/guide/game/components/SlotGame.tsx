@@ -11,6 +11,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const [slots, setSlots] = useState([0, 1, 2]); // Indices of EMOJIS
   const [spinning, setSpinning] = useState([false, false, false]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const startSpin = () => {
     setSpinning([true, true, true]);
     setIsGameOver(false);
+    setHasStarted(true);
     setRewardChar(null);
   };
 
@@ -50,14 +52,11 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
 
   // Check win condition when all stopped
   useEffect(() => {
-    if (!spinning.includes(true) && !isGameOver && slots.length === 3) {
+    if (hasStarted && !spinning.includes(true) && !isGameOver && slots.length === 3) {
       // Game just ended
-      const hasSpunBefore = slots.some(s => s > 0); // basic check if actually played
-      if (hasSpunBefore) {
-        setTimeout(() => handleWin(), 800);
-      }
+      setTimeout(() => handleWin(), 800);
     }
-  }, [spinning, isGameOver, slots]);
+  }, [spinning, isGameOver, slots, hasStarted]);
 
   const handleWin = () => {
     setIsGameOver(true);
