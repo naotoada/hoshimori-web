@@ -76,10 +76,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.conceptGrid}>
             <div className={styles.conceptImage}>
-              {/* Placeholder for a warm, cute illustration */}
-              <div className={styles.conceptImagePlaceholder}>
-                🌟
-              </div>
+              <img src="/images/star_magic_book.png" alt="星守りの魔法の本" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }} />
             </div>
             <div className={styles.conceptText}>
               <h2 style={{ textAlign: 'center' }}>「あなたの星」と「今の環境」、<br/>ズレていませんか？</h2>
