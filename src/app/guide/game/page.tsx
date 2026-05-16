@@ -28,13 +28,10 @@ export default function GameHub() {
         <title>星守りの導き | ミニゲーム</title>
       </Head>
 
-      <div className={styles.header}>
-        <Link href="/guide" className={styles.backBtn}>
+      <div className={styles.menuContainer}>
+        <Link href="/guide" className={styles.menuBackBtn}>
           ◀ マップに戻る
         </Link>
-      </div>
-
-      <div className={styles.menuContainer}>
         <h1 className={styles.menuTitle}>あそぶゲームをえらんでね！</h1>
         
         <div className={styles.menuGrid}>
