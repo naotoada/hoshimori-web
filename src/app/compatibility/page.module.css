@@ -480,15 +480,15 @@
   margin: 0 auto 60px;
   padding: 40px 30px;
   text-align: center;
-  background: linear-gradient(135deg, #48CAE4, #0096C7);
+  background: linear-gradient(135deg, #0096C7, #005B82);
   border-radius: 16px;
   color: #fff;
-  box-shadow: 0 15px 40px rgba(0, 150, 199, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 91, 130, 0.2);
 }
 
 .ctaArea .ctaButton {
   background-color: #FFF;
-  color: #0096C7;
+  color: #007EA7;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
