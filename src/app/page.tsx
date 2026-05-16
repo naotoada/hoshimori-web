@@ -59,8 +59,8 @@ export default function Home() {
             <div className={styles.zukanContent}>
               <h2>📚 星守り図鑑</h2>
               <p>
-                「💧水・🌏大地・⚡️雷・🍃風・👑帝・🌌天・🍎果実・⛰️山・🔥火」<br/>
-                自然界のエレメントから生まれた、90種類の星守りたち💫<br/>
+                💧水・🌏大地・⚡️雷・🍃風・👑帝・🌌天・🍎果実・⛰️山・🔥火<br/>
+                星のエレメントから生まれた、90種類の星守りたち💫<br/>
                 ご自身やご家族、友人の星を探してみてください💡
               </p>
               <Link href="/zukan" className={styles.zukanBtn}>
