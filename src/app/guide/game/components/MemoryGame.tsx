@@ -157,11 +157,9 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       )}
 
       {isCelebrating && (
-        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ fontSize: '5rem', animation: 'bounceIn 1s ease', marginBottom: '1rem' }}>🌟</div>
-          <h2 style={{ fontSize: '3rem', color: '#FCD34D', animation: 'fadeInUp 0.8s ease-out', textShadow: '0 0 20px rgba(252, 211, 77, 0.8)', letterSpacing: '0.1em' }}>
-            CLEAR!!
-          </h2>
+        <div className={styles.clearOverlay}>
+          <div className={styles.clearIcon}>🌟</div>
+          <h2 className={styles.clearText}>CLEAR!!</h2>
         </div>
       )}
 

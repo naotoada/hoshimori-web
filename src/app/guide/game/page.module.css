@@ -196,6 +196,52 @@
   100% { transform: scale(1); }
 }
 
+/* --- Common Clear Celebration --- */
+.clearOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 17, 32, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.clearIcon {
+  font-size: 6.5rem;
+  margin-bottom: 1.5rem;
+  animation: spinScale 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  filter: drop-shadow(0 0 25px rgba(253, 224, 71, 0.9));
+}
+
+.clearText {
+  font-size: 3.5rem;
+  color: #FDE047;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 30px rgba(253, 224, 71, 0.8), 0 0 10px rgba(253, 224, 71, 0.5);
+  animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spinScale {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
 /* --- Game Menu Styles --- */
 .menuContainer {
   padding: 2rem 1.5rem 2rem;
