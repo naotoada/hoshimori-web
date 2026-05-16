@@ -195,7 +195,7 @@
 }
 
 .reportBox {
-  background: linear-gradient(135deg, #4a0a7a, #7B20CC);
+  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
   border: none;
   border-radius: 30px;
   padding: 60px 40px;
@@ -203,7 +203,7 @@
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
+  box-shadow: 0 15px 40px rgba(13, 79, 92, 0.2);
 }
 
 .reportBadge {
@@ -445,7 +445,7 @@
 }
 
 .selfReportBox {
-  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
+  background: linear-gradient(135deg, #4a0a7a, #7B20CC);
   border: none;
   border-radius: 30px;
   padding: 60px 40px;
@@ -453,7 +453,7 @@
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  box-shadow: 0 15px 40px rgba(13, 79, 92, 0.2);
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
 }
 
 .selfReportBadge {
