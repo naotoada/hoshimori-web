@@ -184,7 +184,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
           <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
           <p className={styles.praiseMessage}>
-            すごい！<br/>上手にわけられたね！
+            すごい！<br/>上手にあわせられたね！
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
             もういっかい遊ぶ
