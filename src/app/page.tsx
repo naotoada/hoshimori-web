@@ -82,17 +82,18 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.conceptText}>
-              <h2>「努力不足」ではなく、<br/>「環境との不一致」でした。</h2>
+              <h2>あなたの星と今の環境、<br/>ズレていませんか？</h2>
               <p>
                 「何度言っても伝わらない」「なぜか上手くいかない」…<br/>
-                子育てでも、職場でも、パートナーとの関係でも——そんな経験はありませんか？
+                子育てでも、職場でも、パートナーとの関係でも——そんな経験はありませんか？<br/>
+                それは、あなたが「生まれ持った星」と「今いる環境」のズレが原因かもしれません。
               </p>
               <p>
                 すべての人は、全く異なる「心の構造（星守り）」を持って生まれてきます。<br/>
                 活発に動きたい『火の星』に「じっとしなさい」と言い続けるのは、魚に木登りをさせるようなもの。
               </p>
               <p>
-                星守りを通じて、自分やお子様の才能が伸びる「環境」を見つけてみませんか。<br/>
+                星守りを通じて、才能が輝く「環境」を見つけてみませんか？<br/>
                 私たちは、<strong>心の構造を見える化する</strong>ための地図をお渡しします。
               </p>
             </div>
@@ -227,26 +228,6 @@ export default function Home() {
       </section>
 
 
-
-      {/* Premium Service Section (CHILD_FULL: ¥33,000) */}
-      <section className={styles.premiumSection}>
-        <div className={styles.container}>
-          <div className={styles.premiumBox}>
-            <span className={styles.premiumBadge}>Premium</span>
-            <h2>星守りカルテ<br/>【完全版】</h2>
-            <p className={styles.premiumLead}>
-              星守りレポートでは伝えきれない「親子の構造的な相性」「お名前の力」「お部屋の環境診断」まで——<br/>
-              お子様を取り巻く<strong>環境のすべて</strong>を構造的に解析した、100ページを超える人生の設計図。<br/>
-              物理バインダーに製本してお届けする、世界にひとつだけの一冊です。
-            </p>
-            <div className={styles.premiumPrice}>¥33,000 <span>(税込)</span></div>
-            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn}>
-              公式LINEから詳細を見る
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className={styles.faqSection} id="faq">
         <div className={styles.container}>
@@ -271,14 +252,6 @@ export default function Home() {
               </p>
             </details>
 
-            <details className={styles.faqItem}>
-              <summary className={styles.faqQuestion}>星守りレポートと星守りカルテ（完全版）の違いは？</summary>
-              <p className={styles.faqAnswer}>
-                星守りレポートは<strong>お子様の星守りタイプそのものの深掘り</strong>（才能・SOS・関わり方・今年の運勢）に特化した1冊です。
-                星守りカルテ（完全版）は、それに加えて<strong>親子の構造的な相性診断</strong>、<strong>お名前に刻まれた力の分析</strong>、
-                <strong>お部屋の環境診断と補正マニュアル</strong>まで、お子様を取り巻く環境すべてを網羅した100ページ超の物理製本レポートです。
-              </p>
-            </details>
 
             <details className={styles.faqItem}>
               <summary className={styles.faqQuestion}>何歳から何歳まで対象ですか？</summary>
