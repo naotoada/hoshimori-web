@@ -90,9 +90,14 @@
 @keyframes fall {
   from {
     transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
   }
   to {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(65vh) rotate(360deg);
+    opacity: 0;
   }
 }
 
@@ -279,12 +284,13 @@
 }
 .binContainer {
   position: absolute;
-  bottom: 30px;
+  bottom: 100px;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  z-index: 10;
 }
 .binBtn {
   width: 70px;

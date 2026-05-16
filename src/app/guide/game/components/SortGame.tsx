@@ -56,15 +56,10 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     return () => clearInterval(spawnInterval);
   }, [isGameOver]);
 
-  // Cleanup old items
-  useEffect(() => {
-    if (isGameOver) return;
-    const cleanup = setInterval(() => {
-      const now = Date.now();
-      setItems(prev => prev.filter(item => now - item.createdAt < 5000));
-    }, 2000);
-    return () => clearInterval(cleanup);
-  }, [isGameOver]);
+  // Remove item when its fall animation ends
+  const handleAnimationEnd = (id: number) => {
+    setItems(prev => prev.filter(item => item.id !== id));
+  };
 
   const handleBinClick = useCallback((type: ElementType) => {
     if (isGameOver) return;
@@ -150,6 +145,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
                 animationDuration: `${item.speed}s`,
                 fontSize: '3.5rem'
               }}
+              onAnimationEnd={() => handleAnimationEnd(item.id)}
             >
               {ELEMENT_EMOJIS[item.type]}
             </div>
