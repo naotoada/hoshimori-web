@@ -44,9 +44,9 @@ export default function GameHub() {
 
           {/* Sort Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('sort')}>
-            <div className={styles.gameIcon}>🔥</div>
-            <h2 className={styles.gameName}>属性仕分けアクション</h2>
-            <p className={styles.gameDesc}>落ちてくるマークと同じボタンを素早くおそう！</p>
+            <div className={styles.gameIcon}>🔮</div>
+            <h2 className={styles.gameName}>まほうのしるし合わせ</h2>
+            <p className={styles.gameDesc}>落ちてくるしるしと同じボタンを素早くおそう！</p>
           </div>
 
           {/* Defend Game */}
