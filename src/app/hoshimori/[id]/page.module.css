@@ -256,6 +256,19 @@
   box-shadow: 0 6px 20px rgba(255, 184, 0, 0.6);
 }
 
+.reportBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFB347, #D97706);
+  color: #FFF;
+  font-weight: bold;
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
 .ctaArea {
   width: calc(100% - 40px);
   max-width: 700px;

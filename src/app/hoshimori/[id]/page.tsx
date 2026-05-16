@@ -139,6 +139,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       )}
       
       <div className={styles.ctaAreaSelf}>
+        <span className={styles.reportBadge}>📝 大人のための星守り</span>
         <p className={styles.ctaText}>
           こちらの内容は「星守り」のほんの一部です。<br/>
           才能の活かし方・人間関係の処方箋・今年のナビゲーションまで、<br className={styles.spOnly}/>全5章のパーソナルレポートをお届けします。
@@ -148,7 +149,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       </div>
 
       <div className={styles.ctaArea}>
-        
+        <span className={styles.reportBadge}>📝 星守りレポート</span>
         <p className={styles.ctaText}>
           子供向けの「取扱説明書」もあります。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。

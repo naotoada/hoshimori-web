@@ -227,6 +227,7 @@ function ResultView({ result }: { result: CompatResult }) {
       <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守りなかよし診断']} />
 
       <div className={styles.ctaAreaSelf}>
+        <span className={styles.reportBadge}>📝 大人のための星守り</span>
         <p className={styles.ctaText}>
           相手との関係をもっと深めたい大人の方へ。<br/>
           大人のあなた自身の「取扱説明書（星守りレポート）」で、<br className={styles.spOnly}/>人間関係の処方箋や、才能の活かし方を<br className={styles.spOnly}/>詳しく知ることができます。
@@ -236,6 +237,7 @@ function ResultView({ result }: { result: CompatResult }) {
       </div>
 
       <div className={styles.ctaArea}>
+        <span className={styles.reportBadge}>📝 星守りレポート</span>
         <p className={styles.ctaText}>
           子育てのヒントをもっと知りたい方へ。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>すれ違いの乗りこえ方や、毎日の声かけのコツ、<br className={styles.spOnly}/>才能の伸ばし方をお届けします。
