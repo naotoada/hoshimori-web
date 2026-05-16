@@ -36,6 +36,12 @@ function PersonForm({
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
+  // Emoji map for star groups
+  const starEmoji: Record<string, string> = {
+    '水の星': '💧', '大地の星': '🌏', '雷の星': '⚡️', '風の星': '🍃',
+    '帝の星': '👑', '天の星': '🌌', '果実の星': '🍎', '山の星': '⛰️', '火の星': '🔥',
+  };
+
   // Build sorted character list for dropdown
   const charList = Object.entries(CHARACTER_MAP)
     .filter(([, v]) => v.name)
@@ -122,7 +128,7 @@ function PersonForm({
               <option value="">星守りを選んでね</option>
               {charList.map(([id, char]) => (
                 <option key={id} value={id}>
-                  {STAR_NAMES[parseInt(id.split('_')[0])]} — {char.name}
+                  {starEmoji[STAR_NAMES[parseInt(id.split('_')[0])]] || ''}{STAR_NAMES[parseInt(id.split('_')[0])]}「{char.name}」
                 </option>
               ))}
             </select>
