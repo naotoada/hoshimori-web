@@ -82,7 +82,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.conceptText}>
-              <h2>あなたの星と今の環境、<br/>ズレていませんか？</h2>
+              <h2 style={{ textAlign: 'center' }}>「あなたの星」と「今の環境」、<br/>ズレていませんか？</h2>
               <p>
                 「何度言っても伝わらない」「なぜか上手くいかない」…<br/>
                 子育てでも、職場でも、パートナーとの関係でも——そんな経験はありませんか？<br/>
