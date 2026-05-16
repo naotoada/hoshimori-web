@@ -207,7 +207,7 @@ export default function GuideMap() {
         ) : (
           <div className={styles.unlockedArea}>
             <div className={styles.unlockedMessage}>
-              <div style={{ fontSize: '4rem', marginBottom: '1rem', animation: 'fadeInUp 0.8s ease-out' }}>💮</div>
+              <div style={{ fontSize: '5.5rem', marginBottom: '1rem', animation: 'fadeInUp 0.8s ease-out' }}>🌸</div>
               ✨ 星の扉が開きました！ ✨<br/>
               <span style={{ fontSize: '1.2rem', display: 'inline-block', marginTop: '1rem', fontWeight: 'bold', color: '#FFFDF9', lineHeight: '1.5' }}>
                 {levelInfo?.praise}
