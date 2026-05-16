@@ -51,6 +51,12 @@ export default function Header() {
             <Link href="/#self-report" className={styles.menuLink} onClick={handleLinkClick}>
               📝 星守りレポート
             </Link>
+            <Link href="/oracle" className={styles.menuLink} onClick={handleLinkClick}>
+              🏛️ 星守り神託所
+            </Link>
+            <Link href="/guide" className={styles.menuLink} onClick={handleLinkClick}>
+              💫 星守りの導き
+            </Link>
             <a
               href="https://suzuri.jp/hoshimori-official"
               target="_blank"
