@@ -207,7 +207,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       )}
 
       {!isGameOver && !isCelebrating && (
-        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '15vh' }}>
           <div className={styles.instructions} style={{ position: 'static', marginBottom: '2rem' }}>
             3つ揃えたら星守りが出てくるよ！
           </div>
