@@ -138,7 +138,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       
       <div className={styles.ctaAreaSelf}>
         <p className={styles.ctaText}>
-          大人のあなた自身の「取扱説明書」もあります。<br/>
+          こちらの内容は「星守り」のほんの一部です。<br/>
           才能の活かし方・人間関係の処方箋・今年のナビゲーションまで、<br className={styles.spOnly}/>全5章のパーソナルレポートをお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥3,980<span>（税込）</span></div>
@@ -148,7 +148,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
       <div className={styles.ctaArea}>
         
         <p className={styles.ctaText}>
-          こちらの内容は「星守り」のほんの一部です。<br/>
+          子供向けの「取扱説明書」もあります。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
