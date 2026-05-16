@@ -367,6 +367,47 @@
   user-select: none;
 }
 
+.defendCenterStar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  z-index: 2;
+  filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.8));
+  animation: starSway 2s ease-in-out infinite;
+}
+
+@keyframes starSway {
+  0% { transform: translate(-50%, -50%) rotate(-8deg); }
+  25% { transform: translate(-50%, -50%) rotate(8deg); }
+  50% { transform: translate(-50%, -50%) rotate(-5deg); }
+  75% { transform: translate(-50%, -50%) rotate(6deg); }
+  100% { transform: translate(-50%, -50%) rotate(-8deg); }
+}
+
+.defendCloud {
+  position: absolute;
+  font-size: 3.5rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  user-select: none;
+  z-index: 3;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+  animation: cloudPulse 1.2s ease-in-out infinite;
+}
+
+.defendCloud:active {
+  opacity: 0.3;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+@keyframes cloudPulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
 /* --- Celebration (Slot Jackpot) --- */
 .celebrationOverlay {
   position: absolute;

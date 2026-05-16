@@ -170,31 +170,17 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
           </div>
           
           {/* Center Star */}
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            fontSize: '4rem',
-            filter: 'drop-shadow(0 0 20px rgba(245, 158, 11, 0.8))',
-            zIndex: 2
-          }}>
+          <div className={styles.defendCenterStar}>
             ⭐️
           </div>
 
           {enemies.map(enemy => (
             <div
               key={enemy.id}
+              className={styles.defendCloud}
               style={{
                 left: `${enemy.x}%`,
                 top: `${enemy.y}%`,
-                position: 'absolute',
-                fontSize: '2.5rem',
-                transform: 'translate(-50%, -50%)',
-                cursor: 'pointer',
-                userSelect: 'none',
-                zIndex: 3,
-                filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))'
               }}
               onClick={() => tapEnemy(enemy.id)}
             >
