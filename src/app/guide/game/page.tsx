@@ -38,35 +38,35 @@ export default function GameHub() {
           {/* Catch Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('catch')}>
             <div className={styles.gameIcon}>✨</div>
-            <h2 className={styles.gameName}>お星さまキャッチ</h2>
+            <h2 className={styles.gameName} style={{ color: '#FDE047' }}>お星さまキャッチ</h2>
             <p className={styles.gameDesc}>落ちてくる星をタッチして、たくさん集めよう！</p>
           </div>
 
           {/* Sort Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('sort')}>
             <div className={styles.gameIcon}>🔮</div>
-            <h2 className={styles.gameName}>魔法のしるし合わせ</h2>
+            <h2 className={styles.gameName} style={{ color: '#E879F9' }}>魔法のしるし合わせ</h2>
             <p className={styles.gameDesc}>落ちてくるしるしと同じボタンを素早くおそう！</p>
           </div>
 
           {/* Defend Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('defend')}>
             <div className={styles.gameIcon}>☁️</div>
-            <h2 className={styles.gameName}>迷いを払う！星の防衛戦</h2>
+            <h2 className={styles.gameName} style={{ color: '#7DD3FC' }}>迷いを払う！星の防衛戦</h2>
             <p className={styles.gameDesc}>迫ってくる雲をタッチして、真ん中の星を守り抜け！</p>
           </div>
 
           {/* Memory Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('memory')}>
             <div className={styles.gameIcon}>⭐️</div>
-            <h2 className={styles.gameName}>星座の記憶つなぎ</h2>
+            <h2 className={styles.gameName} style={{ color: '#6EE7B7' }}>星座の記憶つなぎ</h2>
             <p className={styles.gameDesc}>光った星の順番をおぼえて、おなじようにタッチしよう！</p>
           </div>
 
           {/* Slot Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('slot')}>
             <div className={styles.gameIcon}>🎰</div>
-            <h2 className={styles.gameName}>魔法の星守りスロット</h2>
+            <h2 className={styles.gameName} style={{ color: '#FCA5A5' }}>魔法の星守りスロット</h2>
             <p className={styles.gameDesc}>タイミングよくボタンをおして、ルーレットをとめてね！</p>
           </div>
         </div>
