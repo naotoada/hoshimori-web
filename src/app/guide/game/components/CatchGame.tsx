@@ -110,7 +110,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
               {star.emoji}
             </div>
           ))}
-          <div className={styles.instructions}>落ちてくる星をタッチしてね！</div>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>落ちてくる星をタッチしてね！</div>
         </div>
       )}
 

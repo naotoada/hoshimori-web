@@ -165,7 +165,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
 
       {!isGameOver && !hasWon && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
-          <div className={styles.instructions} style={{ position: 'absolute', top: '80px', width: '100%', textAlign: 'center', zIndex: 5 }}>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>
             迫ってくる雲をタッチして星を守れ！
           </div>
           
