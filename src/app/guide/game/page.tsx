@@ -66,7 +66,7 @@ export default function GameHub() {
           {/* Slot Game */}
           <div className={styles.gameCard} onClick={() => setActiveGame('slot')}>
             <div className={styles.gameIcon}>🎰</div>
-            <h2 className={styles.gameName} style={{ color: '#FCA5A5' }}>魔法の星守りスロット</h2>
+            <h2 className={styles.gameName} style={{ color: '#FCA5A5' }}>星のルーレット</h2>
             <p className={styles.gameDesc}>タイミングよくボタンをおして、ルーレットをとめてね！</p>
           </div>
         </div>
