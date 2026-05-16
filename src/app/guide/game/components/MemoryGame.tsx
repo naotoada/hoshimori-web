@@ -14,12 +14,13 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
   const [activeStar, setActiveStar] = useState<number | null>(null);
   const [level, setLevel] = useState(1);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [isCelebrating, setIsCelebrating] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   const [message, setMessage] = useState('星の順番をおぼえてね！');
 
   // Generate sequence for current level
   useEffect(() => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
     
     // Level 1 = 3 stars, Level 2 = 4 stars, Level 3 = 5 stars
     const targetLength = level + 2;
@@ -28,11 +29,11 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       setSequence(newSeq);
       setPlayerSequence([]);
     }
-  }, [level, isGameOver, sequence.length]);
+  }, [level, isGameOver, isCelebrating, sequence.length]);
 
   // Play sequence
   useEffect(() => {
-    if (sequence.length === 0 || isGameOver) return;
+    if (sequence.length === 0 || isGameOver || isCelebrating) return;
     
     let isMounted = true;
     const playSeq = async () => {
@@ -59,10 +60,10 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     playSeq();
     
     return () => { isMounted = false; };
-  }, [sequence, isGameOver]);
+  }, [sequence, isGameOver, isCelebrating]);
 
   const handleStarClick = (index: number) => {
-    if (isPlayingSequence || isGameOver) return;
+    if (isPlayingSequence || isGameOver || isCelebrating) return;
     
     const newPlayerSeq = [...playerSequence, index];
     setPlayerSequence(newPlayerSeq);
@@ -100,7 +101,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
   };
 
   const handleWin = () => {
-    setIsGameOver(true);
+    setIsCelebrating(true);
     const keys = Object.keys(CHARACTER_MAP);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const char = CHARACTER_MAP[randomKey];
@@ -108,6 +109,11 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       name: char.name,
       imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
+
+    setTimeout(() => {
+      setIsCelebrating(false);
+      setIsGameOver(true);
+    }, 2500);
   };
 
   const resetGame = () => {
@@ -115,6 +121,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     setSequence([]);
     setPlayerSequence([]);
     setIsGameOver(false);
+    setIsCelebrating(false);
     setMessage('星の順番をおぼえてね！');
   };
 
@@ -129,7 +136,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
         </div>
       </div>
 
-      {!isGameOver && (
+      {!isGameOver && !isCelebrating && (
         <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div className={styles.instructions} style={{ position: 'static', marginBottom: '2rem', fontSize: '1.2rem', textAlign: 'center' }}>
             {message}
@@ -149,7 +156,16 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
         </div>
       )}
 
-      {isGameOver && rewardChar && (
+      {isCelebrating && (
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ fontSize: '5rem', animation: 'bounceIn 1s ease', marginBottom: '1rem' }}>🌟</div>
+          <h2 style={{ fontSize: '3rem', color: '#FCD34D', animation: 'fadeInUp 0.8s ease-out', textShadow: '0 0 20px rgba(252, 211, 77, 0.8)', letterSpacing: '0.1em' }}>
+            CLEAR!!
+          </h2>
+        </div>
+      )}
+
+      {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
           <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>

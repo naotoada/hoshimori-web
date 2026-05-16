@@ -19,12 +19,14 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
   const [stars, setStars] = useState<Star[]>([]);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [hasWon, setHasWon] = useState(false);
+  const [isCelebrating, setIsCelebrating] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const starIdCounter = useRef(0);
 
   useEffect(() => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
 
     const interval = setInterval(() => {
       setStars((prev) => {
@@ -42,18 +44,18 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
     }, 600);
 
     return () => clearInterval(interval);
-  }, [isGameOver]);
+  }, [isGameOver, isCelebrating]);
 
   useEffect(() => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
     const cleanup = setInterval(() => {
       setStars(prev => prev.slice(-5));
     }, 4000);
     return () => clearInterval(cleanup);
-  }, [isGameOver]);
+  }, [isGameOver, isCelebrating]);
 
   const catchStar = (id: number) => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
     
     setStars(prev => prev.filter(s => s.id !== id));
     
@@ -66,7 +68,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
   };
 
   const handleWin = () => {
-    setIsGameOver(true);
+    setIsCelebrating(true);
     setStars([]);
     
     const keys = Object.keys(CHARACTER_MAP);
@@ -76,11 +78,17 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
       name: char.name,
       imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
+
+    setTimeout(() => {
+      setIsCelebrating(false);
+      setIsGameOver(true);
+    }, 2500);
   };
 
   const resetGame = () => {
     setScore(0);
     setIsGameOver(false);
+    setIsCelebrating(false);
     setStars([]);
   };
 
@@ -95,7 +103,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
         </div>
       </div>
 
-      {!isGameOver && (
+      {!isGameOver && !isCelebrating && (
         <div className={styles.playArea}>
           {stars.map((star) => (
             <div
@@ -114,7 +122,16 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
         </div>
       )}
 
-      {isGameOver && rewardChar && (
+      {isCelebrating && (
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ fontSize: '5rem', animation: 'bounceIn 1s ease', marginBottom: '1rem' }}>🌟</div>
+          <h2 style={{ fontSize: '3rem', color: '#FCD34D', animation: 'fadeInUp 0.8s ease-out', textShadow: '0 0 20px rgba(252, 211, 77, 0.8)', letterSpacing: '0.1em' }}>
+            CLEAR!!
+          </h2>
+        </div>
+      )}
+
+      {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
           <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>

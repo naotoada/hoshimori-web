@@ -27,6 +27,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [feedback, setFeedback] = useState('');
+  const [isCelebrating, setIsCelebrating] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
   
   const itemIdCounter = useRef(0);
@@ -34,7 +35,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
 
   // Spawn items
   useEffect(() => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
 
     const spawnInterval = setInterval(() => {
       setItems(prev => {
@@ -54,7 +55,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     }, 1200);
 
     return () => clearInterval(spawnInterval);
-  }, [isGameOver]);
+  }, [isGameOver, isCelebrating]);
 
   // Remove item when its fall animation ends
   const handleAnimationEnd = (id: number) => {
@@ -62,7 +63,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   };
 
   const handleBinClick = useCallback((type: ElementType) => {
-    if (isGameOver) return;
+    if (isGameOver || isCelebrating) return;
     
     setItems(prev => {
       if (prev.length === 0) return prev;
@@ -83,10 +84,10 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
       setTimeout(() => setFeedback(''), 400);
       return prev.slice(1);
     });
-  }, [isGameOver]);
+  }, [isGameOver, isCelebrating]);
 
   const handleWin = () => {
-    setIsGameOver(true);
+    setIsCelebrating(true);
     setItems([]);
     const keys = Object.keys(CHARACTER_MAP);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
@@ -95,12 +96,18 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
       name: char.name,
       imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
+
+    setTimeout(() => {
+      setIsCelebrating(false);
+      setIsGameOver(true);
+    }, 2500);
   };
 
   const resetGame = () => {
     setScore(0);
     scoreRef.current = 0;
     setIsGameOver(false);
+    setIsCelebrating(false);
     setItems([]);
     setFeedback('');
   };
@@ -116,7 +123,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
         </div>
       </div>
 
-      {!isGameOver && (
+      {!isGameOver && !isCelebrating && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
           <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>
             落ちてくるしるしと同じボタンをおしてね！
@@ -165,7 +172,16 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
         </div>
       )}
 
-      {isGameOver && rewardChar && (
+      {isCelebrating && (
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ fontSize: '5rem', animation: 'bounceIn 1s ease', marginBottom: '1rem' }}>🌟</div>
+          <h2 style={{ fontSize: '3rem', color: '#FCD34D', animation: 'fadeInUp 0.8s ease-out', textShadow: '0 0 20px rgba(252, 211, 77, 0.8)', letterSpacing: '0.1em' }}>
+            CLEAR!!
+          </h2>
+        </div>
+      )}
+
+      {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
           <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
