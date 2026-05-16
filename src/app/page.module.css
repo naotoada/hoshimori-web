@@ -141,11 +141,11 @@
 }
 
 .zukanCard {
-  background: linear-gradient(135deg, #FFB347, #D97706);
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
   border-radius: 30px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 40px rgba(217, 119, 6, 0.2);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
 }
 
 .zukanContent {
@@ -172,20 +172,20 @@
 
 .zukanBtn {
   display: inline-block;
-  background-color: #4A90E2;
-  color: #FFF;
+  background-color: #FFB300;
+  color: #1a1a2e;
   font-weight: 900;
   padding: 16px 40px;
   border-radius: 40px;
   text-decoration: none;
   font-size: 1.2rem;
-  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 179, 0, 0.4);
   transition: transform 0.2s;
 }
 
 .zukanBtn:hover {
   transform: translateY(-3px);
-  background-color: #357ABD;
+  background-color: #FFA000;
 }
 
 /* Report Service Section */
