@@ -245,9 +245,9 @@ export default function Home() {
             <details className={styles.faqItem}>
               <summary className={styles.faqQuestion}>無料診断と星守りレポートは何が違いますか？</summary>
               <p className={styles.faqAnswer}>
-                無料診断では、お子様の「星守りタイプ」と基本的な特徴（約500字）をお伝えしています。
-                星守りレポートでは、90タイプごとに完全カスタマイズされた<strong>全6章・10,000字超</strong>の詳細な分析をお届けします。
-                褒め方・叱り方の処方箋、やる気スイッチの場所、日常トラブルの「親のセリフ集」、今年の成長カレンダーなど、
+                無料診断では、「星守りタイプ」と基本的な特徴（約500字）をお伝えしています。
+                星守りレポートでは、90タイプごとに完全カスタマイズされた<strong>全5〜6章・10,000字超</strong>の詳細な分析をお届けします。
+                才能の活かし方、人間関係の処方箋、今年のナビゲーションなど、
                 明日から実践できる具体的な内容が含まれています。
               </p>
             </details>
@@ -281,8 +281,8 @@ export default function Home() {
             <span className={styles.goodsBadge}>🛒 公式グッズ</span>
             <h2>星守りを、いつもそばに。</h2>
             <p className={styles.goodsLead}>
-              通園バッグのお守りに、勉強机の見守り役に。<br/>
-              お子様の星守りをアクリルキーホルダーやマグカップなど、<br className={styles.spOnly}/>
+              カバンのお守りに、デスクの見守り役に。<br/>
+              あなたの星守りをアクリルキーホルダーやマグカップなど、<br className={styles.spOnly}/>
               日常のアイテムとしてお届けします。
             </p>
             <div className={styles.goodsItems}>
