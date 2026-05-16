@@ -118,6 +118,8 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
         </section>
       </div>
 
+      <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
+
       {suzuriUrl && (
         <div className={styles.goodsArea}>
           <h3 className={styles.goodsTitle}>🛒 {data.name}のグッズ</h3>
@@ -127,8 +129,6 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           </a>
         </div>
       )}
-
-      <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
       
       <div className={styles.ctaArea}>
         
