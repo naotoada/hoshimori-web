@@ -25,14 +25,29 @@ function PersonForm({
   onResult: (result: PersonResult) => void;
 }) {
   const currentYear = new Date().getFullYear();
+  const [mode, setMode] = useState<'birthday' | 'select'>('birthday');
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(1);
   const [day, setDay] = useState<number>(1);
+  const [selectedId, setSelectedId] = useState<string>('');
   const [result, setResult] = useState<PersonResult | null>(null);
 
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
+  // Build sorted character list for dropdown
+  const charList = Object.entries(CHARACTER_MAP)
+    .filter(([, v]) => v.name)
+    .sort((a, b) => {
+      const starOrder = ['水の星', '大地の星', '雷の星', '風の星', '帝の星', '天の星', '果実の星', '山の星', '火の星'];
+      const aGroup = STAR_NAMES[parseInt(a[0].split('_')[0])] || '';
+      const bGroup = STAR_NAMES[parseInt(b[0].split('_')[0])] || '';
+      const aIdx = starOrder.indexOf(aGroup);
+      const bIdx = starOrder.indexOf(bGroup);
+      if (aIdx !== bIdx) return aIdx - bIdx;
+      return a[1].name.localeCompare(b[1].name, 'ja');
+    });
 
   const handleDiagnose = () => {
     const res = calculateHoshimori(year, month, day);
@@ -43,30 +58,78 @@ function PersonForm({
     onResult(p);
   };
 
+  const handleSelect = () => {
+    if (!selectedId) return;
+    const char = CHARACTER_MAP[selectedId];
+    if (!char) return;
+    const honmei = parseInt(selectedId.split('_')[0]);
+    const honmeiName = STAR_NAMES[honmei] || '';
+    const p: PersonResult = {
+      hoshimoriId: selectedId,
+      honmei,
+      honmeiName,
+      nikkan: '',
+      charName: char.name,
+      imageUrl: getCharacterImageUrl(selectedId),
+    };
+    setResult(p);
+    onResult(p);
+  };
+
   return (
     <div className={styles.personCard}>
       <div className={styles.personLabel}>
         <span className={styles.personIcon}>{icon}</span>
         <span>{label}</span>
       </div>
-      <div className={styles.dateRow}>
-        <div className={styles.selectWrap}>
-          <select value={year} onChange={e => setYear(Number(e.target.value))} className={styles.sel}>
-            {years.map(y => <option key={y} value={y}>{y}年</option>)}
-          </select>
-        </div>
-        <div className={styles.selectWrap}>
-          <select value={month} onChange={e => setMonth(Number(e.target.value))} className={styles.sel}>
-            {months.map(m => <option key={m} value={m}>{m}月</option>)}
-          </select>
-        </div>
-        <div className={styles.selectWrap}>
-          <select value={day} onChange={e => setDay(Number(e.target.value))} className={styles.sel}>
-            {days.map(d => <option key={d} value={d}>{d}日</option>)}
-          </select>
-        </div>
-        <button onClick={handleDiagnose} className={styles.checkBtn}>決定</button>
+      <div className={styles.modeToggle}>
+        <button
+          className={`${styles.modeBtn} ${mode === 'birthday' ? styles.modeBtnActive : ''}`}
+          onClick={() => setMode('birthday')}
+        >
+          📅 生年月日
+        </button>
+        <button
+          className={`${styles.modeBtn} ${mode === 'select' ? styles.modeBtnActive : ''}`}
+          onClick={() => setMode('select')}
+        >
+          ⭐ 星守りから選ぶ
+        </button>
       </div>
+      {mode === 'birthday' ? (
+        <div className={styles.dateRow}>
+          <div className={styles.selectWrap}>
+            <select value={year} onChange={e => setYear(Number(e.target.value))} className={styles.sel}>
+              {years.map(y => <option key={y} value={y}>{y}年</option>)}
+            </select>
+          </div>
+          <div className={styles.selectWrap}>
+            <select value={month} onChange={e => setMonth(Number(e.target.value))} className={styles.sel}>
+              {months.map(m => <option key={m} value={m}>{m}月</option>)}
+            </select>
+          </div>
+          <div className={styles.selectWrap}>
+            <select value={day} onChange={e => setDay(Number(e.target.value))} className={styles.sel}>
+              {days.map(d => <option key={d} value={d}>{d}日</option>)}
+            </select>
+          </div>
+          <button onClick={handleDiagnose} className={styles.checkBtn}>決定</button>
+        </div>
+      ) : (
+        <div className={styles.selectRow}>
+          <div className={styles.selectWrap} style={{ flex: 1 }}>
+            <select value={selectedId} onChange={e => setSelectedId(e.target.value)} className={styles.sel}>
+              <option value="">星守りを選んでね</option>
+              {charList.map(([id, char]) => (
+                <option key={id} value={id}>
+                  {STAR_NAMES[parseInt(id.split('_')[0])]} — {char.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button onClick={handleSelect} className={styles.checkBtn} disabled={!selectedId}>決定</button>
+        </div>
+      )}
       {result && (
         <div className={styles.personResult}>
           <img src={result.imageUrl} alt={result.charName} className={styles.personImg} />

@@ -90,6 +90,38 @@
   flex-wrap: wrap;
 }
 
+.modeToggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #FFE4B5;
+}
+
+.modeBtn {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: #8D6E63;
+  transition: background 0.2s, color 0.2s;
+  font-family: inherit;
+}
+
+.modeBtnActive {
+  background: #ee5a6f;
+  color: white;
+}
+
+.selectRow {
+  display: flex;
+  gap: 8px;
+}
+
 .selectWrap {
   flex: 1;
   min-width: 80px;
