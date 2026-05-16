@@ -256,13 +256,13 @@
 .ctaArea {
   width: calc(100% - 40px);
   max-width: 700px;
-  margin: 50px auto 60px;
+  margin: 0 auto 60px;
   padding: 40px 30px;
   text-align: center;
-  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
+  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
   border-radius: var(--border-radius-lg);
   color: #fff;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 15px 40px rgba(13, 79, 92, 0.2);
 }
 
 .ctaText {
@@ -347,11 +347,11 @@
 .ctaAreaSelf {
   width: calc(100% - 40px);
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 50px auto 24px;
   padding: 40px 30px;
   text-align: center;
-  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
+  background: linear-gradient(135deg, #4a0a7a, #7B20CC);
   border-radius: var(--border-radius-lg);
   color: #fff;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
 }
