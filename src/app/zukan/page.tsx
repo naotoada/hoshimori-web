@@ -43,7 +43,6 @@ export default function ZukanIndex() {
           <h1 className={styles.title}>星守り図鑑</h1>
           <JumpSelect />
         </div>
-        <p className={styles.subtitle}>全90体の星守りデータ</p>
       </div>
 
       <div className={styles.zukanContainer}>

@@ -33,10 +33,14 @@
 }
 
 .title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 900;
-  color: var(--text-main);
+  background: linear-gradient(135deg, #5D4037 0%, #8D6E63 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(93, 64, 55, 0.2));
   margin-bottom: 0;
+  letter-spacing: 0.05em;
 }
 
 .jumpSelect {
@@ -67,11 +71,7 @@
   }
 }
 
-.subtitle {
-  font-size: 14px;
-  color: var(--primary-blue);
-  font-weight: bold;
-}
+
 
 .zukanContainer {
   margin-top: 20px;
