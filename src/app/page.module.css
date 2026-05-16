@@ -40,12 +40,15 @@
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 900;
-  color: #FFF;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFB800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 15px rgba(0,0,0,0.6));
   line-height: 1.4;
   margin-bottom: 24px;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  letter-spacing: 0.02em;
 }
 
 .heroText {
