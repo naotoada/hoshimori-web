@@ -473,41 +473,79 @@
   background: #d94a5f;
 }
 
-/* CTA — ctaArea style from detail page */
-.ctaSection {
-  margin: 0 30px 0;
-  padding: 32px 30px;
+/* CTA Areas from detail page */
+.ctaArea {
+  width: calc(100% - 40px);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  padding: 40px 30px;
   text-align: center;
-  background: linear-gradient(135deg, #6A0DAD, #9B30FF);
+  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
   border-radius: 16px;
-  color: white;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(13, 79, 92, 0.2);
+}
+
+.ctaAreaSelf {
+  width: calc(100% - 40px);
+  max-width: 700px;
+  margin: 50px auto 24px;
+  padding: 40px 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #4a0a7a, #7B20CC);
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(106, 13, 173, 0.2);
 }
 
 .ctaText {
-  font-size: 1rem;
   font-weight: 800;
+  font-size: 16px;
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   color: white;
 }
 
-.ctaBtn {
+.ctaButton {
   display: inline-block;
-  background: #FFD166;
+  background-color: #FFD166;
   color: #1a1a2e;
   font-weight: 900;
-  padding: 14px 36px;
+  font-size: 16px;
+  padding: 16px 40px;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 1rem;
   box-shadow: 0 4px 15px rgba(255, 209, 102, 0.4);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.ctaBtn:hover {
+.ctaButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 209, 102, 0.6);
 }
+
+.ctaPriceTag {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #FFE4B5;
+  margin-bottom: 20px;
+}
+
+.ctaPriceTag span {
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.spOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .spOnly {
+    display: inline;
+  }
+}
+
 
 /* Footer */
 .footer {

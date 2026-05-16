@@ -226,14 +226,22 @@ function ResultView({ result }: { result: CompatResult }) {
 
       <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守りなかよし診断']} />
 
-      <div className={styles.ctaSection}>
+      <div className={styles.ctaAreaSelf}>
         <p className={styles.ctaText}>
-          もっとくわしく知りたい方へ——<br/>
-          すれ違いの乗りこえ方や、毎日の声かけのコツをまとめたレポートもあります。
+          相手との関係をもっと深めたい大人の方へ。<br/>
+          大人のあなた自身の「取扱説明書（星守りレポート）」で、<br className={styles.spOnly}/>人間関係の処方箋や、才能の活かし方を<br className={styles.spOnly}/>詳しく知ることができます。
         </p>
-        <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
-          公式LINEで詳細レポートを依頼
-        </a>
+        <div className={styles.ctaPriceTag}>¥3,980<span>（税込）</span></div>
+        <Link href="/#self-report" className={styles.ctaButton}>くわしく見る</Link>
+      </div>
+
+      <div className={styles.ctaArea}>
+        <p className={styles.ctaText}>
+          子育てのヒントをもっと知りたい方へ。<br/>
+          お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>すれ違いの乗りこえ方や、毎日の声かけのコツ、<br className={styles.spOnly}/>才能の伸ばし方をお届けします。
+        </p>
+        <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
+        <Link href="/#report" className={styles.ctaButton}>くわしく見る</Link>
       </div>
     </div>
   );
