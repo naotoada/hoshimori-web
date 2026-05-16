@@ -255,9 +255,6 @@ export default function CompatibilityPage() {
 
   return (
     <main className={styles.main}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.logo}>⭐ 星守り <span>- HOSHIMORI -</span></Link>
-      </header>
 
       <section className={styles.hero}>
         <h1>星守りなかよし診断</h1>

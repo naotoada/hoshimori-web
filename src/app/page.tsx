@@ -1,12 +1,11 @@
 import styles from './page.module.css';
 import DiagnosisForm from '@/components/DiagnosisForm';
 import Link from 'next/link';
-import Header from '@/components/Header';
+
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Header />
 
       {/* Hero Section */}
       <section className={styles.hero}>
