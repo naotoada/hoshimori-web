@@ -12,6 +12,8 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const [spinning, setSpinning] = useState([false, false, false]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isMiss, setIsMiss] = useState(false);
+  const [message, setMessage] = useState('');
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     
     spinning.forEach((isSpinning, i) => {
       if (isSpinning) {
-        const speed = 100 + (i * 20); // Slightly different speeds
+        const speed = 100 + (i * 20);
         intervals[i] = setInterval(() => {
           setSlots(prev => {
             const next = [...prev];
@@ -39,6 +41,8 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     setSpinning([true, true, true]);
     setIsGameOver(false);
     setHasStarted(true);
+    setIsMiss(false);
+    setMessage('');
     setRewardChar(null);
   };
 
@@ -50,17 +54,27 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     });
   };
 
-  // Check win condition when all stopped
+  // Check result when all stopped
   useEffect(() => {
-    if (hasStarted && !spinning.includes(true) && !isGameOver && slots.length === 3) {
-      // Game just ended
-      setTimeout(() => handleWin(), 800);
+    if (hasStarted && !spinning.includes(true) && !isGameOver && !isMiss) {
+      const allMatch = slots[0] === slots[1] && slots[1] === slots[2];
+      const twoMatch = slots[0] === slots[1] || slots[1] === slots[2] || slots[0] === slots[2];
+
+      if (allMatch) {
+        setMessage('🎉 大当たり！');
+        setTimeout(() => handleWin(), 800);
+      } else if (twoMatch) {
+        setMessage('おしい！あと1つだった！');
+        setTimeout(() => setIsMiss(true), 800);
+      } else {
+        setMessage('ざんねん…！もういっかい！');
+        setTimeout(() => setIsMiss(true), 800);
+      }
     }
-  }, [spinning, isGameOver, slots, hasStarted]);
+  }, [spinning, isGameOver, isMiss, hasStarted, slots]);
 
   const handleWin = () => {
     setIsGameOver(true);
-    // Find character based on elements or just random
     const keys = Object.keys(CHARACTER_MAP);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const char = CHARACTER_MAP[randomKey];
@@ -78,41 +92,49 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
         </button>
       </div>
 
-      <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <div className={styles.instructions} style={{ position: 'static', marginBottom: '2rem' }}>
-          タイミングよくボタンを押して止めてね！
-        </div>
-        
-        <div className={styles.slotMachine}>
-          {slots.map((slotValue, i) => (
-            <div key={i} className={styles.slotColumn}>
-              <div className={`${styles.slotWindow} ${spinning[i] ? styles.slotSpinning : ''}`}>
-                {SLOT_EMOJIS[slotValue]}
+      {!isGameOver && (
+        <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div className={styles.instructions} style={{ position: 'static', marginBottom: '2rem' }}>
+            3つ揃えたら星守りが出てくるよ！
+          </div>
+          
+          <div className={styles.slotMachine}>
+            {slots.map((slotValue, i) => (
+              <div key={i} className={styles.slotColumn}>
+                <div className={`${styles.slotWindow} ${spinning[i] ? styles.slotSpinning : ''}`}>
+                  {SLOT_EMOJIS[slotValue]}
+                </div>
+                <button 
+                  className={styles.slotStopBtn} 
+                  onClick={() => stopSlot(i)}
+                  disabled={!spinning[i]}
+                >
+                  ストップ
+                </button>
               </div>
-              <button 
-                className={styles.slotStopBtn} 
-                onClick={() => stopSlot(i)}
-                disabled={!spinning[i]}
-              >
-                ストップ
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {!spinning.includes(true) && !isGameOver && (
-          <button className={styles.slotStartBtn} onClick={startSpin}>
-            スピンスタート！
-          </button>
-        )}
-      </div>
+          {message && !spinning.includes(true) && (
+            <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#FBBF24', marginTop: '1.5rem', textAlign: 'center' }}>
+              {message}
+            </p>
+          )}
+
+          {!spinning.includes(true) && (
+            <button className={styles.slotStartBtn} onClick={startSpin}>
+              {isMiss ? 'もういっかい！' : 'スピンスタート！'}
+            </button>
+          )}
+        </div>
+      )}
 
       {isGameOver && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
           <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
           <p className={styles.praiseMessage}>
-            どんな星守りが出るかはおたのしみ！<br/>またあそんでみてね！
+            3つ揃ったね！すごい！<br/>またあそんでみてね！
           </p>
           <button className={styles.replayBtn} onClick={startSpin}>
             もういっかい遊ぶ
