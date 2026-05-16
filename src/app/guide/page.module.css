@@ -65,6 +65,24 @@
   box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
 }
 
+.secretDoor {
+  font-size: 3.5rem;
+  margin: 10px 0 30px;
+  animation: floatDoor 3s ease-in-out infinite, glowDoor 2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.6));
+}
+
+@keyframes floatDoor {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes glowDoor {
+  from { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4)); }
+  to { filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.8)); }
+}
+
 .button {
   width: 100%;
   padding: 1.2rem;

@@ -99,12 +99,17 @@ export default function GuideMap() {
         </Head>
         
         <div className={styles.loginCard}>
-          <h1 className={styles.title}>星守りの導き</h1>
+          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+            <span style={{ fontSize: '2.5rem', display: 'inline-block', marginBottom: '0.5rem' }}>💫</span>
+            <h1 className={styles.title}>星守りの導き</h1>
+          </div>
           <p className={styles.subtitle}>
             お子さまの成長を導く星のマップへようこそ。<br />
             合言葉を入力して、扉を開いてください。<br/>
             <span style={{ fontSize: '0.85em', opacity: 0.8 }}>（※お子さん向け星守りレポート購入者特典）</span>
           </p>
+          
+          <div className={styles.secretDoor}>🚪</div>
           
           <form onSubmit={handleLogin} style={{ width: '100%' }}>
             <input
@@ -116,7 +121,7 @@ export default function GuideMap() {
               required
             />
             <button type="submit" className={styles.button}>
-              扉を開く
+              🗝️ 扉を開く
             </button>
           </form>
         </div>

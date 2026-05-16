@@ -75,7 +75,7 @@ export default function OraclePage() {
         <div className={styles.bgEffects} />
         <div className={styles.loginCard}>
           <div className={styles.header}>
-            <span style={{ fontSize: '2rem', display: 'inline-block', marginBottom: '1rem', animation: 'pulse 2s infinite' }}>✨</span>
+            <span style={{ fontSize: '2rem', display: 'inline-block', marginBottom: '1rem', animation: 'pulse 2s infinite' }}>🏛️</span>
             <h1 className={styles.title}>星守り神託所</h1>
           </div>
           <p className={styles.subtitle} style={{ marginBottom: '2rem' }}>
@@ -83,6 +83,7 @@ export default function OraclePage() {
             あなたに託された合言葉を入力してください。<br/>
             <span style={{ fontSize: '0.85em', opacity: 0.8 }}>（※星守りレポート購入者特典）</span>
           </p>
+          <div className={styles.secretDoor}>🚪</div>
           <form onSubmit={handleLogin}>
             <input
               type="password"
@@ -95,7 +96,7 @@ export default function OraclePage() {
               type="submit"
               className={`${styles.button} ${styles.buttonActive}`}
             >
-              扉を開く
+              🗝️ 扉を開く
             </button>
           </form>
         </div>
