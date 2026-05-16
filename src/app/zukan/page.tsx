@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAllHoshimori } from '@/lib/markdownParser';
 import { getCharacterImageUrl } from '@/lib/characterMap';
+import JumpSelect from './JumpSelect';
 import styles from './page.module.css';
 
 export default function ZukanIndex() {
@@ -38,7 +39,10 @@ export default function ZukanIndex() {
     <main className="container">
       <div className={styles.header}>
         <Link href="/" className={styles.backButton}>← ホームへ</Link>
-        <h1 className={styles.title}>星守り図鑑</h1>
+        <div className={styles.titleRow}>
+          <h1 className={styles.title}>星守り図鑑</h1>
+          <JumpSelect />
+        </div>
         <p className={styles.subtitle}>全90体の星守りデータ</p>
       </div>
 
@@ -50,7 +54,7 @@ export default function ZukanIndex() {
           const meta = honmeiMeta[honmeiName];
           
           return (
-            <section key={honmeiName} className={`${styles.honmeiSection} ${meta?.bgTheme || ''}`}>
+            <section key={honmeiName} id={honmeiName} className={`${styles.honmeiSection} ${meta?.bgTheme || ''}`}>
               <h2 className={`${styles.honmeiTitle} ${meta?.theme || ''}`}>{meta?.display || honmeiName}</h2>
               <div className={styles.grid}>
                 {chars.map(char => (

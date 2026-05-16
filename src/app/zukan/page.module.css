@@ -24,11 +24,47 @@
   transform: translateY(-2px);
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
 .title {
   font-size: 28px;
   font-weight: 900;
   color: var(--text-main);
-  margin-bottom: 4px;
+  margin-bottom: 0;
+}
+
+.jumpSelect {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 2px solid var(--accent-yellow);
+  background-color: #FFFDF9;
+  color: var(--text-main);
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.jumpSelect:focus {
+  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.2);
+  border-color: #FFA01A;
+}
+
+@media (max-width: 600px) {
+  .titleRow {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
 }
 
 .subtitle {
