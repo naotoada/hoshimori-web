@@ -480,10 +480,20 @@
   margin: 0 auto 60px;
   padding: 40px 30px;
   text-align: center;
-  background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
+  background: linear-gradient(135deg, #FFCA28, #FF9800);
   border-radius: 16px;
   color: #fff;
-  box-shadow: 0 15px 40px rgba(13, 79, 92, 0.2);
+  box-shadow: 0 15px 40px rgba(255, 152, 0, 0.2);
+}
+
+.ctaArea .ctaButton {
+  background-color: #FFF;
+  color: #FF9800;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.ctaArea .ctaButton:hover {
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
 }
 
 .ctaAreaSelf {
