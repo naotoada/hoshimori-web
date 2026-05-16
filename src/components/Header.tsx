@@ -42,10 +42,13 @@ export default function Header() {
             <Link href="/#diagnosis" className={styles.menuLink} onClick={handleLinkClick}>
               🔍 星守りを調べる
             </Link>
-            <Link href="/zukan" className={styles.menuLink} onClick={handleLinkClick}>
-              📚 図鑑をみる
+            <Link href="/compatibility" className={styles.menuLink} onClick={handleLinkClick}>
+              ⭐ なかよし診断
             </Link>
-            <Link href="/#report" className={styles.menuLink} onClick={handleLinkClick}>
+            <Link href="/zukan" className={styles.menuLink} onClick={handleLinkClick}>
+              📚 星守り図鑑
+            </Link>
+            <Link href="/#self-report" className={styles.menuLink} onClick={handleLinkClick}>
               📝 星守りレポート
             </Link>
             <a
