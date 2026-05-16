@@ -25,6 +25,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const [isMiss, setIsMiss] = useState(false);
   const [message, setMessage] = useState('');
   const [isCelebrating, setIsCelebrating] = useState(false);
+  const [isChecking, setIsChecking] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [celebrationPhase, setCelebrationPhase] = useState(0);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
@@ -68,6 +69,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     setParticles([]);
     stoppedCountRef.current = 0;
     hasCheckedRef.current = false;
+    setIsChecking(false);
   };
 
   const stopSlot = (index: number) => {
@@ -84,7 +86,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     // When all 3 are stopped, check result
     if (stoppedCountRef.current === 3 && !hasCheckedRef.current) {
       hasCheckedRef.current = true;
-      // Small delay to let the last interval clear and final slot value settle
+      setIsChecking(true);
       setTimeout(() => checkResult(), 200);
     }
   };
@@ -99,10 +101,16 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       setTimeout(() => startCelebration(), 300);
     } else if (twoMatch) {
       setMessage('おしい！あと1つだった！');
-      setTimeout(() => setIsMiss(true), 800);
+      setTimeout(() => {
+        setIsMiss(true);
+        setIsChecking(false);
+      }, 800);
     } else {
       setMessage('ざんねん…！もういっかい！');
-      setTimeout(() => setIsMiss(true), 800);
+      setTimeout(() => {
+        setIsMiss(true);
+        setIsChecking(false);
+      }, 800);
     }
   };
 
@@ -239,7 +247,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
             </button>
           )}
 
-          {!spinning.includes(true) && hasStarted && !isMiss && !message && (
+          {!spinning.includes(true) && hasStarted && !isMiss && !message && !isChecking && (
             <button className={styles.slotStartBtn} onClick={startSpin}>
               スピンスタート！
             </button>
