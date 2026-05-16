@@ -144,7 +144,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           才能の活かし方・人間関係の処方箋・今年のナビゲーションまで、<br className={styles.spOnly}/>全5章のパーソナルレポートをお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥3,980<span>（税込）</span></div>
-        <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
+        <Link href="/#self-report" className={styles.ctaButton}>くわしく見る</Link>
       </div>
 
       <div className={styles.ctaArea}>
@@ -154,7 +154,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>才能の伸ばし方・褒め方・叱り方まで<br className={styles.spOnly}/>全6章の取扱説明書をお届けします。
         </p>
         <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
-        <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>公式LINEから申し込む</a>
+        <Link href="/#report" className={styles.ctaButton}>くわしく見る</Link>
       </div>
     </main>
 
