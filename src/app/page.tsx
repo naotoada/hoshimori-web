@@ -143,6 +143,13 @@ export default function Home() {
                   <p>好調月・注意月の年間カレンダーと転機のタイミング</p>
                 </div>
               </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💌</span>
+                <div>
+                  <h4>星守りからの手紙</h4>
+                  <p>「あなたの苦手は才能の裏返し」——心に届く安心のメッセージと未来への招待状</p>
+                </div>
+              </div>
             </div>
             <div className={styles.selfReportMeta}>
               <span>📄 全5章・8,000〜12,000字</span>
