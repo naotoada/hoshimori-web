@@ -208,7 +208,7 @@
 
 .reportBadge {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #FFB347, #D97706);
   color: #FFF;
   font-weight: bold;
   padding: 10px 28px;
@@ -216,7 +216,7 @@
   font-size: 1rem;
   letter-spacing: 0.05em;
   margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
 .reportBox h2 {
