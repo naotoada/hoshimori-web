@@ -106,7 +106,7 @@ export default function Home() {
       <section className={styles.selfReportSection} id="self-report">
         <div className={styles.container}>
           <div className={styles.selfReportBox}>
-            <span className={styles.selfReportBadge}>🌟 大人のための星守り</span>
+            <span className={styles.selfReportBadge}>🌟 星守りレポート</span>
             <h2>自分自身の<br/>「取扱説明書」</h2>
             <p className={styles.selfReportLead}>
               あなた自身の構造タイプを深掘りし、<br className={styles.spOnly}/>
@@ -167,7 +167,7 @@ export default function Home() {
       <section className={styles.reportSection} id="report">
         <div className={styles.container}>
           <div className={styles.reportBox}>
-            <span className={styles.reportBadge}>📝 星守りレポート</span>
+            <span className={styles.reportBadge}>📝 子どものための星守り</span>
             <h2>この子だけの<br/>「取扱説明書」</h2>
             <p className={styles.reportLead}>
               生年月日から導き出される90タイプの星守り構造を深掘りし、<br className={styles.spOnly}/>
