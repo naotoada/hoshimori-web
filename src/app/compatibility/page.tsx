@@ -303,6 +303,9 @@ export default function CompatibilityPage() {
 
       <footer className={styles.footer}>
         <Link href="/" className={styles.backLink}>← トップページに戻る</Link>
+        <div style={{ marginTop: '15px', marginBottom: '15px' }}>
+          <a href="https://www.kss-architecture.com/tokushoho.html" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'underline', fontSize: '0.85rem' }}>特定商取引法に基づく表記</a>
+        </div>
         <p className={styles.copy}>© 2026 あだちなおと. All rights reserved.</p>
       </footer>
     </main>

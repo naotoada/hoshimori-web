@@ -336,6 +336,9 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.footerLogo}>⭐ 星守り - HOSHIMORI -</div>
           <p className={styles.footerPowered}>Powered by 九星構造学(KSS)</p>
+          <div style={{ marginBottom: '15px' }}>
+            <a href="https://www.kss-architecture.com/tokushoho.html" target="_blank" rel="noopener noreferrer" style={{ color: '#ccc', textDecoration: 'underline', fontSize: '0.85rem' }}>特定商取引法に基づく表記</a>
+          </div>
           <p className={styles.copy}>© 2026 あだちなおと. All rights reserved.</p>
         </div>
       </footer>
