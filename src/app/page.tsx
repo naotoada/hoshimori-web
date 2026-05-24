@@ -256,7 +256,7 @@ export default function Home() {
               <p className={styles.faqAnswer}>
                 公式LINEを通じて、<strong>ドキュメントリンク</strong>でお届けします。
                 スマートフォンでもパソコンでもすぐにお読みいただけます。
-                お申し込みからお届けまで、通常3〜5営業日ほどお時間をいただいております。
+                お申し込みからお届けまで、通常1〜3営業日でお届けいたします。
               </p>
             </details>
 

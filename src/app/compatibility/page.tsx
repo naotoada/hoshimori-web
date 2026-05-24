@@ -167,7 +167,7 @@ function ResultView({ result }: { result: CompatResult }) {
     const gap = farthestDim(traitsA, traitsB);
     shareText = `【なかよし度：${result.score}点】\n${result.nameA}と${result.nameB}の相性を診断したよ！\n\nふたりの一番のちがいは「${DIM_LABELS[gap]}」みたい。\n\nあなたとの相性も診断してみてね！`;
   }
-  const shareUrl = 'https://hoshimori-web.vercel.app/compatibility';
+  const shareUrl = 'https://hoshimori.kss-architecture.com/compatibility';
 
   return (
     <div className={styles.resultSection}>

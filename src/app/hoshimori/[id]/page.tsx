@@ -58,7 +58,7 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
   const shareText = traits 
     ? `私は星守り「${data.name}」タイプでした！\n\n✨ 際立つ特性：\n・${getTopTraitText(traits)}タイプ\n\nあなたの星守りは？`
     : `私は星守り「${data.name}」タイプでした！\n\nあなたの星守りは？`;
-  const shareUrl = `https://hoshimori-web.vercel.app/`;
+  const shareUrl = `https://hoshimori.kss-architecture.com/`;
 
   return (
     <>
