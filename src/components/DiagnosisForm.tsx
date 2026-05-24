@@ -35,7 +35,7 @@ export default function DiagnosisForm() {
       </h3>
       <p style={{ fontSize: '0.85rem', color: '#888', textAlign: 'center', marginBottom: '16px' }}>
         ※23:00〜0:00にお生まれの方は、生年月日に「+1日」を追加してください。<br/>
-        （例：1990年5月15日 23:30生まれ →「1990年5月16日」で入力）
+        （例：1990年5月15日 23:30生まれ →「1990年5月16日」に設定して診断）
       </p>
       <div className={styles.inputGroup}>
         <div className={styles.dateSelectors}>
