@@ -103,24 +103,30 @@ function PersonForm({
         </button>
       </div>
       {mode === 'birthday' ? (
-        <div className={styles.dateRow}>
-          <div className={styles.selectWrap}>
-            <select value={year} onChange={e => setYear(Number(e.target.value))} className={styles.sel}>
-              {years.map(y => <option key={y} value={y}>{y}年</option>)}
-            </select>
+        <>
+          <div className={styles.dateRow}>
+            <div className={styles.selectWrap}>
+              <select value={year} onChange={e => setYear(Number(e.target.value))} className={styles.sel}>
+                {years.map(y => <option key={y} value={y}>{y}年</option>)}
+              </select>
+            </div>
+            <div className={styles.selectWrap}>
+              <select value={month} onChange={e => setMonth(Number(e.target.value))} className={styles.sel}>
+                {months.map(m => <option key={m} value={m}>{m}月</option>)}
+              </select>
+            </div>
+            <div className={styles.selectWrap}>
+              <select value={day} onChange={e => setDay(Number(e.target.value))} className={styles.sel}>
+                {days.map(d => <option key={d} value={d}>{d}日</option>)}
+              </select>
+            </div>
+            <button onClick={handleDiagnose} className={styles.checkBtn}>決定</button>
           </div>
-          <div className={styles.selectWrap}>
-            <select value={month} onChange={e => setMonth(Number(e.target.value))} className={styles.sel}>
-              {months.map(m => <option key={m} value={m}>{m}月</option>)}
-            </select>
-          </div>
-          <div className={styles.selectWrap}>
-            <select value={day} onChange={e => setDay(Number(e.target.value))} className={styles.sel}>
-              {days.map(d => <option key={d} value={d}>{d}日</option>)}
-            </select>
-          </div>
-          <button onClick={handleDiagnose} className={styles.checkBtn}>決定</button>
-        </div>
+          <p style={{ fontSize: '0.8rem', color: '#888', marginTop: '8px', textAlign: 'center', lineHeight: '1.4' }}>
+            ※23:00〜0:00にお生まれの方は、生年月日に「+1日」を追加してください。<br />
+            （例：1990年5月15日 23:30生まれ →「1990年5月16日」に設定して診断）
+          </p>
+        </>
       ) : (
         <div className={styles.selectRow}>
           <div className={styles.selectWrap} style={{ flex: 1 }}>
@@ -232,7 +238,7 @@ function ResultView({ result }: { result: CompatResult }) {
           相手との関係をもっと深めたい大人の方へ。<br/>
           大人のあなた自身の「取扱説明書（星守りレポート）」で、<br className={styles.spOnly}/>人間関係の処方箋や、才能の活かし方を<br className={styles.spOnly}/>詳しく知ることができます。
         </p>
-        <div className={styles.ctaPriceTag}>¥3,980<span>（税込）</span></div>
+        <div className={styles.ctaPriceTag}>¥3,900<span>（税込）</span></div>
         <Link href="/#self-report" className={styles.ctaButton}>くわしく見る</Link>
       </div>
 
@@ -242,7 +248,7 @@ function ResultView({ result }: { result: CompatResult }) {
           子育てのヒントをもっと知りたい方へ。<br/>
           お子様専用の『星守りレポート』で、<br className={styles.spOnly}/>すれ違いの乗りこえ方や、毎日の声かけのコツ、<br className={styles.spOnly}/>才能の伸ばし方をお届けします。
         </p>
-        <div className={styles.ctaPriceTag}>¥4,980<span>（税込）</span></div>
+        <div className={styles.ctaPriceTag}>¥4,900<span>（税込）</span></div>
         <Link href="/#report" className={styles.ctaButton}>くわしく見る</Link>
       </div>
     </div>
