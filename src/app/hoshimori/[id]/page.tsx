@@ -122,11 +122,11 @@ export default async function HoshimoriDetailPage({ params }: { params: Promise<
 
       <ShareButtons text={shareText} url={shareUrl} hashtags={['星守り', '星守り診断', data.name]} />
 
-      <div className={styles.compatLink} style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
-        <Link href="/#diagnosis" className={styles.compatLinkButton} style={{ background: 'linear-gradient(135deg, #0096C7, #005B82)', boxShadow: '0 4px 15px rgba(0, 91, 130, 0.3)' }}>
+      <div className={styles.compatLink} style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
+        <Link href="/#diagnosis" className={styles.compatLinkButton} style={{ background: 'linear-gradient(135deg, #FFB347, #D97706)', boxShadow: '0 4px 15px rgba(217, 119, 6, 0.4)', color: '#FFFFFF', width: '100%', boxSizing: 'border-box' }}>
           🔍 星守りを調べる →
         </Link>
-        <Link href="/compatibility" className={styles.compatLinkButton}>
+        <Link href="/compatibility" className={styles.compatLinkButton} style={{ width: '100%', boxSizing: 'border-box' }}>
           ⭐ 星守りなかよし診断で相性をチェック →
         </Link>
       </div>
