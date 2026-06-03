@@ -773,6 +773,38 @@
   margin-bottom: 30px;
 }
 
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFE4B5;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 228, 181, 0.25);
+}
+
+.socialButton:hover {
+  background-color: #FFE4B5;
+  color: #5D4037;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 228, 181, 0.35);
+}
+
+.socialButton svg {
+  width: 20px;
+  height: 20px;
+}
+
 .copy {
   font-size: 0.8rem;
   color: #8D6E63;
