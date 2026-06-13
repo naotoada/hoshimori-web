@@ -1,5 +1,6 @@
 import styles from './page.module.css';
 import DiagnosisForm from '@/components/DiagnosisForm';
+import Reviews from '@/components/Reviews';
 import Link from 'next/link';
 
 
@@ -235,6 +236,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className={styles.reviewsSection} id="reviews" style={{ padding: '0 20px', maxWidth: '800px', margin: '0 auto' }}>
+        <Reviews category="HOSHIMORI" />
+      </section>
 
       {/* FAQ Section */}
       <section className={styles.faqSection} id="faq">

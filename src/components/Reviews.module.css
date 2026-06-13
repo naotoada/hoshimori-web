@@ -1,0 +1,127 @@
+.reviewsContainer {
+  margin-top: 48px;
+  padding: 32px 0;
+  border-top: 1px solid #e9d5ff;
+}
+
+.title {
+  background: linear-gradient(135deg, #f3e8ff, #ede4f7);
+  padding: 10px 14px;
+  border-left: 4px solid #6A0DAD;
+  font-size: 1.05em;
+  border-radius: 0 6px 6px 0;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 0.85em;
+  color: #888;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.statsGrid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.statBox {
+  text-align: center;
+  padding: 14px 20px;
+  background: #f3e8ff;
+  border: 1px solid #e9d5ff;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  color: #6A0DAD;
+  font-weight: 700;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.loadingText {
+  text-align: center;
+  color: #aaa;
+  padding: 20px 0;
+  font-size: 0.9em;
+}
+
+.reviewsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reviewCard {
+  padding: 16px 20px;
+  background: #faf5ff;
+  border-left: 3px solid #6A0DAD;
+  border-radius: 0 8px 8px 0;
+}
+
+.reviewMeta {
+  font-size: 0.7rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.reviewBadge {
+  display: inline-block;
+  background: rgba(106, 13, 173, 0.12);
+  color: #6A0DAD;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  margin-left: 6px;
+}
+
+.reviewHeading {
+  font-size: 0.7rem;
+  color: #6A0DAD;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.reviewHeadingDivider {
+  font-size: 0.7rem;
+  color: #6A0DAD;
+  font-weight: 700;
+  margin-bottom: 3px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e9d5ff;
+}
+
+.reviewText {
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.moreBtn {
+  display: block;
+  margin: 16px auto 0;
+  padding: 10px 32px;
+  background: transparent;
+  border: 1px solid #e9d5ff;
+  color: #888;
+  font-size: 0.85em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.moreBtn:hover {
+  background: #f3e8ff;
+  color: #6A0DAD;
+}
