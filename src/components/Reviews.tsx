@@ -71,6 +71,11 @@ export default function Reviews({ category = 'HOSHIMORI' }: { category?: string 
               <div key={idx} className={styles.reviewCard}>
                 <div className={styles.reviewMeta}>
                   {r.date} <span className={styles.reviewBadge}>{r.q1}</span>
+                  {r.gender && r.age_group && (
+                    <span className={styles.reviewBadgeDemo}>
+                      {r.gender}・{r.age_group}
+                    </span>
+                  )}
                 </div>
                 {r.q5 && (
                   <>

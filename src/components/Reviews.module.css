@@ -125,3 +125,14 @@
   background: #f3e8ff;
   color: #6A0DAD;
 }
+
+.reviewBadgeDemo {
+  display: inline-block;
+  border: 1px solid rgba(106, 13, 173, 0.3);
+  color: #6A0DAD;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  margin-left: 6px;
+  background: transparent;
+}
