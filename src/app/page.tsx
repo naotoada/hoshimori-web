@@ -156,7 +156,7 @@ export default function Home() {
               <span>📱 公式LINEからドキュメントで納品</span>
               <span>🎯 対象: 18歳以上</span>
             </div>
-            <div className={styles.selfReportPrice}>¥3,900 <span>(税込)</span></div>
+            <div className={styles.selfReportPrice}>¥2,900 <span>(税込)</span></div>
             <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
               公式LINEから申し込む
             </a>
@@ -164,7 +164,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Report Service Section (Entry: ¥4,980) */}
+      {/* Report Service Section (Entry: ¥3,900) */}
       <section className={styles.reportSection} id="report">
         <div className={styles.container}>
           <div className={styles.reportBox}>
@@ -227,7 +227,7 @@ export default function Home() {
               <span>📝 必要な情報: お子様の生年月日のみ</span>
             </div>
 
-            <div className={styles.reportPrice}>¥4,900 <span>(税込)</span></div>
+            <div className={styles.reportPrice}>¥3,900 <span>(税込)</span></div>
 
             <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
               公式LINEから申し込む
