@@ -144,6 +144,13 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>✨</span>
+                <div>
+                  <h4>あなたの星を輝かせる魔法</h4>
+                  <p>あなたの星が最も喜ぶ「まもりの色」と空間づくり、毎日の小さな習慣をお届け</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
                 <span className={styles.featureIcon}>💌</span>
                 <div>
                   <h4>星守りからの手紙</h4>
@@ -152,7 +159,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.selfReportMeta}>
-              <span>📄 全5章・8,000〜12,000字</span>
+              <span>📄 全6章・9,000〜14,000字</span>
               <span>📱 公式LINEからドキュメントで納品</span>
               <span>🎯 対象: 18歳以上</span>
             </div>
@@ -212,6 +219,13 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>✨</span>
+                <div>
+                  <h4>星守りの魔法レシピ</h4>
+                  <p>お子様の星が喜ぶ「まもりの色」と空間づくり、親子で楽しめる毎日の小さな習慣</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
                 <span className={styles.featureIcon}>💌</span>
                 <div>
                   <h4>星守りからの手紙</h4>
@@ -221,7 +235,7 @@ export default function Home() {
             </div>
 
             <div className={styles.reportMeta}>
-              <span>📄 全6章・10,000〜15,000字</span>
+              <span>📄 全7章・11,000〜17,000字</span>
               <span>📱 公式LINEからドキュメントで納品</span>
               <span>🎂 対象: お子様（0〜17歳）</span>
               <span>📝 必要な情報: お子様の生年月日のみ</span>
@@ -250,7 +264,7 @@ export default function Home() {
               <summary className={styles.faqQuestion}>無料診断と星守りレポートは何が違いますか？</summary>
               <p className={styles.faqAnswer}>
                 無料診断では、「星守りタイプ」と基本的な特徴（約500字）をお伝えしています。
-                星守りレポートでは、90タイプごとに完全カスタマイズされた<strong>全5〜6章・10,000字超</strong>の詳細な分析をお届けします。
+                星守りレポートでは、90タイプごとに完全カスタマイズされた<strong>全6〜7章・10,000字超</strong>の詳細な分析をお届けします。
                 才能の活かし方、人間関係の処方箋、今年のナビゲーションなど、
                 明日から実践できる具体的な内容が含まれています。
               </p>
