@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 
 const STARS_COUNT = 5;
@@ -46,6 +47,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       for (let i = 0; i < sequence.length; i++) {
         if (!isMounted) return;
         setActiveStar(sequence[i]);
+        playSE.tap();
         await new Promise(r => setTimeout(r, 600));
         setActiveStar(null);
         await new Promise(r => setTimeout(r, 200));
@@ -61,7 +63,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     
     return () => { isMounted = false; };
   }, [sequence, isGameOver, isCelebrating]);
-
+ 
   const handleStarClick = (index: number) => {
     if (isPlayingSequence || isGameOver || isCelebrating) return;
     
@@ -69,13 +71,15 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     setPlayerSequence(newPlayerSeq);
     
     // Highlight clicked star briefly
+    playSE.tap();
     setActiveStar(index);
     setTimeout(() => setActiveStar(null), 200);
-
+ 
     // Check if correct so far
     const currentIndex = newPlayerSeq.length - 1;
     if (newPlayerSeq[currentIndex] !== sequence[currentIndex]) {
       // Wrong!
+      playSE.miss();
       setMessage('ざんねん！もういちど挑戦しよう');
       setTimeout(() => {
         setPlayerSequence([]);
@@ -83,14 +87,16 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       }, 1500);
       return;
     }
-
+ 
     // Check if level complete
     if (newPlayerSeq.length === sequence.length) {
       if (level >= 3) {
         // Game beat
+        playSE.clear();
         setMessage('すごい！せいかい！');
         setTimeout(() => handleWin(), 1000);
       } else {
+        playSE.clear();
         setMessage('せいかい！つぎのレベルへ！');
         setTimeout(() => {
           setLevel(l => l + 1);
@@ -99,7 +105,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       }
     }
   };
-
+ 
   const handleWin = () => {
     setIsCelebrating(true);
     const keys = Object.keys(CHARACTER_MAP);

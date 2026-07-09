@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 
 type Star = {
@@ -64,16 +65,20 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
     
     const starEmojis = ['✨', '⭐️', '🌟', '💫'];
     if (starEmojis.includes(targetStar.emoji)) {
+      playSE.tap();
       const newScore = score + 1;
       setScore(newScore);
 
       if (newScore >= TARGET_SCORE) {
         handleWin();
       }
+    } else {
+      playSE.miss();
     }
   };
 
   const handleWin = () => {
+    playSE.clear();
     setIsCelebrating(true);
     setStars([]);
     

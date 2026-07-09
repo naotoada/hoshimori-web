@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 
 type Enemy = {
@@ -35,6 +36,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
       setTimeLeft(prev => {
         if (prev <= 1) {
           hasWonRef.current = true;
+          playSE.clear();
           
           setTimeout(() => {
             setIsCelebrating(true);
@@ -125,6 +127,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
 
         if (hitCenter && !isGameOverRef.current) {
           isGameOverRef.current = true;
+          playSE.miss();
           // Schedule state update outside of setEnemies
           setTimeout(() => {
             setIsGameOver(true);
@@ -149,6 +152,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
 
   const tapEnemy = (id: number) => {
     if (isGameOverRef.current || hasWonRef.current) return;
+    playSE.tap();
     setEnemies(prev => prev.filter(e => e.id !== id));
   };
 

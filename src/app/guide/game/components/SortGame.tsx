@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 
 type ElementType = 'fire' | 'water' | 'wood';
@@ -71,6 +72,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
       const targetItem = prev[0];
       
       if (targetItem.type === type) {
+        playSE.tap();
         scoreRef.current += 1;
         setScore(scoreRef.current);
         setFeedback('⭕️');
@@ -78,6 +80,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
           setTimeout(() => handleWin(), 100);
         }
       } else {
+        playSE.miss();
         setFeedback('❌');
       }
       
@@ -87,6 +90,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   }, [isGameOver, isCelebrating]);
 
   const handleWin = () => {
+    playSE.clear();
     setIsCelebrating(true);
     setItems([]);
     const keys = Object.keys(CHARACTER_MAP);

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 
 const SLOT_EMOJIS = ['🔥', '💧', '🍃', '⭐️', '⛰️'];
@@ -75,6 +76,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const stopSlot = (index: number) => {
     if (!spinning[index]) return;
     
+    playSE.stop();
     setSpinning(prev => {
       const next = [...prev];
       next[index] = false;
@@ -97,15 +99,18 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     const twoMatch = s[0] === s[1] || s[1] === s[2] || s[0] === s[2];
 
     if (allMatch) {
+      playSE.jackpot();
       setMessage('');
       setTimeout(() => startCelebration(), 300);
     } else if (twoMatch) {
+      playSE.miss();
       setMessage('おしい！あと1つだった！');
       setTimeout(() => {
         setIsMiss(true);
         setIsChecking(false);
       }, 800);
     } else {
+      playSE.miss();
       setMessage('ざんねん…！もういっかい！');
       setTimeout(() => {
         setIsMiss(true);
