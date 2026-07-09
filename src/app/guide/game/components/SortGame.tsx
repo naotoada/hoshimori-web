@@ -64,6 +64,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
   };
 
   const handleBinClick = useCallback((type: ElementType) => {
+    playSE.init();
     if (isGameOver || isCelebrating) return;
     
     setItems(prev => {

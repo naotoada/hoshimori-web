@@ -151,6 +151,7 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
   }, [isGameOver, hasWon, isCelebrating]);
 
   const tapEnemy = (id: number) => {
+    playSE.init();
     if (isGameOverRef.current || hasWonRef.current) return;
     playSE.tap();
     setEnemies(prev => prev.filter(e => e.id !== id));

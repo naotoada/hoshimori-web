@@ -56,6 +56,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
   }, [isGameOver, isCelebrating]);
 
   const catchStar = (id: number) => {
+    playSE.init();
     if (isGameOver || isCelebrating) return;
     
     const targetStar = stars.find(s => s.id === id);

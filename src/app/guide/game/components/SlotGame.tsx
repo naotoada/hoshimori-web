@@ -59,6 +59,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   }, [spinning]);
 
   const startSpin = () => {
+    playSE.init();
     setSpinning([true, true, true]);
     setIsGameOver(false);
     setHasStarted(true);
@@ -76,6 +77,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const stopSlot = (index: number) => {
     if (!spinning[index]) return;
     
+    playSE.init();
     playSE.stop();
     setSpinning(prev => {
       const next = [...prev];

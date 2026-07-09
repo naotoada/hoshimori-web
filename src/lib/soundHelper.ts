@@ -49,6 +49,14 @@ function playTone(
 }
 
 export const playSE = {
+  // AudioContextの活性化（ユーザージェスチャー内で呼ぶ）
+  init: () => {
+    const ctx = getAudioContext();
+    if (ctx && ctx.state === 'suspended') {
+      ctx.resume();
+    }
+  },
+
   // 星などをタップした時 (ピキッという澄んだ高音)
   tap: () => {
     playTone([1000], 0.08, 'sine', 0, 1500);

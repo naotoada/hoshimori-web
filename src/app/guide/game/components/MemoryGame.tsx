@@ -65,6 +65,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
   }, [sequence, isGameOver, isCelebrating]);
  
   const handleStarClick = (index: number) => {
+    playSE.init();
     if (isPlayingSequence || isGameOver || isCelebrating) return;
     
     const newPlayerSeq = [...playerSequence, index];
