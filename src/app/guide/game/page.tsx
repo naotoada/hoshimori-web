@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import CatchGame from './components/CatchGame';
@@ -14,6 +14,14 @@ type GameType = 'menu' | 'catch' | 'memory' | 'sort' | 'slot' | 'defend';
 
 export default function GameHub() {
   const [activeGame, setActiveGame] = useState<GameType>('menu');
+  const [isIframe, setIsIframe] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      setIsIframe(params.get('iframe') === 'true');
+    }
+  }, []);
 
   if (activeGame === 'catch') return <CatchGame onBack={() => setActiveGame('menu')} />;
   if (activeGame === 'memory') return <MemoryGame onBack={() => setActiveGame('menu')} />;
@@ -29,9 +37,11 @@ export default function GameHub() {
       </Head>
 
       <div className={styles.menuContainer}>
-        <Link href="/guide" className={styles.menuBackBtn}>
-          ◀ マップに戻る
-        </Link>
+        {!isIframe && (
+          <Link href="/guide" className={styles.menuBackBtn}>
+            ◀ マップに戻る
+          </Link>
+        )}
         <h1 className={styles.menuTitle}>あそぶゲームをえらんでね！</h1>
         
         <div className={styles.menuGrid}>
