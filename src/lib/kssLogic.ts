@@ -45,10 +45,10 @@ export function calculateHoshimori(year: number, month: number, day: number) {
   const honmei = getNenban(year, month, day);
   const etoNumber = getNichiEto(year, month, day);
   const nikkan = getNikkan(etoNumber);
-  
+
   const hoshimoriId = `${honmei}_${nikkan}`;
   const honmeiName = HONMEI_NAMES[honmei];
-  
+
   return {
     honmei,
     honmeiName,

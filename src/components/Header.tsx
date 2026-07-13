@@ -55,6 +55,9 @@ export default function Header() {
             <Link href="/zukan" className={styles.menuLink} onClick={handleLinkClick}>
               📚 星守り図鑑
             </Link>
+            <Link href="/kids" className={styles.menuLink} onClick={handleLinkClick}>
+              📱 星守りキッズ（アプリ）
+            </Link>
             <Link href="/#self-report" className={styles.menuLink} onClick={handleLinkClick}>
               📝 星守りレポート
             </Link>
@@ -75,6 +78,9 @@ export default function Header() {
             </a>
             <Link href="/#faq" className={styles.menuLink} onClick={handleLinkClick}>
               ❓ よくある質問
+            </Link>
+            <Link href="/privacy" className={styles.menuLink} onClick={handleLinkClick}>
+              🔒 プライバシーポリシー
             </Link>
             <a
               href="https://lin.ee/9MSmxO1x"
