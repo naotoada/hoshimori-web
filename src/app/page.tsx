@@ -71,6 +71,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Kids App Section */}
+      <section className={styles.kidsAppSection}>
+        <div className={styles.container}>
+          <div className={styles.kidsAppCard}>
+            <div className={styles.kidsAppContent}>
+              <span className={styles.kidsAppBadge}>📱 専用アプリ</span>
+              <h2>星守りキッズ</h2>
+              <p>
+                「どうして怒ってばかりなんだろう…」<br/>
+                そんな育児の悩みに、AIと星の導きが優しく答えます。<br/>
+                毎日のメッセージや相性診断で、子育てのモヤモヤを「なるほど！」に変える、新感覚の育児サポートアプリです。
+              </p>
+              <Link href="/kids" className={styles.kidsAppBtn}>
+                アプリの詳細を見る
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Concept Section */}
       <section className={styles.conceptSection}>
         <div className={styles.container}>
