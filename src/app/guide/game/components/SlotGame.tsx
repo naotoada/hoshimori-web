@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { CHARACTER_MAP, CHARACTER_BASE_URL, getLocalizedCharacterName } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 import { useLang } from '../i18n';
@@ -31,7 +31,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
   const [isChecking, setIsChecking] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [celebrationPhase, setCelebrationPhase] = useState(0);
-  const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
+  const [rewardChar, setRewardChar] = useState<{id: string, name: string, imageUrl: string} | null>(null);
 
   // Use refs to track the final stopped values
   const slotsRef = useRef([0, 1, 2]);
@@ -157,6 +157,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const char = CHARACTER_MAP[randomKey];
     setRewardChar({
+      id: randomKey,
       name: char.name,
       imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
@@ -267,7 +268,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       {isGameOver && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', getLocalizedCharacterName(rewardChar.id, t.currentLang))}</h2>
           <p className={styles.praiseMessage}>
             {t.slotClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>

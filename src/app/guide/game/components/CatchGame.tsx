@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
+import { CHARACTER_MAP, CHARACTER_BASE_URL, getLocalizedCharacterName } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
 import { useLang } from '../i18n';
@@ -24,7 +24,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
   const [isGameOver, setIsGameOver] = useState(false);
   const [hasWon, setHasWon] = useState(false);
   const [isCelebrating, setIsCelebrating] = useState(false);
-  const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
+  const [rewardChar, setRewardChar] = useState<{id: string, name: string, imageUrl: string} | null>(null);
   
   const starIdCounter = useRef(0);
 
@@ -89,6 +89,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const char = CHARACTER_MAP[randomKey];
     setRewardChar({
+      id: randomKey,
       name: char.name,
       imageUrl: `${CHARACTER_BASE_URL}${char.file}.png`
     });
@@ -146,7 +147,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
       {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', getLocalizedCharacterName(rewardChar.id, t.currentLang))}</h2>
           <p className={styles.praiseMessage}>
             {t.catchClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>

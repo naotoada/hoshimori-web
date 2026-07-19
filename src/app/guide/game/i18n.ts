@@ -56,6 +56,7 @@ export interface GameI18n {
   slotSpin: string;
   slotRetry: string;
   slotClear: string;
+  currentLang?: string;
 }
 
 // ── 日本語（デフォルト） ──
@@ -514,5 +515,6 @@ export function useLang(): GameI18n {
     }
   }, []);
 
-  return TRANSLATIONS[lang] || TRANSLATIONS.ja;
+  const translation = TRANSLATIONS[lang] || TRANSLATIONS.ja;
+  return { ...translation, currentLang: lang };
 }
