@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
+import { useLang } from '../i18n';
 
 type Enemy = {
   id: number;
@@ -16,6 +17,7 @@ type Enemy = {
 const SURVIVE_TIME = 20;
 
 export default function DefendGame({ onBack }: { onBack: () => void }) {
+  const t = useLang();
   const [enemies, setEnemies] = useState<Enemy[]>([]);
   const [timeLeft, setTimeLeft] = useState(SURVIVE_TIME);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -172,17 +174,17 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
     <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
-          ◀ ゲーム選択に戻る
+          {t.backToMenu}
         </button>
         <div className={styles.score}>
-          ⏳ {timeLeft}秒
+          ⏳ {timeLeft}s
         </div>
       </div>
 
       {!isGameOver && !hasWon && !isCelebrating && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
           <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>
-            迫ってくる雲をタッチして星を守れ！
+            {t.defendDesc}
           </div>
           
           {/* Center Star */}
@@ -215,12 +217,12 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
 
       {isGameOver && !hasWon && !isCelebrating && (
         <div className={styles.resultScreen}>
-          <h2 style={{ fontSize: '2rem', color: '#F56565', marginBottom: '2rem' }}>ゲームオーバー...</h2>
+          <h2 style={{ fontSize: '2rem', color: '#F56565', marginBottom: '2rem' }}>{t.defendGameOver}</h2>
           <p className={styles.praiseMessage}>
-            星が隠されちゃった！<br/>もういっかいがんばろう！
+            {t.defendFail.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
         </div>
       )}
@@ -228,15 +230,15 @@ export default function DefendGame({ onBack }: { onBack: () => void }) {
       {hasWon && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
           <p className={styles.praiseMessage}>
-            すごい！<br/>星をまもりぬいたね！
+            {t.defendClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
           <button className={styles.returnBtn} onClick={onBack}>
-            ゲーム選択に戻る
+            {t.backToSelect}
           </button>
         </div>
       )}

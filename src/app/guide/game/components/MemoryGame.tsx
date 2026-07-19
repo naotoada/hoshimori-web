@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
+import { useLang } from '../i18n';
 
 const STARS_COUNT = 5;
 
 export default function MemoryGame({ onBack }: { onBack: () => void }) {
+  const t = useLang();
   const [sequence, setSequence] = useState<number[]>([]);
   const [playerSequence, setPlayerSequence] = useState<number[]>([]);
   const [isPlayingSequence, setIsPlayingSequence] = useState(false);
@@ -17,7 +19,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isCelebrating, setIsCelebrating] = useState(false);
   const [rewardChar, setRewardChar] = useState<{name: string, imageUrl: string} | null>(null);
-  const [message, setMessage] = useState('星の順番をおぼえてね！');
+  const [message, setMessage] = useState('');
 
   // Generate sequence for current level
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     let isMounted = true;
     const playSeq = async () => {
       setIsPlayingSequence(true);
-      setMessage('よく見ててね...');
+      setMessage(t.memoryWatch);
       
       // Initial pause
       await new Promise(r => setTimeout(r, 1000));
@@ -55,7 +57,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       
       if (isMounted) {
         setIsPlayingSequence(false);
-        setMessage('順番にタップしてね！');
+        setMessage(t.memoryTap);
       }
     };
     
@@ -81,7 +83,7 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     if (newPlayerSeq[currentIndex] !== sequence[currentIndex]) {
       // Wrong!
       playSE.miss();
-      setMessage('ざんねん！もういちど挑戦しよう');
+      setMessage(t.memoryWrong);
       setTimeout(() => {
         setPlayerSequence([]);
         setSequence([]); // This will trigger regeneration of the same level
@@ -94,11 +96,11 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       if (level >= 3) {
         // Game beat
         playSE.clear();
-        setMessage('すごい！せいかい！');
+        setMessage(t.memoryCorrect);
         setTimeout(() => handleWin(), 1000);
       } else {
         playSE.clear();
-        setMessage('せいかい！つぎのレベルへ！');
+        setMessage(t.memoryNext);
         setTimeout(() => {
           setLevel(l => l + 1);
           setSequence([]);
@@ -129,14 +131,14 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
     setPlayerSequence([]);
     setIsGameOver(false);
     setIsCelebrating(false);
-    setMessage('星の順番をおぼえてね！');
+    setMessage(t.memoryReady);
   };
 
   return (
     <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
-          ◀ ゲーム選択に戻る
+          {t.backToMenu}
         </button>
         <div className={styles.score}>
           Lv. {level} / 3
@@ -173,15 +175,15 @@ export default function MemoryGame({ onBack }: { onBack: () => void }) {
       {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
           <p className={styles.praiseMessage}>
-            ばっちりおぼえられたね！<br/>きおくりょくがすごい！
+            {t.memoryClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
           <button className={styles.returnBtn} onClick={onBack}>
-            ゲーム選択に戻る
+            {t.backToSelect}
           </button>
         </div>
       )}

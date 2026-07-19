@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
+import { useLang } from '../i18n';
 
 type ElementType = 'fire' | 'water' | 'wood';
 type FallingItem = {
@@ -24,6 +25,7 @@ const ELEMENT_EMOJIS: Record<ElementType, string> = {
 const TARGET_SCORE = 10;
 
 export default function SortGame({ onBack }: { onBack: () => void }) {
+  const t = useLang();
   const [items, setItems] = useState<FallingItem[]>([]);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -121,7 +123,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
     <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
-          ◀ ゲーム選択に戻る
+          {t.backToMenu}
         </button>
         <div className={styles.score}>
           🎯 {score} / {TARGET_SCORE}
@@ -131,7 +133,7 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
       {!isGameOver && !isCelebrating && (
         <div className={styles.playArea} style={{ position: 'relative' }}>
           <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>
-            落ちてくるしるしと同じボタンをおしてね！
+            {t.sortInstruction}
           </div>
           
           {feedback && (
@@ -187,15 +189,15 @@ export default function SortGame({ onBack }: { onBack: () => void }) {
       {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
           <p className={styles.praiseMessage}>
-            すごい！<br/>上手にあわせられたね！
+            {t.sortClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
           <button className={styles.returnBtn} onClick={onBack}>
-            ゲーム選択に戻る
+            {t.backToSelect}
           </button>
         </div>
       )}

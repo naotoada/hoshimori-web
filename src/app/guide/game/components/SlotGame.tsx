@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
+import { useLang } from '../i18n';
 
 const SLOT_EMOJIS = ['🔥', '💧', '🍃', '⭐️', '⛰️'];
 const CELEBRATION_EMOJIS = ['🎉', '✨', '⭐️', '🌟', '💫', '🎊', '🔥', '💎', '👑', '🌈'];
@@ -19,6 +20,7 @@ type Particle = {
 };
 
 export default function SlotGame({ onBack }: { onBack: () => void }) {
+  const t = useLang();
   const [slots, setSlots] = useState([0, 1, 2]);
   const [spinning, setSpinning] = useState([false, false, false]);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -106,14 +108,14 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       setTimeout(() => startCelebration(), 300);
     } else if (twoMatch) {
       playSE.miss();
-      setMessage('おしい！あと1つだった！');
+      setMessage(t.slotAlmost);
       setTimeout(() => {
         setIsMiss(true);
         setIsChecking(false);
       }, 800);
     } else {
       playSE.miss();
-      setMessage('ざんねん…！もういっかい！');
+      setMessage(t.slotMiss);
       setTimeout(() => {
         setIsMiss(true);
         setIsChecking(false);
@@ -164,7 +166,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
     <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
-          ◀ ゲーム選択に戻る
+          {t.backToMenu}
         </button>
       </div>
 
@@ -191,12 +193,12 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
           <div className={styles.celebrationText}>
             {celebrationPhase >= 1 && (
               <div className={styles.jackpotText1}>
-                🎰 大当たり！ 🎰
+                {t.slotJackpot}
               </div>
             )}
             {celebrationPhase >= 2 && (
               <div className={styles.jackpotText2}>
-                ✨ おめでとう！ ✨
+                {t.slotCongrats}
               </div>
             )}
           </div>
@@ -216,7 +218,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       {!isGameOver && !isCelebrating && (
         <div className={styles.playArea} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '15vh' }}>
           <div className={styles.instructions} style={{ position: 'static', marginBottom: '2rem' }}>
-            3つ揃えたら星守りが出てくるよ！
+            {t.slotHint}
           </div>
           
           <div className={styles.slotMachine}>
@@ -230,7 +232,7 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
                   onClick={() => stopSlot(i)}
                   disabled={!spinning[i]}
                 >
-                  ストップ
+                  {t.slotStop}
                 </button>
               </div>
             ))}
@@ -244,19 +246,19 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
 
           {!spinning.includes(true) && !hasStarted && (
             <button className={styles.slotStartBtn} onClick={startSpin}>
-              スピンスタート！
+              {t.slotSpin}
             </button>
           )}
 
           {!spinning.includes(true) && isMiss && (
             <button className={styles.slotStartBtn} onClick={startSpin}>
-              もういっかい！
+              {t.slotRetry}
             </button>
           )}
 
           {!spinning.includes(true) && hasStarted && !isMiss && !message && !isChecking && (
             <button className={styles.slotStartBtn} onClick={startSpin}>
-              スピンスタート！
+              {t.slotSpin}
             </button>
           )}
         </div>
@@ -265,15 +267,15 @@ export default function SlotGame({ onBack }: { onBack: () => void }) {
       {isGameOver && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
           <p className={styles.praiseMessage}>
-            3つ揃ったね！すごい！<br/>またあそんでみてね！
+            {t.slotClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={startSpin}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
           <button className={styles.returnBtn} onClick={onBack}>
-            ゲーム選択に戻る
+            {t.backToSelect}
           </button>
         </div>
       )}

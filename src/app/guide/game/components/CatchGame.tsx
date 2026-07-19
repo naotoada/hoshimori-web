@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CHARACTER_MAP, CHARACTER_BASE_URL } from '@/lib/characterMap';
 import { playSE } from '@/lib/soundHelper';
 import styles from '../page.module.css';
+import { useLang } from '../i18n';
 
 type Star = {
   id: number;
@@ -17,6 +18,7 @@ const EMOJIS = ['✨', '⭐️', '🌟', '💫', '🍎', '💧', '🍃'];
 const TARGET_SCORE = 15;
 
 export default function CatchGame({ onBack }: { onBack: () => void }) {
+  const t = useLang();
   const [stars, setStars] = useState<Star[]>([]);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -108,7 +110,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
     <div className={styles.gameContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>
-          ◀ ゲーム選択に戻る
+          {t.backToMenu}
         </button>
         <div className={styles.score}>
           ⭐️ {score} / {TARGET_SCORE}
@@ -130,7 +132,7 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
               {star.emoji}
             </div>
           ))}
-          <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>落ちてくる星をタッチしてね！</div>
+          <div className={styles.instructions} style={{ position: 'absolute', top: '110px', width: '100%', textAlign: 'center', zIndex: 5, fontSize: '1.2rem' }}>{t.catchInstruction}</div>
         </div>
       )}
 
@@ -144,15 +146,15 @@ export default function CatchGame({ onBack }: { onBack: () => void }) {
       {isGameOver && !isCelebrating && rewardChar && (
         <div className={styles.resultScreen}>
           <img src={rewardChar.imageUrl} alt={rewardChar.name} className={styles.characterImg} />
-          <h2 className={styles.characterName}>{rewardChar.name} があらわれた！</h2>
+          <h2 className={styles.characterName}>{t.appeared.replace('{name}', rewardChar.name)}</h2>
           <p className={styles.praiseMessage}>
-            すごい！<br/>星をたくさん集められたね！
+            {t.catchClear.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
           </p>
           <button className={styles.replayBtn} onClick={resetGame}>
-            もういっかい遊ぶ
+            {t.playAgain}
           </button>
           <button className={styles.returnBtn} onClick={onBack}>
-            ゲーム選択に戻る
+            {t.backToSelect}
           </button>
         </div>
       )}
