@@ -96,7 +96,7 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.conceptGrid} style={{ flexDirection: 'column', alignItems: 'center' }}>
             <div className={styles.conceptImage}>
-              <img src="/images/concept_rain_hope.png" alt="雨の中、星を見上げる" style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.1)', display: 'block', margin: '0 auto' }} />
+              <img src="/images/concept_rain_hope.webp" alt="雨の中、星を見上げる" style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.1)', display: 'block', margin: '0 auto' }} />
             </div>
             <div className={styles.conceptText}>
               <h2 style={{ textAlign: 'center' }}>「頑張ってるのに、なぜかうまくいかない」<br/>——それは、あなたのせいじゃないかもしれません。</h2>
@@ -117,7 +117,7 @@ export default function Home() {
               </p>
             </div>
             <div className={styles.conceptImage}>
-              <img src="/images/star_magic_book.png" alt="星守りの魔法の本" style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.1)', display: 'block', margin: '0 auto' }} />
+              <img src="/images/star_magic_book.webp" alt="星守りの魔法の本" style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.1)', display: 'block', margin: '0 auto' }} />
             </div>
           </div>
         </div>

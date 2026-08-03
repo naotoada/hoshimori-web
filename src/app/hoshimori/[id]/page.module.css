@@ -58,15 +58,15 @@
   background-position: center;
 }
 
-.bgWater { background-image: url('/bg_water.png'); }
-.bgEarth { background-image: url('/bg_earth.png'); }
-.bgThunder { background-image: url('/bg_thunder.png'); }
-.bgWind { background-image: url('/bg_wind.png'); }
-.bgEmperor { background-image: url('/bg_emperor.png'); }
-.bgHeaven { background-image: url('/bg_heaven.png'); }
-.bgFruit { background-image: url('/bg_fruit.png'); }
-.bgMountain { background-image: url('/bg_mountain.png'); }
-.bgFire { background-image: url('/bg_fire.png'); }
+.bgWater { background-image: url('/bg_water.webp'); }
+.bgEarth { background-image: url('/bg_earth.webp'); }
+.bgThunder { background-image: url('/bg_thunder.webp'); }
+.bgWind { background-image: url('/bg_wind.webp'); }
+.bgEmperor { background-image: url('/bg_emperor.webp'); }
+.bgHeaven { background-image: url('/bg_heaven.webp'); }
+.bgFruit { background-image: url('/bg_fruit.webp'); }
+.bgMountain { background-image: url('/bg_mountain.webp'); }
+.bgFire { background-image: url('/bg_fire.webp'); }
 
 .characterImage {
   position: relative;

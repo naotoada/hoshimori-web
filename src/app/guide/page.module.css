@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-image: linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.9)), url('/images/calm_space_bg.png');
+  background-image: linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.9)), url('/images/calm_space_bg.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

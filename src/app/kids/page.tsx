@@ -13,7 +13,7 @@ export default function KidsAppPage() {
       <section className={styles.hero}>
         <div className={styles.heroImageWrapper}>
           <Image
-            src="/images/app/hoshimorhi_kizs_openning.png"
+            src="/images/app/hoshimorhi_kizs_openning.webp"
             alt="星守りキッズ オープニング"
             fill
             className={styles.heroImage}
@@ -24,7 +24,7 @@ export default function KidsAppPage() {
         <div className={styles.heroContent}>
           <div className={styles.appIconWrapper}>
             <Image
-              src="/images/app/icon.png"
+              src="/images/app/icon.webp"
               alt="星守りキッズ アプリアイコン"
               width={100}
               height={100}
@@ -62,7 +62,7 @@ export default function KidsAppPage() {
             {[1, 2, 3, 4, 5].map((num) => (
               <div key={num} className={styles.galleryItem}>
                 <Image
-                  src={`/images/app/store_${num}.png`}
+                  src={`/images/app/store_${num}.webp`}
                   alt={`機能紹介 ${num}`}
                   width={300}
                   height={650}

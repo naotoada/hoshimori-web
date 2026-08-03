@@ -1,5 +1,5 @@
 .header {
-  background: linear-gradient(rgba(10, 15, 40, 0.85), rgba(20, 25, 60, 0.95)), url('/hero_space.png') center top/cover no-repeat;
+  background: linear-gradient(rgba(10, 15, 40, 0.85), rgba(20, 25, 60, 0.95)), url('/hero_space.webp') center top/cover no-repeat;
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
