@@ -114,7 +114,7 @@ export default function TarotPage() {
             <div className={styles.flowStep}>
               <div className={styles.flowStepNumber} style={{ background: 'linear-gradient(135deg, #7B20CC, #4a0a7a)' }}>1</div>
               <h3>公式LINEからお申込み</h3>
-              <p>生年月日と今のお悩みをお送りください。お支払いはカード決済です。</p>
+              <p>生年月日と今のお悩みをお送りください。お支払いは銀行振込です。</p>
               <span className={styles.flowArrow}>→</span>
             </div>
             <div className={styles.flowStep}>

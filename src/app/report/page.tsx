@@ -113,7 +113,7 @@ export default function ReportPage() {
             <div className={styles.flowStep}>
               <div className={styles.flowStepNumber} style={{ background: 'linear-gradient(135deg, #1b69cc, #0a3e7a)' }}>1</div>
               <h3>公式LINEからお申込み</h3>
-              <p>お子様の生年月日をお送りください。お支払いはカード決済です。</p>
+              <p>お子様の生年月日をお送りください。お支払いは銀行振込です。</p>
               <span className={styles.flowArrow}>→</span>
             </div>
             <div className={styles.flowStep}>
