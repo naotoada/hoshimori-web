@@ -1,0 +1,450 @@
+/* Product Detail Page — Shared Styles */
+
+.main {
+  font-family: var(--font-m-plus-rounded), 'M PLUS Rounded 1c', "M PLUS Rounded", sans-serif;
+  color: #4A4A4A;
+  background-color: #FFFDF9;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 100px 20px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBadge {
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 28px;
+  border-radius: 24px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #FFF;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroLead {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.9;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroLead strong {
+  color: #FFD700;
+}
+
+.heroPrice {
+  font-size: 3.2rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroPrice span {
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lineBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #06C755;
+  color: #FFF;
+  font-size: 1.15rem;
+  font-weight: bold;
+  padding: 18px 50px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.lineBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(6, 199, 85, 0.4);
+}
+
+/* ── Pain Points ── */
+.painSection {
+  padding: 80px 0;
+  background-color: #FFF;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #5D4037;
+  margin-bottom: 40px;
+}
+
+.painList {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.painItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #FFFDF9;
+  border-radius: 16px;
+  border: 1px solid #F0E6D6;
+}
+
+.painIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.painText {
+  font-size: 1.05rem;
+  color: #6D4C41;
+  line-height: 1.7;
+}
+
+.painClose {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.15rem;
+  color: #8D6E63;
+  line-height: 1.8;
+}
+
+.painClose strong {
+  color: #5D4037;
+}
+
+/* ── Features ── */
+.featuresSection {
+  padding: 80px 0;
+  background-color: #FAFAFA;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.featureCard {
+  background: #FFF;
+  border-radius: 20px;
+  padding: 30px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  border: 1px solid #F0E6D6;
+  transition: transform 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-3px);
+}
+
+.featureCardIcon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.featureCard h3 {
+  font-size: 1.1rem;
+  color: #5D4037;
+  margin-bottom: 8px;
+}
+
+.featureCard p {
+  font-size: 0.95rem;
+  color: #8D6E63;
+  line-height: 1.7;
+}
+
+/* ── Flow (3 Steps) ── */
+.flowSection {
+  padding: 80px 0;
+  background-color: #FFF;
+}
+
+.flowSteps {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.flowStep {
+  flex: 1;
+  max-width: 280px;
+  text-align: center;
+  position: relative;
+}
+
+.flowStepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #FFF;
+  margin-bottom: 16px;
+}
+
+.flowStep h3 {
+  font-size: 1.05rem;
+  color: #5D4037;
+  margin-bottom: 8px;
+}
+
+.flowStep p {
+  font-size: 0.9rem;
+  color: #8D6E63;
+  line-height: 1.7;
+}
+
+.flowArrow {
+  position: absolute;
+  top: 28px;
+  right: -20px;
+  font-size: 1.2rem;
+  color: #CCC;
+}
+
+/* ── Sample Preview ── */
+.sampleSection {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #FAFAFA 0%, #F5F0FF 100%);
+}
+
+.sampleBox {
+  max-width: 600px;
+  margin: 40px auto 0;
+  background: #FFF;
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border: 1px solid #E8E0F0;
+}
+
+.sampleLabel {
+  display: inline-block;
+  background: #F0EBF8;
+  color: #7B20CC;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.sampleContent h3 {
+  font-size: 1.15rem;
+  color: #5D4037;
+  margin-bottom: 12px;
+}
+
+.sampleContent p {
+  font-size: 0.95rem;
+  color: #6D4C41;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.sampleNote {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #AAA;
+}
+
+/* ── Reviews ── */
+.reviewsSection {
+  padding: 0 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ── FAQ ── */
+.faqSection {
+  padding: 80px 0;
+  background-color: #FAFAFA;
+}
+
+.faqList {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background: #FFF;
+  border-radius: 16px;
+  padding: 0;
+  margin-bottom: 12px;
+  border: 1px solid #F0E6D6;
+  overflow: hidden;
+}
+
+.faqItem summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #5D4037;
+  font-size: 1rem;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqItem summary::before {
+  content: '＋';
+  margin-right: 12px;
+  color: #D97706;
+  font-weight: 900;
+}
+
+.faqItem[open] summary::before {
+  content: '−';
+}
+
+.faqAnswer {
+  padding: 0 24px 20px;
+  color: #6D4C41;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* ── CTA Final ── */
+.ctaSection {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 1.6rem;
+  color: #5D4037;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.ctaPrice {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.ctaPrice span {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #AAA;
+}
+
+.ctaMeta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-bottom: 40px;
+}
+
+.ctaMeta span {
+  font-size: 0.85rem;
+  color: #8D6E63;
+  background: #FFF8F0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #F0E6D6;
+}
+
+/* ── Footer ── */
+.backLink {
+  display: block;
+  text-align: center;
+  padding: 40px 0;
+  color: #8D6E63;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: #5D4037;
+}
+
+/* ── Mobile ── */
+.spOnly {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .spOnly {
+    display: inline;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+
+  .heroPrice {
+    font-size: 2.4rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .flowSteps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flowArrow {
+    display: none;
+  }
+
+  .lineBtn {
+    padding: 16px 40px;
+    font-size: 1rem;
+  }
+
+  .sampleBox {
+    padding: 28px 20px;
+  }
+}

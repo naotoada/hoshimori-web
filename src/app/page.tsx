@@ -184,9 +184,14 @@ export default function Home() {
               <span>🎯 対象: 18歳以上</span>
             </div>
             <div className={styles.selfReportPrice}>¥2,900 <span>(税込)</span></div>
-            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
-              公式LINEから申し込む
-            </a>
+            <div className={styles.ctaGroup}>
+              <Link href="/self-report" className={styles.detailBtn}>
+                詳しく見る
+              </Link>
+              <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="self-report-cta">
+                公式LINEから申し込む
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -263,9 +268,78 @@ export default function Home() {
 
             <div className={styles.reportPrice}>¥3,900 <span>(税込)</span></div>
 
-            <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
-              公式LINEから申し込む
-            </a>
+            <div className={styles.ctaGroup}>
+              <Link href="/report" className={styles.detailBtn}>
+                詳しく見る
+              </Link>
+              <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="report-cta">
+                公式LINEから申し込む
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Tarot Letter Section (¥6,900) */}
+      <section className={styles.tarotLetterSection} id="tarot-letter">
+        <div className={styles.container}>
+          <div className={styles.tarotLetterBox}>
+            <span className={styles.tarotLetterBadge}>🌟 星守りタロット</span>
+            <h2>今のお悩みに<br/>星が答える「導きレター」</h2>
+            <p className={styles.tarotLetterLead}>
+              あなたの<strong>心の構造</strong>と、<br className={styles.spOnly}/>
+              星守り研究所の専属リーダーが受け取った<br className={styles.spOnly}/>
+              <strong>10枚の星のメッセージ</strong>を掛け合わせ、<br/>
+              今のお悩みに深く寄り添うパーソナルレターです。
+            </p>
+
+            <div className={styles.tarotLetterFeatures}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🧭</span>
+                <div>
+                  <h4>心の設計図</h4>
+                  <p>「なぜ今この悩みが生まれたか」を、あなたの星の構造と今の星回りから多角的に解き明かします</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>💫</span>
+                <div>
+                  <h4>10枚の星のメッセージ</h4>
+                  <p>専属リーダーの感性を通じて受け取られた、あなただけの星のメッセージを丁寧に解読します</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🔮</span>
+                <div>
+                  <h4>構造 × メッセージの統合</h4>
+                  <p>星の構造と星のメッセージが重なるポイントから、お悩みの核心に迫る統合メッセージをお届け</p>
+                </div>
+              </div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureIcon}>🏠</span>
+                <div>
+                  <h4>やさしい魔法のレシピ</h4>
+                  <p>お部屋の整え方、心の余白のつくり方、行動タイミングまで——今日からできる具体的なアクション</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.tarotLetterMeta}>
+              <span>📄 全3章・10,000〜16,000字</span>
+              <span>📱 公式LINEからドキュメントで納品</span>
+              <span>🎯 対象: 年齢不問</span>
+              <span>💬 お届けから7日間・2回までQAサポート</span>
+            </div>
+
+            <div className={styles.tarotLetterPrice}>¥6,900 <span>(税込)</span></div>
+
+            <div className={styles.ctaGroup}>
+              <Link href="/tarot" className={styles.detailBtn}>
+                詳しく見る
+              </Link>
+              <a href="https://lin.ee/9MSmxO1x" target="_blank" rel="noopener noreferrer" className={styles.lineBtn} id="tarot-letter-cta">
+                公式LINEから申し込む
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -305,6 +379,7 @@ export default function Home() {
               <p className={styles.faqAnswer}>
                 無料診断と図鑑は<strong>全年齢</strong>が対象です。
                 星守りレポート（お子様向け）は0〜17歳、セルフレポート（大人向け）は18歳以上が対象です。
+                星守りタロット「星の導きレター」は年齢不問で、どなたでもご利用いただけます。
                 パートナー相性診断は年齢を問わず、どなたでもご利用いただけます。
               </p>
             </details>
