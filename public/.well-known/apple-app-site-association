@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "naotoadachi.com.kss.hoshimori",
+        "paths": [ "*" ]
+      }
+    ]
+  }
+}
