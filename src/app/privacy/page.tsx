@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
     <main className={styles.main}>
       <div className={styles.container}>
         <h1 className={styles.title}>プライバシーポリシー</h1>
-        <p className={styles.lastUpdated}>最終更新日：2026年7月13日</p>
+        <p className={styles.lastUpdated}>最終更新日：2026年7月27日</p>
 
         <div className={styles.content}>
           <p>
@@ -32,12 +32,12 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className={styles.section}>
-            <h2>3. 情報の第三者提供について</h2>
+            <h2>3. 情報の第三者提供およびAIツールの利用について</h2>
             <p>
-              当アプリは、ユーザーご本人の同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法やその他の法令で認められる場合を除きます。
+              当サービスは、ユーザーご本人の同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法やその他の法令で認められる場合を除きます。
             </p>
             <p>
-              なお、当アプリではAIチャット機能等に外部API（OpenAI / Google Gemini）を利用しています。入力されたテキストデータは生成処理の目的でのみ送信され、AIモデルの学習データとして利用されることはありません。
+              なお、当サービスでは構造解析およびレポート生成補助目的で外部AIツール（Google Gemini等）を利用する場合があります。その際、氏名・詳細な住所等の個人を特定できる情報はすべて事前に匿名化（伏字化・ID置換）処理を行い、匿名化された構造データのみを送信・処理します。また、入力されたデータがAIモデルの学習データとして利用されることはありません。
             </p>
           </section>
 
